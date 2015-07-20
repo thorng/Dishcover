@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F6BC9DE1B5D73EB00C986F1 /* countries_of_the_world.csv in Resources */ = {isa = PBXBuildFile; fileRef = 3F6BC9DC1B5D73EB00C986F1 /* countries_of_the_world.csv */; };
+		3F6BC9DF1B5D73EB00C986F1 /* Countries_of_the_world.docx in Resources */ = {isa = PBXBuildFile; fileRef = 3F6BC9DD1B5D73EB00C986F1 /* Countries_of_the_world.docx */; };
+		3F6BC9E11B5D77F200C986F1 /* CSVScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6BC9E01B5D77F200C986F1 /* CSVScanner.swift */; };
+		3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */; };
 		3F8427881B55B9770075884B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8427871B55B9770075884B /* AppDelegate.swift */; };
 		3F84278A1B55B9770075884B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8427891B55B9770075884B /* ViewController.swift */; };
 		3F84278D1B55B9770075884B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F84278B1B55B9770075884B /* Main.storyboard */; };
 		3F84278F1B55B9770075884B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F84278E1B55B9770075884B /* Images.xcassets */; };
 		3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F8427901B55B9770075884B /* LaunchScreen.xib */; };
 		3F84279E1B55B9770075884B /* Im_HorngryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84279D1B55B9770075884B /* Im_HorngryTests.swift */; };
+		A9BF4287BD59066BE141E89C /* libPods-Im-Horngry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E38EA09C6DF81FA6EA486761 /* libPods-Im-Horngry.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Im-Horngry.release.xcconfig"; path = "Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry.release.xcconfig"; sourceTree = "<group>"; };
+		3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Im-Horngry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry.debug.xcconfig"; sourceTree = "<group>"; };
+		3F6BC9DC1B5D73EB00C986F1 /* countries_of_the_world.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries_of_the_world.csv; sourceTree = "<group>"; };
+		3F6BC9DD1B5D73EB00C986F1 /* Countries_of_the_world.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Countries_of_the_world.docx; sourceTree = "<group>"; };
+		3F6BC9E01B5D77F200C986F1 /* CSVScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSVScanner.swift; path = "Im-Horngry/CSVScanner.swift"; sourceTree = SOURCE_ROOT; };
+		3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F8427821B55B9770075884B /* Im-Horngry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Im-Horngry.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F8427861B55B9770075884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F8427871B55B9770075884B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +47,7 @@
 		3F8427971B55B9770075884B /* Im-HorngryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Im-HorngryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F84279C1B55B9770075884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F84279D1B55B9770075884B /* Im_HorngryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Im_HorngryTests.swift; sourceTree = "<group>"; };
+		E38EA09C6DF81FA6EA486761 /* libPods-Im-Horngry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Im-Horngry.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */,
+				A9BF4287BD59066BE141E89C /* libPods-Im-Horngry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +70,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045D6E0D4050C77F7F8CE243 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */,
+				E38EA09C6DF81FA6EA486761 /* libPods-Im-Horngry.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0850A8E24062F548A7FBF158 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */,
+				34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3F6BC9DB1B5D73EB00C986F1 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				3F6BC9DC1B5D73EB00C986F1 /* countries_of_the_world.csv */,
+				3F6BC9DD1B5D73EB00C986F1 /* Countries_of_the_world.docx */,
+				3F6BC9E01B5D77F200C986F1 /* CSVScanner.swift */,
+			);
+			path = Countries;
+			sourceTree = "<group>";
+		};
 		3F8427791B55B9770075884B = {
 			isa = PBXGroup;
 			children = (
 				3F8427841B55B9770075884B /* Im-Horngry */,
 				3F84279A1B55B9770075884B /* Im-HorngryTests */,
 				3F8427831B55B9770075884B /* Products */,
+				0850A8E24062F548A7FBF158 /* Pods */,
+				045D6E0D4050C77F7F8CE243 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +126,7 @@
 				3F84278B1B55B9770075884B /* Main.storyboard */,
 				3F84278E1B55B9770075884B /* Images.xcassets */,
 				3F8427901B55B9770075884B /* LaunchScreen.xib */,
+				3F6BC9DB1B5D73EB00C986F1 /* Countries */,
 				3F8427851B55B9770075884B /* Supporting Files */,
 			);
 			path = "Im-Horngry";
@@ -119,9 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F8427A11B55B9770075884B /* Build configuration list for PBXNativeTarget "Im-Horngry" */;
 			buildPhases = (
+				D9C30CBA57564B61D4BC7179 /* Check Pods Manifest.lock */,
 				3F84277E1B55B9770075884B /* Sources */,
 				3F84277F1B55B9770075884B /* Frameworks */,
 				3F8427801B55B9770075884B /* Resources */,
+				8D11F71AC126C3EA5803719D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +242,8 @@
 				3F84278D1B55B9770075884B /* Main.storyboard in Resources */,
 				3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */,
 				3F84278F1B55B9770075884B /* Images.xcassets in Resources */,
+				3F6BC9DE1B5D73EB00C986F1 /* countries_of_the_world.csv in Resources */,
+				3F6BC9DF1B5D73EB00C986F1 /* Countries_of_the_world.docx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +256,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8D11F71AC126C3EA5803719D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9C30CBA57564B61D4BC7179 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3F84277E1B55B9770075884B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -214,6 +296,7 @@
 			files = (
 				3F84278A1B55B9770075884B /* ViewController.swift in Sources */,
 				3F8427881B55B9770075884B /* AppDelegate.swift in Sources */,
+				3F6BC9E11B5D77F200C986F1 /* CSVScanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +423,7 @@
 		};
 		3F8427A21B55B9770075884B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Im-Horngry/Info.plist";
@@ -350,6 +434,7 @@
 		};
 		3F8427A31B55B9770075884B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Im-Horngry/Info.plist";
@@ -411,6 +496,7 @@
 				3F8427A31B55B9770075884B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F8427A41B55B9770075884B /* Build configuration list for PBXNativeTarget "Im-HorngryTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +505,7 @@
 				3F8427A61B55B9770075884B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
