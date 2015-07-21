@@ -8,60 +8,46 @@
 
 import UIKit
 import CoreLocation
+import SwiftCSV
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    let locationManager = CLLocationManager()
+    let locManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        // Initialize CoreLocation and request permission
+        self.locManager.requestWhenInUseAuthorization()
         
-//        var currentLocation = CLLocation!
-//        
-//        if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-//            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
+        locManager.delegate = self
+        locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locManager.distanceFilter = kCLDistanceFilterNone
+        locManager.startUpdatingLocation() // calls locationManager delegate
+        
+//        //CSV Parser
+//        if let url = NSURL(string: "countries_of_the_world.csv" ) {
+//            var error: NSErrorPointer = nil
+//            if let csv = CSV(contentsOfURL: url, error: error) {
+//                // Rows
+//                let rows = csv.rows
+//                let headers = csv.headers  //=> ["country", "adjectival"]
 //                
-//                currentLocation = locManager.location
+//                // Columns
+//                let columns = csv.columns
+//                let names = csv.columns["country"]
+//                let ages = csv.columns["adjectival"]
 //                
+//                println(rows)
+//            }
 //        }
-    }
-    
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error ) -> Void in
-            
-            if error != nil {
-                println("Error: " + error.localizedDescription)
-                return
-            }
-            
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as! CLPlacemark
-                self.displayLocationInfo(pm)
-            }
-        })
-    }
-    
-    func displayLocationInfo(placemark: CLPlacemark) {
-        self.locationManager.stopUpdatingLocation()
-        println(placemark.locality)
-        println(placemark.postalCode)
-        println(placemark.administrativeArea)
-        println(placemark.country)
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError!) {
-        println("Error: " + error.localizedDescription)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        Network.getGooglePlaces("japan"){ (response) -> Void in
+        Network.getGooglePlaces("arizona"){ (response) -> Void in
             if let places = response {
                 for place in places {
                     println(place["name"])
@@ -74,9 +60,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // This delegate is called, getting the location
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var locValue: CLLocationCoordinate2D = manager.location.coordinate
+        
+        println("locations = \(locValue.latitude) \(locValue.longitude)")
+        
+        let center = CLLocationCoordinate2D(latitude: locValue.latitude, longitude: locValue.longitude)
+    }
 
 
 }
+
+// Requesting from Google Places API
 private let GOOGLE_PLACES_API_KEY:String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM"
 class Network {
     class func get(urlString:String, completionHandler: ((NSDictionary?) -> Void)?, errorHandler:(() -> Void)?) {
