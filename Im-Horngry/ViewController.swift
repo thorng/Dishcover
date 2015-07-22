@@ -9,10 +9,15 @@
 import UIKit
 import CoreLocation
 
+var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
+var googleSearchWebAddress: String?
+
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    let locManager = CLLocationManager()
-    var countryDict = [String: String]()
+    let locManager = CLLocationManager() // Location Variable
+    var countryDict = [String: String]() // Country & Adjectival dictionary
+    var randomVal: String = "" // Random Value from countryDict
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +32,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         // Creates dictionary of Countries and Adjectivals
         parseTxtToDictionary()
+        
+        // Randomly generate dict value
+        let index: Int = Int(arc4random_uniform(UInt32(countryDict.count)))
+        randomVal = Array(countryDict.values)[index]
+        
+        println(randomVal)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        Network.getGooglePlaces("arizona"){ (response) -> Void in
+        Network.getGooglePlaces(randomVal){ (response) -> Void in
             if let places = response {
                 for place in places {
                     println(place["name"])
@@ -71,11 +82,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // This delegate is called, getting the location
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locValue: CLLocationCoordinate2D = manager.location.coordinate
         
-        println("locations = \(locValue.latitude) \(locValue.longitude)")
-        
-        let center = CLLocationCoordinate2D(latitude: locValue.latitude, longitude: locValue.longitude)
+        if let locValue = locValue {
+            var locValue: CLLocationCoordinate2D = manager.location.coordinate
+        }
     }
 
 
@@ -83,6 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 // Requesting from Google Places API
 private let GOOGLE_PLACES_API_KEY:String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM"
+
 class Network {
     class func get(urlString:String, completionHandler: ((NSDictionary?) -> Void)?, errorHandler:(() -> Void)?) {
         var request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
@@ -106,7 +117,7 @@ class Network {
     }
     
     class func getGooglePlaces(place:String, completionHandler: (([NSDictionary]?) -> Void)?) {
-        Network.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+" + place + "&key=" + GOOGLE_PLACES_API_KEY, completionHandler: { (data) -> Void in
+        Network.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?types=food&keyword=" + place + "&key=" + GOOGLE_PLACES_API_KEY + "&location=" + locValue.latitude + "," + locValue.longitude + "&radius=500", completionHandler: { (data) -> Void in
             if let json = data, places = json["results"] as? [NSDictionary] {
                 completionHandler?(places)
             }
