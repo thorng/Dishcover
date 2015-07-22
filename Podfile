@@ -5,7 +5,6 @@ use_frameworks!
 target 'Im-Horngry' do
 	pod 'GoogleMaps'
 	pod 'RealmSwift'
-	pod "SwiftCSV"
 end
 
 target 'Im-HorngryTests' do

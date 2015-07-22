@@ -8,11 +8,11 @@
 
 import UIKit
 import CoreLocation
-import SwiftCSV
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     let locManager = CLLocationManager()
+    var countryDict = [String: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,23 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locManager.distanceFilter = kCLDistanceFilterNone
         locManager.startUpdatingLocation() // calls locationManager delegate
         
-//        //CSV Parser
-//        if let url = NSURL(string: "countries_of_the_world.csv" ) {
-//            var error: NSErrorPointer = nil
-//            if let csv = CSV(contentsOfURL: url, error: error) {
-//                // Rows
-//                let rows = csv.rows
-//                let headers = csv.headers  //=> ["country", "adjectival"]
-//                
-//                // Columns
-//                let columns = csv.columns
-//                let names = csv.columns["country"]
-//                let ages = csv.columns["adjectival"]
-//                
-//                println(rows)
-//            }
-//        }
-        
+        // Creates dictionary of Countries and Adjectivals
+        parseTxtToDictionary()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,6 +44,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func parseTxtToDictionary() {
+        // Parse .txt file into a dictionary
+        var arraySeparated = [String]()
+        var countryName: String?
+        var countryAdjectival: String?
+        
+        let path = NSBundle.mainBundle().pathForResource("countries_of_the_world", ofType: "txt")
+        
+        if let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil) {
+            var array = content.componentsSeparatedByString("\n")
+            for rows in array {
+                
+                //println(rows)
+                arraySeparated = rows.componentsSeparatedByString(",")
+                
+                countryName = arraySeparated[0]
+                countryAdjectival = arraySeparated[1]
+                
+                countryDict[countryName!] = countryAdjectival
+            }
+        }
     }
     
     // This delegate is called, getting the location

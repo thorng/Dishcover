@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Im-Horngry/ViewController.swift"
-            timestampString = "459207711.866468"
+            filePath = "Pods/SwiftCSV/SwiftCSV/CSV.swift"
+            timestampString = "459244373.266729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "init(contentsOfURL:error:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SwiftCSV/SwiftCSV/CSV.swift"
+            timestampString = "459244407.964897"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init(contentsOfURL:delimiter:encoding:error:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

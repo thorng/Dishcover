@@ -54,10 +54,8 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-Im-Horngry/Realm.framework'
   install_framework 'Pods-Im-Horngry/RealmSwift.framework'
-  install_framework 'Pods-Im-Horngry/SwiftCSV.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-Im-Horngry/Realm.framework'
   install_framework 'Pods-Im-Horngry/RealmSwift.framework'
-  install_framework 'Pods-Im-Horngry/SwiftCSV.framework'
 fi
