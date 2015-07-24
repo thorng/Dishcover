@@ -24,18 +24,27 @@
                                 <state key="normal" title="Bike">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="bike:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ww-c4-h1p"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mN-fQ-2hA">
                                 <rect key="frame" x="115" y="438" width="46" height="30"/>
                                 <state key="normal" title="Feet">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="feet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iun-2c-fc2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOq-8m-VBx">
                                 <rect key="frame" x="450" y="438" width="46" height="30"/>
                                 <state key="normal" title="Car">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="car:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xhC-w4-nvr"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you travelling?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU9-Kf-7fY">
                                 <rect key="frame" x="208" y="328" width="184" height="21"/>
@@ -64,6 +73,9 @@
                                 <state key="normal" title="$10">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="price1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmJ-EN-uAe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVV-Rs-06G">
                                 <rect key="frame" x="277" y="179" width="46" height="30"/>
@@ -73,6 +85,9 @@
                                 <state key="normal" title="$20">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="price2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NDW-H0-I0a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfc-dh-x2i">
                                 <rect key="frame" x="450" y="179" width="46" height="30"/>
@@ -82,6 +97,9 @@
                                 <state key="normal" title="$30+">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="price3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xEG-rc-D4D"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrE-02-RLG">
                                 <rect key="frame" x="236" y="496" width="129" height="84"/>
@@ -93,6 +111,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="goButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FyQ-A6-v8z"/>
                                     <segue destination="3zA-Xo-J73" kind="show" id="NXv-cQ-taT"/>
                                 </connections>
                             </button>

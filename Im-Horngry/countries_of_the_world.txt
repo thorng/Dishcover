@@ -115,7 +115,7 @@ Kiribati,I-Kiribati
 South Korea,South Korean
 Kosovo,Kosovar
 Kuwait,Kuwaiti
-Kyrgyzstan,KyrgyzstaniSaharan
+Kyrgyzstan,Kyrgyzstani Saharan
 Laos,Laotian
 Latvia,Latvian
 Lebanon,Lebanese
@@ -139,7 +139,7 @@ Mauritania,Mauritanian
 Mauritius,Mauritian
 Mayotte,Mahoran
 Mexico,Mexican
-Micronesia, Federated States of,Micronesian
+Micronesia,Micronesian
 Moldova,Moldovan
 Monaco,Monégasque
 Mongolia,Mongolian
@@ -179,11 +179,11 @@ Réunion,Réunionese
 Romania,Romanian
 Russia,Russian
 Rwanda,Rwandan
-St. Helena,St. Helenian
+St. Helena,St Helenian
 St. Kitts and Nevis,Kittitian
-St. Lucia,St. Lucian
+St. Lucia,St Lucian
 Saint-Pierre and Miquelon,Saint-Pierrais
-St. Vincent and the Grenadines,St. Vincentian
+St. Vincent and the Grenadines,St Vincentian
 Samoa,Samoan
 San Marino,Sammarinese
 São Tomé and Príncipe,São Toméan

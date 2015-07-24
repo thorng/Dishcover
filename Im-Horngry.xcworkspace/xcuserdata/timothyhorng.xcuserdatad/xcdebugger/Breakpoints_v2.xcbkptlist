@@ -35,5 +35,85 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Im-Horngry/ViewController.swift"
+            timestampString = "459450792.646855"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "getGooglePlaces(_:completionHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Im-Horngry/ViewController.swift"
+            timestampString = "459450792.646855"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "getGooglePlaces(_:completionHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Im-Horngry/ViewController.swift"
+            timestampString = "459450806.750124"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "getGooglePlaces(_:completionHandler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Im_Horngry.Network.getGooglePlaces (Im_Horngry.Network.Type)(Swift.String, completionHandler : Swift.Optional&lt;(Swift.Optional&lt;Swift.Array&lt;ObjectiveC.NSDictionary&gt;&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Im-Horngry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/timothyhorng/Documents/Swift%20Projects/Im-Horngry/Im-Horngry/ViewController.swift"
+                  timestampString = "459450867.263728"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "1409">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Im_Horngry.Network.(getGooglePlaces (Im_Horngry.Network.Type) -&gt; (Swift.String, completionHandler : Swift.Optional&lt;(Swift.Optional&lt;Swift.Array&lt;ObjectiveC.NSDictionary&gt;&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "Im-Horngry"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/timothyhorng/Documents/Swift%20Projects/Im-Horngry/Im-Horngry/ViewController.swift"
+                  timestampString = "459450867.263914"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
