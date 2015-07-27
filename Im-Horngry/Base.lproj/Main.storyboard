@@ -7,10 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Constraints Controller-->
+        <!--Main Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Constraints Controller" id="BYZ-38-t0r" customClass="ViewController" customModule="Im_Horngry" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Constraints Controller" id="BYZ-38-t0r" userLabel="Main Controller" customClass="MainViewController" customModule="Im_Horngry" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -176,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="280" y="1009"/>
         </scene>
-        <!--Restaurant Controller-->
+        <!--Info Controller-->
         <scene sceneID="J9u-b7-fdX">
             <objects>
-                <viewController title="Restaurant Controller" id="3zA-Xo-J73" sceneMemberID="viewController">
+                <viewController title="Restaurant Controller" id="3zA-Xo-J73" userLabel="Info Controller" customClass="InfoViewController" customModule="Im_Horngry" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MeI-Qm-FgB"/>
                         <viewControllerLayoutGuide type="bottom" id="yKy-d2-WVy"/>
@@ -200,11 +200,21 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XV-pR-Ymt">
+                                        <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3XV-pR-Ymt" secondAttribute="trailing" constant="279" id="7HC-s3-Tiy"/>
+                                    <constraint firstItem="3XV-pR-Ymt" firstAttribute="leading" secondItem="IZD-AM-1lN" secondAttribute="leading" constant="279" id="Ltv-VA-KKO"/>
+                                    <constraint firstItem="3XV-pR-Ymt" firstAttribute="top" secondItem="IZD-AM-1lN" secondAttribute="top" constant="289" id="QVn-cr-swC"/>
                                     <constraint firstAttribute="bottom" secondItem="KZ6-8j-jb6" secondAttribute="bottom" constant="129" id="pgm-se-FsU"/>
                                     <constraint firstItem="KZ6-8j-jb6" firstAttribute="centerX" secondItem="IZD-AM-1lN" secondAttribute="centerX" id="qYJ-uf-AZX"/>
+                                    <constraint firstItem="KZ6-8j-jb6" firstAttribute="top" secondItem="3XV-pR-Ymt" secondAttribute="bottom" constant="131" id="uaT-Xl-y45"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -216,10 +226,13 @@
                             <constraint firstItem="IZD-AM-1lN" firstAttribute="leading" secondItem="0WK-Rl-azs" secondAttribute="leading" id="IsW-j8-N5S"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="restaurantLabel" destination="3XV-pR-Ymt" id="U0S-L2-wif"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lX7-Wt-8cM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922" y="297"/>
+            <point key="canvasLocation" x="1082" y="270"/>
         </scene>
     </scenes>
 </document>
