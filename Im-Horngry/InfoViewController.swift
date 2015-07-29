@@ -8,12 +8,15 @@
 
 import UIKit
 
-let restaurant = Restaurant()
-
 class InfoViewController: UIViewController {
+    
+    var selectedCountry: String!
+    @IBOutlet weak var restaurantLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println(selectedCountry)
+        restaurantLabel.text = selectedCountry
     }
 
     override func didReceiveMemoryWarning() {
