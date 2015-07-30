@@ -12,15 +12,14 @@ import CoreLocation
 var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
 var googleSearchWebAddress: String?
 var randomCountry: String = "" // Random Value from countryDict
-var priceSelected = 0 // price constraint
-var radius = 0 // radius constraint
+var priceSelected = 1 // price constraint
+var radius = 800 // radius constraint
 
 var selectedCountry: String = ""
 
 var countryDict = [String: String]() // Country & Adjectival dictionary
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
-    
     
     @IBOutlet weak var segmentedControlRadius: UISegmentedControl!
     @IBOutlet weak var segmentedControlPrice: UISegmentedControl!
@@ -47,8 +46,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var passingObject = segue.destinationViewController as! InfoViewController
-        passingObject.selectedCountry = selectedCountry
+        var infoViewController = segue.destinationViewController as! InfoViewController
+        //infoViewController.selectedCountry = selectedCountry
+        infoViewController.priceSelected = priceSelected
+        infoViewController.radius = radius
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -60,6 +61,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // Price segmented control
     @IBAction func price(sender: UISegmentedControl) {
         switch segmentedControlPrice.selectedSegmentIndex {
         case 0:
@@ -72,10 +75,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             println("3rd segmented control selected")
             priceSelected = 3
         default:
-            break
+            priceSelected = 1
         }
     }
     
+    // Radius segmented control
     @IBAction func radiusConstraint(sender: UISegmentedControl) {
         switch segmentedControlRadius.selectedSegmentIndex {
         case 0:
@@ -88,7 +92,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             println("20000m selected")
             radius = 20000
         default:
-            break
+            radius = 800
         }
     }
     
@@ -96,7 +100,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         println("LIFTOFFFFFFF")
         
         // sends API request and returns a restaurant
-        returnRestaurant()
+//        returnRestaurant()
         
     }
     
@@ -134,21 +138,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         println(randomCountry)
     }
     
-    func returnRestaurant() {
-        if locValue != nil {
-            Network.getGooglePlaces(randomCountry){ (response) -> Void in
-                if let places = response {
-                    for place in places {
-                        println(place["name"])
-                        selectedCountry = (place["name"] as? String)!
-                    }
-                }
-            }
-        }
-        else {
-            println("sorry, location not found")
-        }
-    }
+//    func returnRestaurant() {
+//        if locValue != nil {
+//            Network.getGooglePlaces(randomCountry){ (response) -> Void in
+//                if let places = response {
+//                    for place in places {
+//                        println(place["name"])
+//                        selectedCountry = place["name"] as! String
+//                    }
+//                }
+//            }
+//        }
+//        else {
+//            println("sorry, location not found")
+//        }
+//    }
     
     // This delegate is called, getting the location
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -157,44 +161,4 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-}
-
-// Requesting from Google Places API
-private let GOOGLE_PLACES_API_KEY:String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM"
-
-class Network {
-    class func get(urlString:String, completionHandler: ((NSDictionary?) -> Void)?, errorHandler:(() -> Void)?) {
-        var request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            Network.handleRESTResponse(completionHandler, data: data, response: response, error: error,  errorHandler: errorHandler)
-        })
-        task.resume()
-    }
-    
-    class func handleRESTResponse(completionHandler: ((NSDictionary?) -> Void)?, data:NSData?, response:NSURLResponse?, error: NSError?, errorHandler:(() -> Void)?){
-        var err: NSError?
-        var json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
-        if let parseJSON = json {
-            completionHandler?(parseJSON)
-        }
-        else {
-            errorHandler?()
-        }
-    }
-    
-    class func getGooglePlaces(place:String, completionHandler: (([NSDictionary]?) -> Void)?) {
-        
-        let substring1 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locValue!.latitude),\(locValue!.longitude)&minprice=0&maxprice=\(priceSelected)&radius=\(radius)&opennow=true&types=food&keyword=\(randomCountry)&key=" + GOOGLE_PLACES_API_KEY
-        let substring2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=" + GOOGLE_PLACES_API_KEY
-        Network.get(substring1, completionHandler: { (data) -> Void in
-                if let json = data, places = json["results"] as? [NSDictionary] {
-                    completionHandler?(places)
-                }
-                if let json = data, statuses = json["status"] as? [NSDictionary] {
-                    completionHandler?(statuses)
-                }
-            }, errorHandler: nil)
-    }
 }

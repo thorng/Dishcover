@@ -10,19 +10,41 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    var selectedCountry: String!
+    //var selectedCountry: String!
+    var priceSelected: Int!
+    var radius: Int!
+    
     @IBOutlet weak var restaurantLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(selectedCountry)
-        restaurantLabel.text = selectedCountry
+        println("hi")
+        println("price selected: \(priceSelected)")
+        println("radius selected: \(radius)")
+        restaurantLabel.text = "someting"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    func returnRestaurant() {
+//        if locValue != nil {
+//            Network.getGooglePlaces(randomCountry){ (response) -> Void in
+//                if let places = response {
+//                    for place in places {
+//                        println(place["name"])
+//                        selectedCountry = place["name"] as! String
+//                    }
+//                }
+//            }
+//        }
+//        else {
+//            println("sorry, location not found")
+//        }
+//    }
+
     
 
     /*
