@@ -21,7 +21,7 @@ class InfoViewController: UIViewController {
         println("hi")
         println("price selected: \(priceSelected)")
         println("radius selected: \(radius)")
-        restaurantLabel.text = "someting"
+        restaurantLabel.text = "Loading..."
     }
 
     override func didReceiveMemoryWarning() {
