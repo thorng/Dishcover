@@ -39,13 +39,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var network = segue.destinationViewController as! Network
+        var infoViewController = segue.destinationViewController as! InfoViewController
 
         // variables being passed into Network
-        network.priceSelected = priceSelected
-        network.radius = radius
-        network.locValue = locValue
-        network.countryDict = countryDict
+        infoViewController.priceSelected = priceSelected
+        infoViewController.radius = radius
+        infoViewController.locValue = locValue
+        infoViewController.randomCountry = randomCountry
     }
     
     override func viewDidAppear(animated: Bool) {

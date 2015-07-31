@@ -16,6 +16,8 @@ class InfoViewController: UIViewController {
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
     
+    var selectedRestaurantName: String? // the restaurant selected from the API request
+    
     @IBOutlet weak var restaurantLabel: UILabel!
     
     override func viewDidLoad() {
@@ -30,6 +32,9 @@ class InfoViewController: UIViewController {
         
         // Randomly generate dict value
         generateRandomCountry()
+        
+        // Start the restaurant request
+        startRestaurantRequest()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,37 +77,31 @@ class InfoViewController: UIViewController {
     }
     
     func startRestaurantRequest() {
-        
         if locValue != nil {
-            
             let url = Network.buildURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
-//            Network.getGooglePlaces(url) { (response: NSDictionary) -> Void in
-//                self.restaurantsReceived(response)
-//            }
-            
-            
-            Network.getGooglePlaces(url, completionHandler: { (response) -> Void in
-                    println("do a thing")
+            println(url)
+            Network.getGooglePlaces(url, completionHandler: { response -> Void in
+                println("do a thing")
                 if let dict = response {
+                    println("passed dict = response")
                     self.restaurantsReceived(dict)
                 }
             })
-         
-//                { (params) -> returnType in
-//                    statements
-//            }
         }
         else {
             println("sorry, location not found")
         }
     }
     
-    func restaurantsReceived(restaurants: NSDictionary) {
-//        if let places = restaurants {
-            for place in restaurants {
-                println(place)
+    func restaurantsReceived(restaurants: [NSDictionary]) {
+        for place in restaurants {
+            if place["status"] as? String == "ZERO_RESULTS" {
+                println("Sorry, no restaurants found")
+            } else {
+                println("your place selected is: \(place)")
+//                selectedRestaurantName = place["name"] as? String
             }
-//        }
+        }
     }
 
     /*
