@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreLocation
 
 class InfoViewController: UIViewController {
     
-    //var selectedCountry: String!
     var priceSelected: Int!
     var radius: Int!
+    var locValue: CLLocationCoordinate2D!
+    var countryDict = [String: String]() // Country & Adjectival dictionary
+    var randomCountry: String!
     
     @IBOutlet weak var restaurantLabel: UILabel!
     
@@ -29,23 +32,20 @@ class InfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    func returnRestaurant() {
-//        if locValue != nil {
-//            Network.getGooglePlaces(randomCountry){ (response) -> Void in
-//                if let places = response {
-//                    for place in places {
-//                        println(place["name"])
-//                        selectedCountry = place["name"] as! String
-//                    }
-//                }
-//            }
-//        }
-//        else {
-//            println("sorry, location not found")
-//        }
-//    }
-
-    
+    func returnRestaurant() {
+        if locValue != nil {
+            Network.getGooglePlaces(randomCountry){ (response) -> Void in
+                if let places = response {
+                    for place in places {
+                        println(place["name"])
+                    }
+                }
+            }
+        }
+        else {
+            println("sorry, location not found")
+        }
+    }
 
     /*
     // MARK: - Navigation

@@ -12,6 +12,7 @@ import Foundation
 private let GOOGLE_PLACES_API_KEY:String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM"
 
 class Network {
+    
     class func get(urlString:String, completionHandler: ((NSDictionary?) -> Void)?, errorHandler:(() -> Void)?) {
         var request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         var session = NSURLSession.sharedSession()
@@ -37,7 +38,7 @@ class Network {
     
     class func getGooglePlaces(place:String, completionHandler: (([NSDictionary]?) -> Void)?) {
         
-        let placeSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locValue!.latitude),\(locValue!.longitude)&minprice=0&maxprice=\(priceSelected)&radius=\(radius)&opennow=true&types=food&keyword=\(randomCountry)&key=" + GOOGLE_PLACES_API_KEY
+        let placeSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locValue!.latitude),\(locValue!.longitude)&minprice=0&maxprice=\(priceSelected)&radius=\(radius)&opennow=true&types=food&keyword=\(place)&key=" + GOOGLE_PLACES_API_KEY
         let testPlaceSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=" + GOOGLE_PLACES_API_KEY
         
         // Fetch the restaurant
@@ -45,21 +46,15 @@ class Network {
             if let json = data, places = json["results"] as? [NSDictionary] {
                 completionHandler?(places)
             }
-            if let json = data, statuses = json["status"] as? [NSDictionary] {
-                completionHandler?(statuses)
-            }
-            }, errorHandler: nil)
+        }, errorHandler: nil)
         
-        let placeidString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=" + GOOGLE_PLACES_API_KEY
-        
-        // Get Places details
-        Network.get(placeidString, completionHandler: { (data) -> Void in
-            if let json = data, places = json["results"] as? [NSDictionary] {
-                completionHandler?(places)
-            }
-            if let json = data, statuses = json["status"] as? [NSDictionary] {
-                completionHandler?(statuses)
-            }
-            }, errorHandler: nil)
+//        let placeidString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=" + GOOGLE_PLACES_API_KEY
+//        
+//        // Get Places details
+//        Network.get(placeidString, completionHandler: { (data) -> Void in
+//            if let json = data, places = json["results"] as? [NSDictionary] {
+//                completionHandler?(places)
+//            }
+//        }, errorHandler: nil)
     }
 }

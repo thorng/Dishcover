@@ -10,12 +10,9 @@ import UIKit
 import CoreLocation
 
 var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
-var googleSearchWebAddress: String?
 var randomCountry: String = "" // Random Value from countryDict
 var priceSelected = 1 // price constraint
 var radius = 800 // radius constraint
-
-var selectedCountry: String = ""
 
 var countryDict = [String: String]() // Country & Adjectival dictionary
 
@@ -50,6 +47,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         //infoViewController.selectedCountry = selectedCountry
         infoViewController.priceSelected = priceSelected
         infoViewController.radius = radius
+        infoViewController.locValue = locValue
+        infoViewController.countryDict = countryDict
+        infoViewController.randomCountry = randomCountry
     }
     
     override func viewDidAppear(animated: Bool) {
