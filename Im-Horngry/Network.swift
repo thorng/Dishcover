@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // Requesting from Google Places API
 private let GOOGLE_PLACES_API_KEY:String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM"
@@ -34,17 +35,20 @@ class Network {
         }
     }
     
-    
-    
-    class func getGooglePlaces(place:String, completionHandler: (([NSDictionary]?) -> Void)?) {
+    class func buildURL(priceSelected: Int, radius: Int, locValue: CLLocationCoordinate2D, countryKeyword: String) -> String {
+        let placeSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locValue.latitude),\(locValue.longitude)&minprice=0&maxprice=\(priceSelected)&radius=\(radius)&opennow=true&types=food&keyword=\(countryKeyword)&key=" + GOOGLE_PLACES_API_KEY
         
-        let placeSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locValue!.latitude),\(locValue!.longitude)&minprice=0&maxprice=\(priceSelected)&radius=\(radius)&opennow=true&types=food&keyword=\(place)&key=" + GOOGLE_PLACES_API_KEY
+        return placeSearchString
+    }
+    
+    class func getGooglePlaces(url: String, completionHandler: ([NSDictionary]? -> Void)?) {
+        
         let testPlaceSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=" + GOOGLE_PLACES_API_KEY
         
         // Fetch the restaurant
-        Network.get(testPlaceSearchString, completionHandler: { (data) -> Void in
+        Network.get(url, completionHandler: { data -> Void in
             if let json = data, places = json["results"] as? [NSDictionary] {
-                completionHandler?(places)
+                completionHandler!(places)
             }
         }, errorHandler: nil)
         

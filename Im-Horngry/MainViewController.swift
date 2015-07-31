@@ -34,22 +34,18 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locManager.distanceFilter = kCLDistanceFilterNone
         locManager.startUpdatingLocation() // calls locationManager delegate
         
-        // Creates dictionary of Countries and Adjectivals
-        parseTxtToDictionary()
-        
-        // Randomly generate dict value
-        generateRandomCountry()
+
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var infoViewController = segue.destinationViewController as! InfoViewController
-        //infoViewController.selectedCountry = selectedCountry
-        infoViewController.priceSelected = priceSelected
-        infoViewController.radius = radius
-        infoViewController.locValue = locValue
-        infoViewController.countryDict = countryDict
-        infoViewController.randomCountry = randomCountry
+        var network = segue.destinationViewController as! Network
+
+        // variables being passed into Network
+        network.priceSelected = priceSelected
+        network.radius = radius
+        network.locValue = locValue
+        network.countryDict = countryDict
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -102,40 +98,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         // sends API request and returns a restaurant
 //        returnRestaurant()
         
-    }
-    
-    // Parse .txt file into a dictionary
-    func parseTxtToDictionary() {
-        var arraySeparated = [String]()
-        var countryName: String?
-        var countryAdjectival: String?
-        
-        let path = NSBundle.mainBundle().pathForResource("countries_of_the_world", ofType: "txt")
-        
-        if let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil) {
-            
-            var array = content.componentsSeparatedByString("\n")
-            
-            for rows in array {
-                
-                //println(rows)
-                arraySeparated = rows.componentsSeparatedByString(",")
-                
-                countryName = arraySeparated[0]
-                countryAdjectival = arraySeparated[1].stringByReplacingOccurrencesOfString(" ", withString: "_")
-                
-                countryDict[countryName!] = countryAdjectival
-            }
-        }
-    }
-    
-    
-    // Randomly generate dict value
-    func generateRandomCountry () {
-        let index: Int = Int(arc4random_uniform(UInt32(countryDict.count)))
-        randomCountry = Array(countryDict.values)[index]
-        
-        println(randomCountry)
     }
     
 //    func returnRestaurant() {

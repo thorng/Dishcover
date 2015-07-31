@@ -11,11 +11,10 @@ import CoreLocation
 
 class InfoViewController: UIViewController {
     
-    var priceSelected: Int!
-    var radius: Int!
-    var locValue: CLLocationCoordinate2D!
-    var countryDict = [String: String]() // Country & Adjectival dictionary
-    var randomCountry: String!
+    var randomCountry: String?
+    var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
+    var priceSelected: Int? // price constraint
+    var radius: Int? // radius constraint
     
     @IBOutlet weak var restaurantLabel: UILabel!
     
@@ -25,6 +24,12 @@ class InfoViewController: UIViewController {
         println("price selected: \(priceSelected)")
         println("radius selected: \(radius)")
         restaurantLabel.text = "Loading..."
+        
+        // Creates dictionary of Countries and Adjectivals
+        parseTxtToDictionary()
+        
+        // Randomly generate dict value
+        generateRandomCountry()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,19 +37,72 @@ class InfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func returnRestaurant() {
-        if locValue != nil {
-            Network.getGooglePlaces(randomCountry){ (response) -> Void in
-                if let places = response {
-                    for place in places {
-                        println(place["name"])
-                    }
-                }
+    // Parse .txt file into a dictionary
+    func parseTxtToDictionary() {
+        var arraySeparated = [String]()
+        var countryName: String?
+        var countryAdjectival: String?
+        
+        let path = NSBundle.mainBundle().pathForResource("countries_of_the_world", ofType: "txt")
+        
+        if let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil) {
+            
+            var array = content.componentsSeparatedByString("\n")
+            
+            for rows in array {
+                
+                //println(rows)
+                arraySeparated = rows.componentsSeparatedByString(",")
+                
+                countryName = arraySeparated[0]
+                countryAdjectival = arraySeparated[1].stringByReplacingOccurrencesOfString(" ", withString: "_")
+                
+                countryDict[countryName!] = countryAdjectival
             }
+        }
+    }
+    
+    
+    // Randomly generate dict value
+    func generateRandomCountry () {
+        let index: Int = Int(arc4random_uniform(UInt32(countryDict.count)))
+        randomCountry = Array(countryDict.values)[index]
+        
+        println(randomCountry)
+    }
+    
+    func startRestaurantRequest() {
+        
+        if locValue != nil {
+            
+            let url = Network.buildURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
+//            Network.getGooglePlaces(url) { (response: NSDictionary) -> Void in
+//                self.restaurantsReceived(response)
+//            }
+            
+            
+            Network.getGooglePlaces(url, completionHandler: { (response) -> Void in
+                    println("do a thing")
+                if let dict = response {
+                    self.restaurantsReceived(dict)
+                }
+            })
+         
+//                { (params) -> returnType in
+//                    statements
+//            }
         }
         else {
             println("sorry, location not found")
         }
+    }
+    
+    func restaurantsReceived(restaurants: NSDictionary) {
+//        if let places = restaurants {
+            for place in restaurants {
+                println(place)
+            }
+//        }
     }
 
     /*
