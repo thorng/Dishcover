@@ -95,20 +95,32 @@ class InfoViewController: UIViewController {
     func restaurantsReceived(restaurants: [NSDictionary]) {
         
         var restaurantNameArray: [String] = []
-        
-        for place in restaurants {
+        if restaurants.count > 0 {
+            for place in restaurants {
+                let results = place["name"] as? String ?? ""
+                restaurantNameArray.append(results)
+                
+                println("your place selected is: \(results)")
+                println()
+                
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.restaurantLabel.text = "\(restaurantNameArray[0])"
+                }
+            }
+        } else {
             
-            let results = place["name"] as? String ?? ""
-            restaurantNameArray.append(results)
+            // Debugging
+            println("no results, trying again")
+            println()
             
-            println("your place selected is: \(results)")
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.restaurantLabel.text = "Sorry, no restaurants found. Trying again..."
+            }
+            
+            // Restart the request with a different country!
+            generateRandomCountry()
+            startRestaurantRequest()
         }
-        
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            println("array #1 = \(restaurantNameArray[0])")
-            self.restaurantLabel.text = "\(restaurantNameArray[0])"
-        }
-
     }
 
     /*

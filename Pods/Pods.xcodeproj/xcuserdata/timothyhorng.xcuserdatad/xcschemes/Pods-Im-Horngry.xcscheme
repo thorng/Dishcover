@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6CD5BD6E754C2194F5DA73C2"
+               BlueprintIdentifier = "87A210CB3728589A62C95DB3"
                BuildableName = "Pods_Im_Horngry.framework"
                BlueprintName = "Pods-Im-Horngry"
                ReferencedContainer = "container:Pods.xcodeproj">
