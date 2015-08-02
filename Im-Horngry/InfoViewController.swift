@@ -18,6 +18,7 @@ class InfoViewController: UIViewController {
     
     var selectedRestaurantName: String? // the restaurant selected from the API request
     
+    @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
     
     override func viewDidLoad() {
@@ -74,6 +75,7 @@ class InfoViewController: UIViewController {
         randomCountry = Array(countryDict.values)[index]
         
         println(randomCountry)
+        countryLabel.text = randomCountry
     }
     
     func startRestaurantRequest() {

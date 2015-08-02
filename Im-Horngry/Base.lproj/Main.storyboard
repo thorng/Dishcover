@@ -124,6 +124,15 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Ht-4RK">
+                                        <rect key="frame" x="279" y="232" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="s7J-X6-4rh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -131,7 +140,9 @@
                                     <constraint firstItem="3XV-pR-Ymt" firstAttribute="leading" secondItem="IZD-AM-1lN" secondAttribute="leading" constant="279" id="Ltv-VA-KKO"/>
                                     <constraint firstAttribute="bottom" secondItem="KZ6-8j-jb6" secondAttribute="bottom" constant="129" id="jd7-Ei-Poy"/>
                                     <constraint firstItem="KZ6-8j-jb6" firstAttribute="centerX" secondItem="IZD-AM-1lN" secondAttribute="centerX" id="n7g-2U-KRY"/>
+                                    <constraint firstItem="nTe-Ht-4RK" firstAttribute="leading" secondItem="3XV-pR-Ymt" secondAttribute="leading" id="nD5-nm-V15"/>
                                     <constraint firstItem="3XV-pR-Ymt" firstAttribute="centerX" secondItem="KZ6-8j-jb6" secondAttribute="centerX" id="qPr-Jy-5Ps"/>
+                                    <constraint firstItem="3XV-pR-Ymt" firstAttribute="top" secondItem="nTe-Ht-4RK" secondAttribute="bottom" constant="36" id="xhl-PO-c8p"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -149,6 +160,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countryLabel" destination="nTe-Ht-4RK" id="ojN-pR-mKT"/>
                         <outlet property="restaurantLabel" destination="3XV-pR-Ymt" id="BR1-KK-LdJ"/>
                     </connections>
                 </viewController>
