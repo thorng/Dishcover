@@ -94,27 +94,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func goButton(sender: UIButton) {
         println("LIFTOFFFFFFF")
-        
-        // sends API request and returns a restaurant
-//        returnRestaurant()
-        
     }
-    
-//    func returnRestaurant() {
-//        if locValue != nil {
-//            Network.getGooglePlaces(randomCountry){ (response) -> Void in
-//                if let places = response {
-//                    for place in places {
-//                        println(place["name"])
-//                        selectedCountry = place["name"] as! String
-//                    }
-//                }
-//            }
-//        }
-//        else {
-//            println("sorry, location not found")
-//        }
-//    }
     
     // This delegate is called, getting the location
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {

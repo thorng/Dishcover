@@ -36,7 +36,7 @@ class Network {
     }
     
     class func buildURL(priceSelected: Int, radius: Int, locValue: CLLocationCoordinate2D, countryKeyword: String) -> String {
-        let placeSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locValue.latitude),\(locValue.longitude)&minprice=0&maxprice=\(priceSelected)&radius=\(radius)&opennow=true&types=food&keyword=\(countryKeyword)&key=" + GOOGLE_PLACES_API_KEY
+        let placeSearchString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locValue.latitude),\(locValue.longitude)&minprice=0&maxprice=\(priceSelected)&radius=\(radius)&opennow=true&types=food&keyword=Mexican&key=" + GOOGLE_PLACES_API_KEY
         
         return placeSearchString
     }

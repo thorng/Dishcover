@@ -81,7 +81,6 @@ class InfoViewController: UIViewController {
             let url = Network.buildURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
             println(url)
             Network.getGooglePlaces(url, completionHandler: { response -> Void in
-                println("do a thing")
                 if let dict = response {
                     println("passed dict = response")
                     self.restaurantsReceived(dict)
@@ -94,14 +93,22 @@ class InfoViewController: UIViewController {
     }
     
     func restaurantsReceived(restaurants: [NSDictionary]) {
+        
+        var restaurantNameArray: [String] = []
+        
         for place in restaurants {
-            if place["status"] as? String == "ZERO_RESULTS" {
-                println("Sorry, no restaurants found")
-            } else {
-                println("your place selected is: \(place)")
-//                selectedRestaurantName = place["name"] as? String
-            }
+            
+            let results = place["name"] as? String ?? ""
+            restaurantNameArray.append(results)
+            
+            println("your place selected is: \(results)")
         }
+        
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            println("array #1 = \(restaurantNameArray[0])")
+            self.restaurantLabel.text = "\(restaurantNameArray[0])"
+        }
+
     }
 
     /*
