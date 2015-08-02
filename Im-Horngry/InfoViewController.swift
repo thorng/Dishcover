@@ -101,6 +101,12 @@ class InfoViewController: UIViewController {
         if restaurants.count > 0 {
             for place in restaurants {
                 let results = place["name"] as? String ?? ""
+                let photo: AnyObject? = place["photos"]
+                
+                if let photo = photo {
+                    println("Photo: \(photo)")
+                }
+                
                 restaurantNameArray.append(results)
                 
                 println("your place selected is: \(results)")
