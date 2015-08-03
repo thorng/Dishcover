@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import RealmSwift
 
 class InfoViewController: UIViewController {
     
@@ -95,7 +96,7 @@ class InfoViewController: UIViewController {
             })
         }
         else {
-            println("sorry, location not found")
+            println("Sorry, location not found")
         }
     }
     
@@ -174,6 +175,15 @@ class InfoViewController: UIViewController {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             let address = restaurantDetails["formatted_address"] as? String ?? ""
             self.addressLabel.text = address
+        }
+    }
+    
+    func addObjectToRealm(restaurantName: String) {
+        let restaurantVisited = RestaurantsEaten()
+        restaurantVisited.restaurantNames.append(restaurantName)
+        let realm = Realm()
+        realm.write {
+            realm.add(restaurantVisited)
         }
     }
 
