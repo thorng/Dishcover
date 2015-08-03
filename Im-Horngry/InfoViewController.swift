@@ -15,6 +15,7 @@ class InfoViewController: UIViewController {
     var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
+    var photoReference: String? // photo reference to display on the view
     
     var selectedRestaurantName: String? // the restaurant selected from the API request
     
@@ -24,10 +25,11 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("hi")
         println("price selected: \(priceSelected)")
         println("radius selected: \(radius)")
+        
         restaurantLabel.text = "Loading..."
+        countryLabel.text = "Loading country name..."
         
         // Creates dictionary of Countries and Adjectivals
         parseTxtToDictionary()
@@ -76,7 +78,6 @@ class InfoViewController: UIViewController {
         randomCountry = Array(countryDict.values)[index]
         
         println(randomCountry)
-        countryLabel.text = randomCountry
     }
     
     func startRestaurantRequest() {
@@ -85,7 +86,6 @@ class InfoViewController: UIViewController {
             println(url)
             Network.getGooglePlaces(url, completionHandler: { response -> Void in
                 if let dict = response {
-                    println("passed dict = response")
                     self.restaurantsReceived(dict)
                 }
             })
@@ -96,25 +96,28 @@ class InfoViewController: UIViewController {
     }
     
     func restaurantsReceived(restaurants: [NSDictionary]) {
-        
         var restaurantNameArray: [String] = []
-        if restaurants.count > 0 {
-            for place in restaurants {
-                let results = place["name"] as? String ?? ""
-                let photo: AnyObject? = place["photos"]
-                
-                if let photo = photo {
-                    println("Photo: \(photo)")
+        
+        // check to see if there's a first result, and only display that one
+        if let place = restaurants.first {
+            let results = place["name"] as? String ?? ""
+            
+            // grab photo reference string
+            if let photos = place["photos"] as? [NSDictionary] {
+                if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
+                    println("Photo: \(photo_ref)")
+                    photoReference = photo_ref
                 }
-                
-                restaurantNameArray.append(results)
-                
-                println("your place selected is: \(results)")
-                
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    self.restaurantLabel.text = "\(restaurantNameArray[0])"
-                    self.downloadImage()
-                }
+            }
+            
+            restaurantNameArray.append(results)
+            
+            println("your place selected is: \(results)")
+            
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.countryLabel.text = self.randomCountry
+                self.restaurantLabel.text = "\(restaurantNameArray[0])"
+                self.downloadImage()
             }
         } else {
             
@@ -135,10 +138,12 @@ class InfoViewController: UIViewController {
     
     // Download Image
     func downloadImage() {
-        if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
-            if let data = NSData(contentsOfURL: url){
-                imageURL.contentMode = UIViewContentMode.ScaleAspectFit
-                imageURL.image = UIImage(data: data)
+        if let photoReference = photoReference {
+            if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
+                if let data = NSData(contentsOfURL: url){
+                    imageURL.contentMode = UIViewContentMode.ScaleAspectFit
+                    imageURL.image = UIImage(data: data)
+                }
             }
         }
     }

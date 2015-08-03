@@ -16,13 +16,15 @@ private let GOOGLE_PLACES_API_KEY:String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZP
 class Network {
     
     class func get(urlString:String, completionHandler: ((NSDictionary?) -> Void)?, errorHandler:(() -> Void)?) {
-        var request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            Network.handleRESTResponse(completionHandler, data: data, response: response, error: error,  errorHandler: errorHandler)
-        })
-        task.resume()
+        if let url = NSURL(string: urlString) {
+            var request = NSMutableURLRequest(URL: url)
+            var session = NSURLSession.sharedSession()
+            request.HTTPMethod = "GET"
+            var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+                Network.handleRESTResponse(completionHandler, data: data, response: response, error: error,  errorHandler: errorHandler)
+            })
+            task.resume()
+        }
     }
     
     class func handleRESTResponse(completionHandler: ((NSDictionary?) -> Void)?, data:NSData?, response:NSURLResponse?, error: NSError?, errorHandler:(() -> Void)?){

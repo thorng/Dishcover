@@ -33,9 +33,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locManager.distanceFilter = kCLDistanceFilterNone
         locManager.startUpdatingLocation() // calls locationManager delegate
-        
-
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -62,13 +59,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func price(sender: UISegmentedControl) {
         switch segmentedControlPrice.selectedSegmentIndex {
         case 0:
-            println("first segmented control selected")
             priceSelected = 1
         case 1:
-            println("2nd segmented control selected")
             priceSelected = 2
         case 2:
-            println("3rd segmented control selected")
             priceSelected = 3
         default:
             priceSelected = 1
@@ -79,13 +73,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func radiusConstraint(sender: UISegmentedControl) {
         switch segmentedControlRadius.selectedSegmentIndex {
         case 0:
-            println("800m selected")
             radius = 800
         case 1:
-            println("5000m selected")
             radius = 5000
         case 2:
-            println("20000m selected")
             radius = 20000
         default:
             radius = 800
