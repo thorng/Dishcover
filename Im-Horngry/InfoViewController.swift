@@ -15,17 +15,21 @@ class InfoViewController: UIViewController {
     var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
+    var photoReference: String? // photo reference to display on the view
     
     var selectedRestaurantName: String? // the restaurant selected from the API request
     
+    @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
+    @IBOutlet weak var imageURL: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("hi")
         println("price selected: \(priceSelected)")
         println("radius selected: \(radius)")
+        
         restaurantLabel.text = "Loading..."
+        countryLabel.text = "Loading country name..."
         
         // Creates dictionary of Countries and Adjectivals
         parseTxtToDictionary()
@@ -82,7 +86,6 @@ class InfoViewController: UIViewController {
             println(url)
             Network.getGooglePlaces(url, completionHandler: { response -> Void in
                 if let dict = response {
-                    println("passed dict = response")
                     self.restaurantsReceived(dict)
                 }
             })
@@ -93,19 +96,28 @@ class InfoViewController: UIViewController {
     }
     
     func restaurantsReceived(restaurants: [NSDictionary]) {
-        
         var restaurantNameArray: [String] = []
-        if restaurants.count > 0 {
-            for place in restaurants {
-                let results = place["name"] as? String ?? ""
-                restaurantNameArray.append(results)
-                
-                println("your place selected is: \(results)")
-                println()
-                
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    self.restaurantLabel.text = "\(restaurantNameArray[0])"
+        
+        // check to see if there's a first result, and only display that one
+        if let place = restaurants.first {
+            let results = place["name"] as? String ?? ""
+            
+            // grab photo reference string
+            if let photos = place["photos"] as? [NSDictionary] {
+                if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
+                    println("Photo: \(photo_ref)")
+                    photoReference = photo_ref
                 }
+            }
+            
+            restaurantNameArray.append(results)
+            
+            println("your place selected is: \(results)")
+            
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.countryLabel.text = self.randomCountry
+                self.restaurantLabel.text = "\(restaurantNameArray[0])"
+                self.downloadImage()
             }
         } else {
             
@@ -113,6 +125,7 @@ class InfoViewController: UIViewController {
             println("no results, trying again")
             println()
             
+            // Switch to main thread
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.restaurantLabel.text = "Sorry, no restaurants found. Trying again..."
             }
@@ -120,6 +133,18 @@ class InfoViewController: UIViewController {
             // Restart the request with a different country!
             generateRandomCountry()
             startRestaurantRequest()
+        }
+    }
+    
+    // Download Image
+    func downloadImage() {
+        if let photoReference = photoReference {
+            if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
+                if let data = NSData(contentsOfURL: url){
+                    imageURL.contentMode = UIViewContentMode.ScaleAspectFit
+                    imageURL.image = UIImage(data: data)
+                }
+            }
         }
     }
 
