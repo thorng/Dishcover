@@ -12,6 +12,7 @@ import MapKit
 
 class InfoViewController: UIViewController {
     
+    var randomCountryKey: String?
     var randomCountry: String?
     var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
     var priceSelected: Int? // price constraint
@@ -76,8 +77,10 @@ class InfoViewController: UIViewController {
     // Randomly generate dict value
     func generateRandomCountry () {
         let index: Int = Int(arc4random_uniform(UInt32(countryDict.count)))
+        randomCountryKey = Array(countryDict.keys)[index]
         randomCountry = Array(countryDict.values)[index]
         
+        println(randomCountryKey)
         println(randomCountry)
     }
     
@@ -111,7 +114,6 @@ class InfoViewController: UIViewController {
             // Get the Google Details request
             let placeDetailsURL = Network.buildDetailsURL(reference!)
             Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
-                self.addressLabel.text = "Loading address..."
                 if let response = response {
                     self.detailsReceived(response)
                 }
@@ -129,10 +131,12 @@ class InfoViewController: UIViewController {
             println("your place selected is: \(results)")
             
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.countryLabel.text = self.randomCountry
+                self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
                 self.restaurantLabel.text = "\(restaurantNameArray[0])"
                 self.ratingLabel.text = "Rating: \(rating!)"
                 self.downloadImage()
+                
+                self.addressLabel.text = "Loading address..."
             }
         } else {
             
@@ -167,8 +171,10 @@ class InfoViewController: UIViewController {
     func detailsReceived(restaurantDetails: NSDictionary) {
         println("detailsReceived function called")
         
-        let address = restaurantDetails["formatted_address"] as? String ?? ""
-        addressLabel.text = address
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let address = restaurantDetails["formatted_address"] as? String ?? ""
+            self.addressLabel.text = address
+        }
     }
 
     /*
