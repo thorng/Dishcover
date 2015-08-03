@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class InfoViewController: UIViewController {
     
@@ -19,6 +20,8 @@ class InfoViewController: UIViewController {
     
     var selectedRestaurantName: String? // the restaurant selected from the API request
     
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var imageURL: UIImageView!
@@ -29,7 +32,9 @@ class InfoViewController: UIViewController {
         println("radius selected: \(radius)")
         
         restaurantLabel.text = "Loading..."
-        countryLabel.text = "Loading country name..."
+        countryLabel.text = ""
+        ratingLabel.text = ""
+        addressLabel.text = ""
         
         // Creates dictionary of Countries and Adjectivals
         parseTxtToDictionary()
@@ -59,13 +64,9 @@ class InfoViewController: UIViewController {
             var array = content.componentsSeparatedByString("\n")
             
             for rows in array {
-                
-                //println(rows)
                 arraySeparated = rows.componentsSeparatedByString(",")
-                
                 countryName = arraySeparated[0]
                 countryAdjectival = arraySeparated[1].stringByReplacingOccurrencesOfString(" ", withString: "_")
-                
                 countryDict[countryName!] = countryAdjectival
             }
         }
@@ -82,7 +83,7 @@ class InfoViewController: UIViewController {
     
     func startRestaurantRequest() {
         if locValue != nil {
-            let url = Network.buildURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
+            let url = Network.buildSearchURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
             println(url)
             Network.getGooglePlaces(url, completionHandler: { response -> Void in
                 if let dict = response {
@@ -95,17 +96,30 @@ class InfoViewController: UIViewController {
         }
     }
     
+    // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]) {
         var restaurantNameArray: [String] = []
         
         // check to see if there's a first result, and only display that one
         if let place = restaurants.first {
+            
             let results = place["name"] as? String ?? ""
+            let rating = place["rating"] as? Double
+            
+            let reference = place["reference"] as? String
+            
+            // Get the Google Details request
+            let placeDetailsURL = Network.buildDetailsURL(reference!)
+            Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
+                self.addressLabel.text = "Loading address..."
+                if let response = response {
+                    self.detailsReceived(response)
+                }
+            })
             
             // grab photo reference string
             if let photos = place["photos"] as? [NSDictionary] {
                 if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-                    println("Photo: \(photo_ref)")
                     photoReference = photo_ref
                 }
             }
@@ -117,6 +131,7 @@ class InfoViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.countryLabel.text = self.randomCountry
                 self.restaurantLabel.text = "\(restaurantNameArray[0])"
+                self.ratingLabel.text = "Rating: \(rating!)"
                 self.downloadImage()
             }
         } else {
@@ -146,6 +161,14 @@ class InfoViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    // MARK: Google Details Results
+    func detailsReceived(restaurantDetails: NSDictionary) {
+        println("detailsReceived function called")
+        
+        let address = restaurantDetails["formatted_address"] as? String ?? ""
+        addressLabel.text = address
     }
 
     /*

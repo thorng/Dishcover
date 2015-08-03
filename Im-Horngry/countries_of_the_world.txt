@@ -63,7 +63,7 @@ East Timor,East Timorese
 Ecuador,Ecuadorian
 Egypt,Egyptian
 El Salvador,Salvadoranf
-England,English
+England,England
 Equatorial Guinea,Equatorial Guinean
 Eritrea,Eritrean
 Estonia,Estonian
