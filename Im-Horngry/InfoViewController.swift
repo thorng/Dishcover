@@ -134,10 +134,15 @@ class InfoViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
                 self.restaurantLabel.text = "\(restaurantNameArray[0])"
-                self.ratingLabel.text = "Rating: \(rating!)"
                 self.downloadImage()
                 
                 self.addressLabel.text = "Loading address..."
+                
+                if let rating = rating {
+                    self.ratingLabel.text = "Rating: \(rating)"
+                }
+                
+                self.addObjectToRealm(restaurantNameArray[0])
             }
         } else {
             
@@ -178,11 +183,13 @@ class InfoViewController: UIViewController {
         }
     }
     
+    // adds restaurant name to Realm
     func addObjectToRealm(restaurantName: String) {
         let restaurantVisited = RestaurantsEaten()
-        restaurantVisited.restaurantNames.append(restaurantName)
         let realm = Realm()
+        
         realm.write {
+            restaurantVisited.restaurantNames = restaurantName
             realm.add(restaurantVisited)
         }
     }

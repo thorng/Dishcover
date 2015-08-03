@@ -36,13 +36,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var infoViewController = segue.destinationViewController as! InfoViewController
-
-        // variables being passed into Network
-        infoViewController.priceSelected = priceSelected
-        infoViewController.radius = radius
-        infoViewController.locValue = locValue
-        infoViewController.randomCountry = randomCountry
+        if segue.identifier == "RestaurantControllerSegue" {
+            var infoViewController = segue.destinationViewController as! InfoViewController
+            
+            // variables being passed into Network
+            infoViewController.priceSelected = priceSelected
+            infoViewController.radius = radius
+            infoViewController.locValue = locValue
+            infoViewController.randomCountry = randomCountry
+        }
     }
     
     override func viewDidAppear(animated: Bool) {

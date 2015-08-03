@@ -9,5 +9,5 @@
 import RealmSwift
 
 class RestaurantsEaten: Object {
-    dynamic var restaurantNames: [String] = []
+    dynamic var restaurantNames: String = ""
 }
