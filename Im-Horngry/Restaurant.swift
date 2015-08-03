@@ -1,5 +1,5 @@
 //
-//  RestaurantsEaten.swift
+//  Restaurant.swift
 //  Im-Horngry
 //
 //  Created by Timothy Horng on 8/2/15.
@@ -8,6 +8,6 @@
 
 import RealmSwift
 
-class RestaurantsEaten: Object {
-    dynamic var restaurantNames: String = ""
+class Restaurant: Object {
+    dynamic var name: String = ""
 }

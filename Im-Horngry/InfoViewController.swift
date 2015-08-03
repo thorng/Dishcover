@@ -185,11 +185,11 @@ class InfoViewController: UIViewController {
     
     // adds restaurant name to Realm
     func addObjectToRealm(restaurantName: String) {
-        let restaurantVisited = RestaurantsEaten()
+        let restaurantVisited = Restaurant()
         let realm = Realm()
         
         realm.write {
-            restaurantVisited.restaurantNames = restaurantName
+            restaurantVisited.name = restaurantName
             realm.add(restaurantVisited)
         }
     }

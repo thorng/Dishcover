@@ -12,7 +12,11 @@ class RestaurantTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eatenRestaurantLabel: UILabel!
     
-    var restaurantsEaten: RestaurantsEaten?
+    var restaurant: Restaurant? {
+        didSet {
+            eatenRestaurantLabel.text = restaurant?.name
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

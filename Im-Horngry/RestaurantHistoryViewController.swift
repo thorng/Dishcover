@@ -9,11 +9,11 @@
 import UIKit
 import RealmSwift
 
-class RestaurantHistoryViewController: UITableViewController {
+class RestaurantHistoryViewController: UIViewController {
     
     @IBOutlet var mainTableView: UITableView!
     
-    var restaurants: Results<RestaurantsEaten>! {
+    var restaurants: Results<Restaurant>! {
         didSet {
             mainTableView?.reloadData()
         }
@@ -25,7 +25,7 @@ class RestaurantHistoryViewController: UITableViewController {
         // Tell the table view where its data source is
         mainTableView.dataSource = self
         
-        restaurants = Realm().objects(RestaurantsEaten)
+        restaurants = Realm().objects(Restaurant)
 
         // Do any additional setup after loading the view.
         
@@ -50,20 +50,23 @@ class RestaurantHistoryViewController: UITableViewController {
 }
 
 
-//extension RestaurantHistoryViewController: UITableViewDataSource {
-//    
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = mainTableView.dequeueReusableCellWithIdentifier("RestaurantCell", forIndexPath: indexPath) as! RestaurantTableViewCell //1
-//        
-//        let row = indexPath.row
-//        let restaurantsEaten = restaurants[row] as RestaurantsEaten
-//        cell.restaurantsEaten = restaurantsEaten
-//        
-//        return cell
-//    }
-//    
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return Int(restaurants?.count ?? 0)
-//    }
-//    
-//}
+extension RestaurantHistoryViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = mainTableView.dequeueReusableCellWithIdentifier("RestaurantCell", forIndexPath: indexPath) as! RestaurantTableViewCell
+        
+        let row = indexPath.row
+        let restaurant = restaurants[row] as Restaurant
+        cell.restaurant = restaurant
+        
+        println("\n restaurant: \(restaurant)")
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Int(restaurants?.count ?? 0)
+    }
+    
+}

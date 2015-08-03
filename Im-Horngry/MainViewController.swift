@@ -47,6 +47,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    @IBAction func unwindToMainViewController(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
