@@ -151,14 +151,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOv-jG-wJ9" userLabel="2">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eB5-0c-EwK" userLabel="3">
+                                <rect key="frame" x="277" y="458" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eB5-0c-EwK" userLabel="3">
-                                <rect key="frame" x="277" y="458" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOv-jG-wJ9" userLabel="2">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -179,6 +179,9 @@
                     </view>
                     <connections>
                         <outlet property="countryLabel" destination="VbY-7I-Au8" id="orm-WU-TVE"/>
+                        <outlet property="firstRestaurantLabel" destination="IxK-ZK-DTr" id="6H5-3L-wtc"/>
+                        <outlet property="secondRestaurantLabel" destination="YOv-jG-wJ9" id="N2z-Wk-619"/>
+                        <outlet property="thirdRestaurantLabel" destination="eB5-0c-EwK" id="gWc-rD-jgb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCt-g8-Reg" userLabel="First Responder" sceneMemberID="firstResponder"/>

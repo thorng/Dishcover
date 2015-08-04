@@ -22,9 +22,9 @@ class RestaurantOverviewViewController: UIViewController {
     
     // ==== OUTPUT VARIABLES ===
     var selectedRestaurantName: String? // the restaurant selected from the API request
-    var rating: Double?
-    var address: String?
-    var detailsReference: String? // photo reference to display on the view
+    var rating: [Double]?
+    var address: [String]?
+    var detailsReference: [String]? // photo reference to display on the view
     var restaurantNameArray: [String] = [] // the restaurant names
     
     // === DEBUGGING VARIABLES ===
@@ -32,6 +32,9 @@ class RestaurantOverviewViewController: UIViewController {
     
     // === OUTLET VARIABLES ===
     @IBOutlet weak var countryLabel: UILabel! // "you're flying to 'countyLabel' today."
+    @IBOutlet weak var firstRestaurantLabel: UIButton!
+    @IBOutlet weak var secondRestaurantLabel: UIButton!
+    @IBOutlet weak var thirdRestaurantLabel: UIButton!
     
     
     // =========================
@@ -110,34 +113,47 @@ class RestaurantOverviewViewController: UIViewController {
         
         // check to see if there's a first result, and only display that one
         if let restaurants = restaurants {
-            for x in 0..2 {
-                
-                // "place" selects an index from the ARRAY of restaurants
-                var place = restaurants[x]
-                
-                // within that index is a dictionary. "selectedRestaurantName" selects a key from that dictionary
-                selectedRestaurantName = place["name"] as? String ?? "ERROR while retrieving restaurant name"
-                rating = place["rating"] as? Double
-                
-                // Get the Google Details request
-                detailsReference = place["reference"] as? String
-                self.detailsRequest(photoReference)
-                
-                // grab photo reference string
-                if let photos = place["photos"] as? [NSDictionary] {
-                    if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-                        detailsReference = photo_ref
+            if restaurants.count >= 3 {
+                for x in 0..2 {
+                    
+                    // "place" selects an index from the ARRAY of restaurants
+                    var place = restaurants[x]
+                    
+                    // within that index is a dictionary. "selectedRestaurantName" selects a key from that dictionary
+                    selectedRestaurantName = place["name"] as? String ?? "ERROR while retrieving restaurant name"
+                    rating.append(place["rating"] as? Double)
+                    
+                    // Get the Google Details request
+                    detailsReference.append(place["reference"] as? String)
+                    self.detailsRequest(photoReference)
+                    
+                    // grab photo reference string
+                    if let photos = place["photos"] as? [NSDictionary] {
+                        if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
+                            detailsReference[x] = photo_ref
+                        }
                     }
-                }
-                
-                restaurantNameArray.append(selectedRestaurantName)
-                println("your place selected is: \(selectedRestaurantName)")
-                
-                // Display all the information
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
-                    self.restaurantLabel.text = "\(self.restaurantNameArray[x])"
-                    self.downloadAndDisplayImage()
+                    
+                    restaurantNameArray.append(selectedRestaurantName)
+                    println("your place selected is: \(selectedRestaurantName)")
+                    
+                    // Display all the information
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
+                        
+                        // setting the
+                        if x = 0 {
+                            self.firstRestaurantLabel.text = "\(self.restaurantNameArray[x])"
+                        } else if x = 1 {
+                            self.secondRestaurantLabel.text = "\(self.restaurantNameArray[x])"
+                        } else if x = 2 {
+                            self.thirdRestaurantLabel.text = "\(self.restaurantNameArray[x])"
+                        } else {
+                            println("whoops, there's an error with the index 'x'")
+                        }
+                        
+                        self.downloadAndDisplayImage()
+                    }
                 }
             }
         } else {
