@@ -14,24 +14,24 @@ class RestaurantOverviewViewController: UIViewController {
     // =========================
     
     // === INPUT VARIABLES ===
-    var randomCountryKey: String?
-    var randomCountry: String?
+    var randomCountryKey: String? // random country key
+    var randomCountry: String? // random country adjectival
     var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
-    var detailsReference: String? // photo reference to display on the view
-    var restaurantNameArray: [String] = [] // the restaurant names
     
     // ==== OUTPUT VARIABLES ===
     var selectedRestaurantName: String? // the restaurant selected from the API request
     var rating: Double?
     var address: String?
+    var detailsReference: String? // photo reference to display on the view
+    var restaurantNameArray: [String] = [] // the restaurant names
     
     // === DEBUGGING VARIABLES ===
     var queriesCount: Int = 0 // counting the number of requests
     
     // === OUTLET VARIABLES ===
-    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel! // "you're flying to 'countyLabel' today."
     
     
     // =========================
@@ -111,8 +111,11 @@ class RestaurantOverviewViewController: UIViewController {
         // check to see if there's a first result, and only display that one
         if let restaurants = restaurants {
             for x in 0..2 {
-                place = restaurants[x]
                 
+                // "place" selects an index from the ARRAY of restaurants
+                var place = restaurants[x]
+                
+                // within that index is a dictionary. "selectedRestaurantName" selects a key from that dictionary
                 selectedRestaurantName = place["name"] as? String ?? "ERROR while retrieving restaurant name"
                 rating = place["rating"] as? Double
                 
@@ -133,7 +136,7 @@ class RestaurantOverviewViewController: UIViewController {
                 // Display all the information
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
-                    self.restaurantLabel.text = "\(self.restaurantNameArray[0])"
+                    self.restaurantLabel.text = "\(self.restaurantNameArray[x])"
                     self.downloadAndDisplayImage()
                 }
             }
