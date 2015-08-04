@@ -22,6 +22,10 @@ class InfoViewController: UIViewController {
     
     var selectedRestaurantName: String? // the restaurant selected from the API request
     
+    var restaurantNameArray: [String] = [] // the restaurant names
+    
+    var queriesCount: Int = 0 // counting the number of requests
+    
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
@@ -86,12 +90,16 @@ class InfoViewController: UIViewController {
     }
     
     func startRestaurantRequest() {
+        println("meow")
         if locValue != nil {
+         println("meow2")
             let url = Network.buildSearchURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
             println(url)
             Network.getGooglePlaces(url, completionHandler: { response -> Void in
                 if let dict = response {
                     self.restaurantsReceived(dict)
+                } else {
+                    self.retryRequest()
                 }
             })
         }
@@ -102,7 +110,6 @@ class InfoViewController: UIViewController {
     
     // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]) {
-        var restaurantNameArray: [String] = []
         
         // check to see if there's a first result, and only display that one
         if let place = restaurants.first {
@@ -133,32 +140,35 @@ class InfoViewController: UIViewController {
             
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
-                self.restaurantLabel.text = "\(restaurantNameArray[0])"
+                self.restaurantLabel.text = "\(self.restaurantNameArray[0])"
                 self.downloadImage()
-                
                 self.addressLabel.text = "Loading address..."
-                
                 if let rating = rating {
                     self.ratingLabel.text = "Rating: \(rating)"
                 }
                 
-                self.addObjectToRealm(restaurantNameArray[0])
             }
         } else {
-            
-            // Debugging
-            println("no results, trying again")
-            println()
-            
-            // Switch to main thread
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.restaurantLabel.text = "Sorry, no restaurants found. Trying again..."
-            }
-            
-            // Restart the request with a different country!
-            generateRandomCountry()
-            startRestaurantRequest()
+            retryRequest()
         }
+    }
+    
+    func retryRequest(){
+        // Debugging
+        println("no results, trying again")
+        println()
+        
+        // Switch to main thread
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.restaurantLabel.text = "Sorry, no restaurants found. Trying again..."
+        }
+        
+        // Restart the request with a different country!
+        generateRandomCountry()
+        startRestaurantRequest()
+        
+        queriesCount++
+        println(queriesCount)
     }
     
     // Download Image
@@ -175,8 +185,6 @@ class InfoViewController: UIViewController {
     
     // MARK: Google Details Results
     func detailsReceived(restaurantDetails: NSDictionary) {
-        println("detailsReceived function called")
-        
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             let address = restaurantDetails["formatted_address"] as? String ?? ""
             self.addressLabel.text = address
@@ -184,16 +192,23 @@ class InfoViewController: UIViewController {
     }
     
     // adds restaurant name to Realm
-    func addObjectToRealm(restaurantName: String) {
+    func addObjectToRealm() {
         let restaurantVisited = Restaurant()
         let realm = Realm()
         
         realm.write {
-            restaurantVisited.name = restaurantName
-            realm.add(restaurantVisited)
+            if self.restaurantNameArray.count > 0 {
+                restaurantVisited.name = self.restaurantNameArray[0]
+                realm.add(restaurantVisited)
+            }
         }
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "exitFromInfoController" {
+            self.addObjectToRealm()
+        }
+    }
     /*
     // MARK: - Navigation
 

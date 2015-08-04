@@ -127,6 +127,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Restaurant Overview View Controller-->
+        <scene sceneID="0o8-pp-TCL">
+            <objects>
+                <viewController id="WLX-Yo-doC" customClass="RestaurantOverviewViewController" customModule="Im_Horngry" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yw7-TA-Wqk"/>
+                        <viewControllerLayoutGuide type="bottom" id="ULI-FA-OO5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fiW-80-Wao">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-7I-Au8" userLabel="Restaurant Name">
+                                <rect key="frame" x="279" y="61" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="firstRestaurant" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxK-ZK-DTr" userLabel="1">
+                                <rect key="frame" x="277" y="90" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOv-jG-wJ9" userLabel="2">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eB5-0c-EwK" userLabel="3">
+                                <rect key="frame" x="277" y="458" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ULI-FA-OO5" firstAttribute="top" secondItem="eB5-0c-EwK" secondAttribute="bottom" constant="112" id="3Oc-Vb-fuj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VbY-7I-Au8" secondAttribute="trailing" constant="263" id="7yo-gi-eJD"/>
+                            <constraint firstItem="eB5-0c-EwK" firstAttribute="centerX" secondItem="fiW-80-Wao" secondAttribute="centerX" id="9AH-SR-sc3"/>
+                            <constraint firstItem="eB5-0c-EwK" firstAttribute="leading" secondItem="YOv-jG-wJ9" secondAttribute="leading" id="AjZ-Kb-kbq"/>
+                            <constraint firstItem="VbY-7I-Au8" firstAttribute="top" secondItem="yw7-TA-Wqk" secondAttribute="bottom" constant="41" id="BUv-vT-7il"/>
+                            <constraint firstItem="VbY-7I-Au8" firstAttribute="leading" secondItem="fiW-80-Wao" secondAttribute="leadingMargin" constant="263" id="CkX-8L-7J1"/>
+                            <constraint firstItem="IxK-ZK-DTr" firstAttribute="top" secondItem="yw7-TA-Wqk" secondAttribute="bottom" constant="70" id="Uip-ZR-Gxn"/>
+                            <constraint firstItem="YOv-jG-wJ9" firstAttribute="centerY" secondItem="fiW-80-Wao" secondAttribute="centerY" id="cCm-VK-1VA"/>
+                            <constraint firstItem="IxK-ZK-DTr" firstAttribute="leading" secondItem="YOv-jG-wJ9" secondAttribute="leading" id="eOP-y8-MPP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countryLabel" destination="VbY-7I-Au8" id="orm-WU-TVE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iCt-g8-Reg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="-424"/>
+        </scene>
         <!--Restaurant History View Controller-->
         <scene sceneID="J2P-bK-Gko">
             <objects>
@@ -172,7 +230,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euV-jr-15z" userLabel="Restaurant Label">
                                                     <rect key="frame" x="16" y="11.5" width="584" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -363,7 +421,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lX7-Wt-8cM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zsl-ak-J6x" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1248" y="-400"/>
+            <point key="canvasLocation" x="2304" y="-424"/>
         </scene>
     </scenes>
 </document>

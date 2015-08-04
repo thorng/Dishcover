@@ -59,9 +59,7 @@ extension RestaurantHistoryViewController: UITableViewDataSource {
         let row = indexPath.row
         let restaurant = restaurants[row] as Restaurant
         cell.restaurant = restaurant
-        
-        println("\n restaurant: \(restaurant)")
-        
+                
         return cell
     }
     
