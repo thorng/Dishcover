@@ -45,6 +45,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             infoViewController.locValue = locValue
             infoViewController.randomCountry = randomCountry
         }
+        if segue.identifier == "liftOffToRestaurantOverview" {
+            var restaurantOverview = segue.destinationViewController as! RestaurantOverviewViewController
+            
+            restaurantOverview.priceSelected = priceSelected
+            restaurantOverview.radius = radius
+            restaurantOverview.locValue = locValue
+            restaurantOverview.randomCountry = randomCountry
+        }
     }
     
     @IBAction func unwindToMainViewController(segue: UIStoryboardSegue, sender: AnyObject!) {

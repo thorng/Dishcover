@@ -43,7 +43,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="goButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FyQ-A6-v8z"/>
-                                    <segue destination="3zA-Xo-J73" kind="show" identifier="RestaurantControllerSegue" id="NXv-cQ-taT"/>
+                                    <segue destination="WLX-Yo-doC" kind="show" identifier="liftOffToRestaurantOverview" id="OrI-vy-og1"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="E7n-7R-WAf">
