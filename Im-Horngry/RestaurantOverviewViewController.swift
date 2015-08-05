@@ -21,21 +21,22 @@ class RestaurantOverviewViewController: UIViewController {
     var radius: Int? // radius constraint
     
     // ==== OUTPUT VARIABLES ===
-    var selectedRestaurantName: String? // the restaurant selected from the API request
-    var photoReference: [String] = [] // the photo refernce string array
-    var rating: [Double] = []
-    var address: [String] = []
-    var detailsReference: [String] = [] // photo reference to display on the view
-    var restaurantNameArray: [String] = [] // the restaurant names
+//    var selectedRestaurantName: String? // the restaurant selected from the API request
+//    var photoReference: [String] = [] // the photo refernce string array
+//    var rating: [Double] = []
+//    var address: [String] = []
+//    var detailsReference: [String] = [] // photo reference to display on the view
+//    var restaurantNameArray: [String] = [] // the restaurant names
+    var restaurantArray: [Restaurant] = []
     
     // === DEBUGGING VARIABLES ===
     var queriesCount: Int = 0 // counting the number of requests
     
     // === OUTLET VARIABLES ===
     @IBOutlet weak var countryLabel: UILabel! // "you're flying to 'countyLabel' today."
-    @IBOutlet weak var firstRestaurantLabel: UIButton!
-    @IBOutlet weak var secondRestaurantLabel: UIButton!
-    @IBOutlet weak var thirdRestaurantLabel: UIButton!
+    @IBOutlet weak var firstRestaurantButton: UIButton!
+    @IBOutlet weak var secondRestaurantButton: UIButton!
+    @IBOutlet weak var thirdRestaurantButton: UIButton!
     
     
     // =========================
@@ -62,6 +63,9 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Creating the dictionary
     // Parse .txt file into a dictionary
     func parseTxtToDictionary() {
+        
+        println("Parsing text to dictionary...")
+        
         var arraySeparated = [String]()
         var countryName: String?
         var countryAdjectival: String?
@@ -83,6 +87,9 @@ class RestaurantOverviewViewController: UIViewController {
     
     // Randomly generate dict value
     func generateRandomCountry () {
+        
+        println("Generating random country...")
+        
         let index: Int = Int(arc4random_uniform(UInt32(countryDict.count)))
         randomCountryKey = Array(countryDict.keys)[index]
         randomCountry = Array(countryDict.values)[index]
@@ -92,7 +99,13 @@ class RestaurantOverviewViewController: UIViewController {
     }
     
     func startRestaurantRequest() {
+        
+        println("Starting restaurant request...")
+        
         if locValue != nil {
+            
+            println("locValue found, building URL...")
+            
             let url = Network.buildSearchURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
             println(url)
             Network.getGooglePlaces(url, completionHandler: { response -> Void in
@@ -112,57 +125,75 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]?) {
         
+
+        
         // check to see if there's a first result, and only display that one
         if let restaurants = restaurants {
-            if restaurants.count >= 3 {
-                for x in 0...2 {
+            
+            // Find out how many results and set max results equal to that number
+            // ^ update this variable only if it's less than 2, based on the dictionary received
+            var restaurantsCount = restaurants.count
+            var maxResults = 2
+            
+            if restaurantsCount > 0 {
+                
+                if restaurantsCount < maxResults {
+                    maxResults = restaurantsCount
+                }
+                
+                for x in 0...maxResults {
                     
-                    // "place" selects an index from the ARRAY of restaurants
-                    var place = restaurants[x]
+                    var restaurant = Restaurant()
                     
-                    // within that index is a dictionary. "selectedRestaurantName" selects a key from that dictionary
-                    selectedRestaurantName = place["name"] as? String ?? "ERROR while retrieving restaurant name"
+//                    // "place" selects an index from the ARRAY of restaurants
+//                    var place = restaurants[x]
+//                    
+//                    // within that index is a dictionary. "selectedRestaurantName" selects a key from that dictionary
+//                    selectedRestaurantName = place["name"] as? String ?? "ERROR while retrieving restaurant name"
+//                    
+//                    // makes sure place["rating"] exists, then the appends the rating to the rating array
+//                    if let placeRating: AnyObject = place["rating"] {
+//                        rating.append((placeRating as? Double)!)
+//                    }
+//                    
+//                    // Get the Google Details request
+//                    if let placeReference: AnyObject = place["reference"] {
+//                        detailsReference.append((placeReference as? String)!)
+//                        self.detailsRequest(detailsReference[x])
+//                    }
+//                    
+//                    // grab photo reference string
+//                    if let photos = place["photos"] as? [NSDictionary] {
+//                        if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
+//                            photoReference.append(photo_ref)
+//                        }
+//                    }
+//                    
+////                    restaurantNameArray.append(selectedRestaurantName!)
+//                    println("your place selected is: \(selectedRestaurantName)")
                     
-                    // makes sure place["rating"] exists, then the appends the rating to the rating array
-                    if let placeRating: AnyObject = place["rating"] {
-                        rating.append((placeRating as? Double)!)
-                    }
-                    
-                    // Get the Google Details request
-                    if let placeReference: AnyObject = place["reference"] {
-                        detailsReference.append((placeReference as? String)!)
-                        self.detailsRequest(detailsReference[x])
-                    }
-                    
-                    // grab photo reference string
-                    if let photos = place["photos"] as? [NSDictionary] {
-                        if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-                            photoReference.append(photo_ref)
-                        }
-                    }
-                    
-                    restaurantNameArray.append(selectedRestaurantName!)
-                    println("your place selected is: \(selectedRestaurantName)")
+                    restaurantArray.append(restaurant)
                     
                     // Display all the information
-                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                        self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
-                        
-                        // setting the
-                        if x == 0 {
-                            self.firstRestaurantLabel.setTitle(self.restaurantNameArray[0], forState: .Normal)
-                        } else if x == 1 {
-                            self.secondRestaurantLabel.setTitle(self.restaurantNameArray[1], forState: .Normal)
-                        } else if x == 2 {
-                            self.thirdRestaurantLabel.setTitle(self.restaurantNameArray[3], forState: .Normal)
-                        } else {
-                            println("whoops, there's an error with the index 'x'")
-                        }
-                        
-                        self.downloadAndDisplayImage(self.photoReference[x])
-                    }
+//                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+//                        self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
+//                        
+//                        // setting the
+//                        if x == 0 {
+//                            self.firstRestaurantButton.setTitle(self.restaurantNameArray[0], forState: .Normal)
+//                        } else if x == 1 {
+//                            self.secondRestaurantButton.setTitle(self.restaurantNameArray[1], forState: .Normal)
+//                        } else if x == 2 {
+//                            self.thirdRestaurantButton.setTitle(self.restaurantNameArray[3], forState: .Normal)
+//                        } else {
+//                            println("whoops, there's an error with the index 'x'")
+//                        }
+//                        
+//                        self.downloadAndDisplayImage(self.photoReference[x])
+//                    }
                 }
             }
+            // TODO: Create a function that looks at the restaurant array, and update buttons/info based on this info. needs for loop
         } else {
             retryRequest()
         }
