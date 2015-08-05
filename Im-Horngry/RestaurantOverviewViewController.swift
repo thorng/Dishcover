@@ -109,7 +109,7 @@ class RestaurantOverviewViewController: UIViewController {
     }
     
     // MARK: Google search results
-    func restaurantsReceived(restaurants: [NSDictionary]) {
+    func restaurantsReceived(restaurants: [NSDictionary]?) {
         
         // check to see if there's a first result, and only display that one
         if let restaurants = restaurants {
@@ -169,7 +169,7 @@ class RestaurantOverviewViewController: UIViewController {
         
         // Switch to main thread
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.restaurantLabel.text = "Still loading..."
+            //self.restaurantLabel.text = "Still loading..."
         }
         
         // Restart the request with a different country!
@@ -194,7 +194,7 @@ class RestaurantOverviewViewController: UIViewController {
     
     // MARK: Google Details Request
     func detailsRequest(referenceIdentifier: String) {
-        let placeDetailsURL = Network.buildDetailsURL(reference!)
+        let placeDetailsURL = Network.buildDetailsURL(detailsReference!)
         Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
             if let response = response {
                 self.detailsReceived(response)
@@ -204,9 +204,7 @@ class RestaurantOverviewViewController: UIViewController {
     
     // Google Details Results
     func detailsReceived(restaurantDetails: NSDictionary) {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            address = restaurantDetails["formatted_address"] as? String ?? ""
-        }
+        self.address = restaurantDetails["formatted_address"] as? String ?? ""
     }
 
     // MARK: - Navigation
