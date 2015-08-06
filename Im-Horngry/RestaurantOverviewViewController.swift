@@ -21,12 +21,6 @@ class RestaurantOverviewViewController: UIViewController {
     var radius: Int? // radius constraint
     
     // ==== OUTPUT VARIABLES ===
-//    var selectedRestaurantName: String? // the restaurant selected from the API request
-//    var photoReference: [String] = [] // the photo refernce string array
-//    var rating: [Double] = []
-//    var address: [String] = []
-//    var detailsReference: [String] = [] // photo reference to display on the view
-//    var restaurantNameArray: [String] = [] // the restaurant names
     var restaurantArray: [Restaurant] = []
     
     // === DEBUGGING VARIABLES ===
