@@ -33,11 +33,9 @@ class RestaurantOverviewViewController: UIViewController {
     var queriesCount: Int = 0 // counting the number of requests
     
     // === OUTLET VARIABLES ===
-    @IBOutlet weak var countryLabel: UILabel! // "you're flying to 'countyLabel' today."
-    @IBOutlet weak var firstRestaurantButton: UIButton!
-    @IBOutlet weak var secondRestaurantButton: UIButton!
-    @IBOutlet weak var thirdRestaurantButton: UIButton!
-    
+    @IBOutlet weak var firstRestaurantImage: UIImageView!
+    @IBOutlet weak var secondRestaurantImage: UIImageView!
+    @IBOutlet weak var thirdRestaurantImage: UIImageView!
     
     // =========================
 
@@ -125,8 +123,6 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]?) {
         
-
-        
         // check to see if there's a first result, and only display that one
         if let restaurants = restaurants {
             
@@ -148,45 +144,28 @@ class RestaurantOverviewViewController: UIViewController {
                     
                     if let placeRating = place["rating"] as? Double {
                         restaurant.rating = placeRating
+                        println(restaurant.rating)
                     }
                     
                     if let selectedRestaurantName = place["name"] as? String {
                         restaurant.name = selectedRestaurantName
+                        println(restaurant.name)
                     }
                     
                     if let photos = place["photos"] as? [NSDictionary] {
                         if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-                            
+                            restaurant.photoReferenceID = photo_ref
+                            println(restaurant.photoReferenceID)
                         }
                     }
-
                     
-//                    // "place" selects an index from the ARRAY of restaurants
-//                    var place = restaurants[x]
-//                    
-//                    // within that index is a dictionary. "selectedRestaurantName" selects a key from that dictionary
-//                    selectedRestaurantName = place["name"] as? String ?? "ERROR while retrieving restaurant name"
-//                    
-//                    // makes sure place["rating"] exists, then the appends the rating to the rating array
-//                    if let placeRating: AnyObject = place["rating"] {
-//                        rating.append((placeRating as? Double)!)
-//                    }
-//                    
-//                    // Get the Google Details request
-//                    if let placeReference: AnyObject = place["reference"] {
-//                        detailsReference.append((placeReference as? String)!)
-//                        self.detailsRequest(detailsReference[x])
-//                    }
-//                    
-//                    // grab photo reference string
-//                    if let photos = place["photos"] as? [NSDictionary] {
-//                        if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-//                            photoReference.append(photo_ref)
-//                        }
-//                    }
-//
-////                    restaurantNameArray.append(selectedRestaurantName!)
-//                    println("your place selected is: \(selectedRestaurantName)")
+                    // Get the Google Details request
+                    if let placeReference: AnyObject = place["reference"] as? String {
+                        restaurant.detailsReferenceID = placeReference as! String
+                        self.detailsRequest(restaurant.detailsReferenceID)
+                    }
+
+                    println("your place selected is: \(restaurant.name)")
                     
                     restaurantArray.append(restaurant)
                     
@@ -212,6 +191,12 @@ class RestaurantOverviewViewController: UIViewController {
             // TODO: Create a function that looks at the restaurant array, and update buttons/info based on this info. needs for loop
         } else {
             retryRequest()
+        }
+    }
+    
+    func displayRestaurantInformation() {
+        if let restaurantArray = retaurantArray {
+            
         }
     }
     
@@ -256,7 +241,7 @@ class RestaurantOverviewViewController: UIViewController {
     
     // Google Details Results
     func detailsReceived(restaurantDetails: NSDictionary) {
-//        self.address.append(restaurantDetails["formatted_address"] as? String ?? "")
+        // add object to restaurant object
     }
 
     // MARK: - Navigation
