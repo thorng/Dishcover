@@ -145,6 +145,10 @@ class RestaurantOverviewViewController: UIViewController {
                     
                     var restaurant = Restaurant()
                     
+                    if let placeRating = place["rating"] as! Double {
+                        var rating = placeRating as! Double
+                    }
+                    
 //                    // "place" selects an index from the ARRAY of restaurants
 //                    var place = restaurants[x]
 //                    
@@ -240,7 +244,7 @@ class RestaurantOverviewViewController: UIViewController {
     
     // Google Details Results
     func detailsReceived(restaurantDetails: NSDictionary) {
-        self.address.append(restaurantDetails["formatted_address"] as? String ?? "")
+//        self.address.append(restaurantDetails["formatted_address"] as? String ?? "")
     }
 
     // MARK: - Navigation
