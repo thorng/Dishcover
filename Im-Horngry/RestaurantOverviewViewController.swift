@@ -144,10 +144,22 @@ class RestaurantOverviewViewController: UIViewController {
                 for x in 0...maxResults {
                     
                     var restaurant = Restaurant()
+                    var place = restaurants[x]
                     
-                    if let placeRating = place["rating"] as! Double {
-                        var rating = placeRating as! Double
+                    if let placeRating = place["rating"] as? Double {
+                        restaurant.rating = placeRating
                     }
+                    
+                    if let selectedRestaurantName = place["name"] as? String {
+                        restaurant.name = selectedRestaurantName
+                    }
+                    
+                    if let photos = place["photos"] as? [NSDictionary] {
+                        if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
+                            
+                        }
+                    }
+
                     
 //                    // "place" selects an index from the ARRAY of restaurants
 //                    var place = restaurants[x]
@@ -172,7 +184,7 @@ class RestaurantOverviewViewController: UIViewController {
 //                            photoReference.append(photo_ref)
 //                        }
 //                    }
-//                    
+//
 ////                    restaurantNameArray.append(selectedRestaurantName!)
 //                    println("your place selected is: \(selectedRestaurantName)")
                     
