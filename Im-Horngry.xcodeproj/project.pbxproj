@@ -10,7 +10,6 @@
 		3F02CA931B5F85F200220C40 /* countries_of_the_world.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F02CA921B5F85F200220C40 /* countries_of_the_world.txt */; };
 		3F02CA951B64284700220C40 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CA941B64284700220C40 /* InfoViewController.swift */; };
 		3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */; };
-		3F6CFEBB1B7556D8008702BF /* slice.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F6CFEBA1B7556D8008702BF /* slice.py */; };
 		3F7D9E0B1B6F33E200752433 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D9E0A1B6F33E200752433 /* Restaurant.swift */; };
 		3F7D9E0D1B6F467700752433 /* RestaurantHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D9E0C1B6F467700752433 /* RestaurantHistoryViewController.swift */; };
 		3F7D9E101B6FDE9300752433 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D9E0F1B6FDE9300752433 /* RestaurantTableViewCell.swift */; };
@@ -41,7 +40,6 @@
 		3F02CA921B5F85F200220C40 /* countries_of_the_world.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries_of_the_world.txt; sourceTree = "<group>"; };
 		3F02CA941B64284700220C40 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		3F6CFEBA1B7556D8008702BF /* slice.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = slice.py; sourceTree = "<group>"; };
 		3F7D9E0A1B6F33E200752433 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		3F7D9E0C1B6F467700752433 /* RestaurantHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantHistoryViewController.swift; sourceTree = "<group>"; };
 		3F7D9E0F1B6FDE9300752433 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 		3F8427841B55B9770075884B /* Im-Horngry */ = {
 			isa = PBXGroup;
 			children = (
-				3F6CFEBA1B7556D8008702BF /* slice.py */,
 				3F8427871B55B9770075884B /* AppDelegate.swift */,
 				3FE8C0881B6ACFCF00F7B936 /* Network.swift */,
 				3F8427891B55B9770075884B /* MainViewController.swift */,
@@ -249,7 +246,6 @@
 			files = (
 				3F84278D1B55B9770075884B /* Main.storyboard in Resources */,
 				3F02CA931B5F85F200220C40 /* countries_of_the_world.txt in Resources */,
-				3F6CFEBB1B7556D8008702BF /* slice.py in Resources */,
 				3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */,
 				3F84278F1B55B9770075884B /* Images.xcassets in Resources */,
 			);
@@ -307,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n\npython \"$PROJECT_DIR/Im-Horngry/slice.py\" \"$PROJECT_DIR/Im-Horngry/Dishcovery-mockup.sketch\" \"$PROJECT_DIR/Im-Horngry/Images.xcassets\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

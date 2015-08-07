@@ -17,54 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="How are you travelling?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU9-Kf-7fY">
-                                <rect key="frame" x="210" y="328" width="180" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="54N-mw-tSL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrE-02-RLG">
-                                <rect key="frame" x="236" y="466" width="129" height="74"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="129" id="9BH-rE-rFJ"/>
-                                    <constraint firstAttribute="width" constant="129" id="gB9-fw-d0C"/>
-                                </constraints>
-                                <state key="normal" title="Lift Off">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="gB9-fw-d0C"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="goButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FyQ-A6-v8z"/>
-                                    <segue destination="WLX-Yo-doC" kind="show" identifier="liftOffToRestaurantOverview" id="OrI-vy-og1"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="E7n-7R-WAf">
-                                <rect key="frame" x="226" y="241" width="149" height="29"/>
+                                <rect key="frame" x="0.0" y="422" width="600" height="29"/>
                                 <segments>
-                                    <segment title="$10"/>
-                                    <segment title="$20"/>
-                                    <segment title="$30 +"/>
+                                    <segment title="$"/>
+                                    <segment title="$$"/>
+                                    <segment title="$$$"/>
                                 </segments>
                                 <connections>
                                     <action selector="price:" destination="BYZ-38-t0r" eventType="valueChanged" id="dsq-qP-udq"/>
                                     <action selector="radiusConstraint:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bjv-eI-qwF"/>
                                 </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ExU-e2-2a2">
-                                <rect key="frame" x="226" y="388" width="149" height="29"/>
-                                <segments>
-                                    <segment title="Feet"/>
-                                    <segment title="Bike"/>
-                                    <segment title="Car"/>
-                                </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfx-Lp-zii" userLabel="History">
                                 <rect key="frame" x="16" y="20" width="70" height="30"/>
@@ -78,36 +41,68 @@
                                     <segue destination="gbw-87-CBs" kind="show" id="PmM-RR-jvp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How much are you spending?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bo9-c2-6WU">
-                                <rect key="frame" x="185" y="80" width="230" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your budget and travel constraints." lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bo9-c2-6WU">
+                                <rect key="frame" x="16" y="82" width="564" height="267"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="I6m-69-VkU"/>
-                                    <constraint firstAttribute="width" constant="230" id="e5Z-sr-a4F"/>
+                                    <constraint firstAttribute="height" constant="267" id="Cob-OD-rzX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrE-02-RLG">
+                                <rect key="frame" x="0.0" y="526" width="600" height="74"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="9BH-rE-rFJ"/>
+                                    <constraint firstAttribute="width" constant="129" id="gB9-fw-d0C"/>
+                                </constraints>
+                                <state key="normal" title="Lift Off">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9BH-rE-rFJ"/>
+                                        <exclude reference="gB9-fw-d0C"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="goButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FyQ-A6-v8z"/>
+                                    <segue destination="WLX-Yo-doC" kind="show" identifier="liftOffToRestaurantOverview" id="OrI-vy-og1"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ExU-e2-2a2">
+                                <rect key="frame" x="0.0" y="458" width="600" height="29"/>
+                                <segments>
+                                    <segment title="Feet"/>
+                                    <segment title="Bike"/>
+                                    <segment title="Car"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="ExU-e2-2a2" secondAttribute="bottom" constant="50" id="4OZ-bH-3XS"/>
-                            <constraint firstItem="OrE-02-RLG" firstAttribute="centerX" secondItem="bo9-c2-6WU" secondAttribute="centerX" id="6Ym-Ab-220"/>
-                            <constraint firstItem="AU9-Kf-7fY" firstAttribute="centerX" secondItem="ExU-e2-2a2" secondAttribute="centerX" id="97f-7D-sfe"/>
-                            <constraint firstItem="AU9-Kf-7fY" firstAttribute="top" secondItem="E7n-7R-WAf" secondAttribute="bottom" constant="59" id="9Q1-vq-05T"/>
+                            <constraint firstAttribute="trailing" secondItem="OrE-02-RLG" secondAttribute="trailing" id="6Ka-TW-25K"/>
+                            <constraint firstItem="E7n-7R-WAf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DDT-qS-IZh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" id="GpB-YR-W5O"/>
+                            <constraint firstItem="ExU-e2-2a2" firstAttribute="width" secondItem="E7n-7R-WAf" secondAttribute="width" id="Ifm-pl-v1f"/>
+                            <constraint firstItem="bo9-c2-6WU" firstAttribute="leading" secondItem="xfx-Lp-zii" secondAttribute="leading" id="JWA-3Y-B64"/>
                             <constraint firstItem="xfx-Lp-zii" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JrY-wP-8ON"/>
+                            <constraint firstItem="ExU-e2-2a2" firstAttribute="leading" secondItem="E7n-7R-WAf" secondAttribute="leading" id="Ld3-uG-CSf"/>
+                            <constraint firstItem="E7n-7R-WAf" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" constant="73" id="LlS-8X-fNT"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="ExU-e2-2a2" secondAttribute="bottom" constant="50" id="M8b-gb-PKN"/>
-                            <constraint firstItem="E7n-7R-WAf" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" constant="140" id="O0d-wI-aPE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" constant="60" id="SpW-94-I6G"/>
                             <constraint firstItem="xfx-Lp-zii" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="USf-Oc-eZC"/>
-                            <constraint firstItem="ExU-e2-2a2" firstAttribute="top" secondItem="AU9-Kf-7fY" secondAttribute="bottom" constant="39" id="le6-vI-jKh"/>
+                            <constraint firstItem="ExU-e2-2a2" firstAttribute="height" secondItem="E7n-7R-WAf" secondAttribute="height" id="Ux9-NY-VRk"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dRK-ZU-0lC"/>
+                            <constraint firstItem="ExU-e2-2a2" firstAttribute="trailing" secondItem="E7n-7R-WAf" secondAttribute="trailing" id="eOX-dv-sdP"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="ExU-e2-2a2" secondAttribute="bottom" constant="40" id="fMY-Ip-bo7"/>
+                            <constraint firstAttribute="bottom" secondItem="ExU-e2-2a2" secondAttribute="bottom" constant="114" id="lZO-uS-UjT"/>
+                            <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="xfx-Lp-zii" secondAttribute="bottom" constant="32" id="nnX-xI-nb4"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pXV-yz-aJA"/>
-                            <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="qO9-Wn-9sv"/>
-                            <constraint firstItem="ExU-e2-2a2" firstAttribute="trailing" secondItem="E7n-7R-WAf" secondAttribute="trailing" id="qiW-Dm-Uj4"/>
-                            <constraint firstItem="E7n-7R-WAf" firstAttribute="leading" secondItem="ExU-e2-2a2" secondAttribute="leading" id="tta-G9-Ujv"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" constant="60" id="vRg-tW-BJm"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" id="vRg-tW-BJm"/>
+                            <constraint firstAttribute="trailing" secondItem="E7n-7R-WAf" secondAttribute="trailing" id="wth-Sf-hD0"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="centerX" secondItem="OrE-02-RLG" secondAttribute="centerX" id="xcy-wF-Di4"/>
-                            <constraint firstItem="OrE-02-RLG" firstAttribute="centerX" secondItem="ExU-e2-2a2" secondAttribute="centerX" id="yVw-zU-4oT"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="centerX" secondItem="E7n-7R-WAf" secondAttribute="centerX" id="yad-Cs-N8v"/>
                         </constraints>
                         <variation key="default">
@@ -115,6 +110,8 @@
                                 <exclude reference="xcy-wF-Di4"/>
                                 <exclude reference="yad-Cs-N8v"/>
                                 <exclude reference="M8b-gb-PKN"/>
+                                <exclude reference="dRK-ZU-0lC"/>
+                                <exclude reference="GpB-YR-W5O"/>
                                 <exclude reference="SpW-94-I6G"/>
                             </mask>
                         </variation>
@@ -162,6 +159,9 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="3zA-Xo-J73" kind="show" identifier="firstRestaurant" id="aHA-p2-tMo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -204,6 +204,9 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="3zA-Xo-J73" kind="show" identifier="thirdRestaurant" id="xSY-9w-5Ym"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -246,6 +249,9 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="3zA-Xo-J73" kind="show" identifier="secondRestaurant" id="bes-ex-fA2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -542,4 +548,7 @@
             <point key="canvasLocation" x="2304" y="-424"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xSY-9w-5Ym"/>
+    </inferredMetricsTieBreakers>
 </document>
