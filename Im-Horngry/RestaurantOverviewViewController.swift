@@ -178,9 +178,6 @@ class RestaurantOverviewViewController: UIViewController {
                     if let placeReference = place["reference"] as? String {
                         self.detailsRequest(placeReference)
                     }
-                    
-                    restaurantArray
-                    
                 }
             }
         } else {
@@ -256,11 +253,13 @@ class RestaurantOverviewViewController: UIViewController {
         }
         
         detailsReceivedCount++
+        restaurantArray.append(restaurant)
     }
     
     func displayRestaurantInformation() {
         for x in 0...maxResults {
-            
+            restaurantNameArray[x].text = restaurantArray[x].name
+            restaurantImageArray[x].image = restaurantArray[x].image
         }
     }
 
