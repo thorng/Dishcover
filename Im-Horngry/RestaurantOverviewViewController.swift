@@ -161,25 +161,9 @@ class RestaurantOverviewViewController: UIViewController {
 
                     println("your place selected is: \(restaurant.name)")
                     
-                    restaurantArray.append(restaurant)
                     
-                    // Display all the information
-//                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
-//                        self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
-//                        
-//                        // setting the
-//                        if x == 0 {
-//                            self.firstRestaurantButton.setTitle(self.restaurantNameArray[0], forState: .Normal)
-//                        } else if x == 1 {
-//                            self.secondRestaurantButton.setTitle(self.restaurantNameArray[1], forState: .Normal)
-//                        } else if x == 2 {
-//                            self.thirdRestaurantButton.setTitle(self.restaurantNameArray[3], forState: .Normal)
-//                        } else {
-//                            println("whoops, there's an error with the index 'x'")
-//                        }
-//                        
-//                        self.downloadAndDisplayImage(self.photoReference[x])
-//                    }
+                    
+                    restaurantArray.append(restaurant)
                 }
             }
             // TODO: Create a function that looks at the restaurant array, and update buttons/info based on this info. needs for loop
@@ -189,8 +173,8 @@ class RestaurantOverviewViewController: UIViewController {
     }
     
     func displayRestaurantInformation() {
-        if let restaurantArray = retaurantArray {
-            
+        for x...restaurantArray.count {
+            restaurantsArray[restaurants]
         }
     }
     
