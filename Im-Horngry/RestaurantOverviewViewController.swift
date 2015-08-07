@@ -43,17 +43,26 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var secondRestaurantImage: UIImageView!
     @IBOutlet weak var thirdRestaurantImage: UIImageView!
     
+    var restaurantImageArray: [UIImageView] = [firstRestaurantImage, secondRestaurantImage, thirdRestaurantImage]
+    
     @IBOutlet weak var firstRestaurantNameLabel: UILabel!
     @IBOutlet weak var secondRestaurantNameLabel: UILabel!
     @IBOutlet weak var thirdRestaurantNameLabel: UILabel!
+    
+    var restaurantNameArray: [UILabel] = [firstRestaurantNameLabel, secondRestaurantNameLabel, thirdRestaurantNameLabel]
     
     @IBOutlet weak var firstRestaurantButton: UIButton!
     @IBOutlet weak var secondRestaurantButton: UIButton!
     @IBOutlet weak var thirdRestaurantButton: UIButton!
     
+    var restaurantButtonArray: [UIButton] = [firstRestaurantButton, secondRestaurantButton, thirdRestaurantButton]
+    
     @IBOutlet weak var firstRestaurantRatingLabel: UILabel!
     @IBOutlet weak var secondRestaurantRatingLabel: UILabel!
     @IBOutlet weak var thirdRestaurantRatingLabel: UILabel!
+    
+    var restaurantRatingArray: [UILabel] = [firstRestaurantRatingLabel, secondRestaurantRatingLabel, thirdRestaurantRatingLabel]
+    
     // =========================
 
     override func viewDidLoad() {
@@ -163,42 +172,22 @@ class RestaurantOverviewViewController: UIViewController {
                 
                 for x in 0...maxResults {
                     
-//                    var restaurant = Restaurant()
                     var place = restaurants[x]
-                    
-//
-//                    if let placeRating = place["rating"] as? Double {
-//                        restaurant.rating = placeRating
-//                        println(restaurant.rating)
-//                    }
-//                    
-//                    if let selectedRestaurantName = place["name"] as? String {
-//                        restaurant.name = selectedRestaurantName
-//                        println(restaurant.name)
-//                    }
-//                    
-//                    if let photos = place["photos"] as? [NSDictionary] {
-//                        if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-//                            restaurant.photoReferenceID = photo_ref
-//                            println(restaurant.photoReferenceID)
-//                        }
-//                    }
                     
                     // Get the Google Details request
                     if let placeReference = place["reference"] as? String {
-//                        restaurant.detailsReferenceID = placeReference as! String
                         self.detailsRequest(placeReference)
                     }
-
-//                    println("your place selected is: \(restaurant.name)")
-//                    
-//                    restaurantArray.append(restaurant)
+                    
+                    restaurantArray
                     
                 }
             }
         } else {
             retryRequest()
         }
+        
+        
         
     }
     
@@ -238,18 +227,6 @@ class RestaurantOverviewViewController: UIViewController {
         }
     }
     
-    // Download Image
-    func downloadImage() {
-        if let photoReference = photoReference {
-            if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
-                if let data = NSData(contentsOfURL: url){
-                    imageURL.contentMode = UIViewContentMode.ScaleAspectFit
-                    imageURL.image = UIImage(data: data)
-                }
-            }
-        }
-    }
-    
     // MARK: Google Details Request
     func detailsRequest(referenceIdentifier: String) {
         let placeDetailsURL = Network.buildDetailsURL(referenceIdentifier)
@@ -279,6 +256,12 @@ class RestaurantOverviewViewController: UIViewController {
         }
         
         detailsReceivedCount++
+    }
+    
+    func displayRestaurantInformation() {
+        for x in 0...maxResults {
+            
+        }
     }
 
     // MARK: - Navigation
