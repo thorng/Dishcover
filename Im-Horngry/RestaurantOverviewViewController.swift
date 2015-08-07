@@ -31,7 +31,7 @@ class RestaurantOverviewViewController: UIViewController {
     var detailsReceivedCount: Int = 0 {
         didSet {
             if detailsReceivedCount == maxResults {
-                displayRestaurantInformation()
+//                displayRestaurantInformation()
             }
         }
     }
@@ -230,10 +230,22 @@ class RestaurantOverviewViewController: UIViewController {
     }
     
     // Download and Display Image
-    func downloadAndDisplayImage(photoReference: String) -> NSData {
+    func downloadAndDisplayImage(photoReference: String, restaurant: Restaurant) {
         if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
             if let data = NSData(contentsOfURL: url) {
-                return data
+                restaurant.image = UIImage(data: data)
+            }
+        }
+    }
+    
+    // Download Image
+    func downloadImage() {
+        if let photoReference = photoReference {
+            if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
+                if let data = NSData(contentsOfURL: url){
+                    imageURL.contentMode = UIViewContentMode.ScaleAspectFit
+                    imageURL.image = UIImage(data: data)
+                }
             }
         }
     }
@@ -262,8 +274,7 @@ class RestaurantOverviewViewController: UIViewController {
         if let photos = restaurantDetails["photos"] as? [NSDictionary] {
             if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
                 restaurant.photoReferenceID = photo_ref
-                var downloadImage = downloadAndDisplayImage(restaurant.photoReferenceID)
-                restaurant.image = UIImage(data: downloadImage)!
+                downloadAndDisplayImage(restaurant.photoReferenceID, restaurant: restaurant)
             }
         }
         
