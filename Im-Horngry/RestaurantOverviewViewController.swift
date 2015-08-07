@@ -31,7 +31,7 @@ class RestaurantOverviewViewController: UIViewController {
     var detailsReceivedCount: Int = 0 {
         didSet {
             if detailsReceivedCount == maxResults {
-//                displayRestaurantInformation()
+               displayRestaurantInformation()
             }
         }
     }
@@ -43,26 +43,17 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var secondRestaurantImage: UIImageView!
     @IBOutlet weak var thirdRestaurantImage: UIImageView!
     
-    var restaurantImageArray: [UIImageView] = [firstRestaurantImage, secondRestaurantImage, thirdRestaurantImage]
-    
     @IBOutlet weak var firstRestaurantNameLabel: UILabel!
     @IBOutlet weak var secondRestaurantNameLabel: UILabel!
     @IBOutlet weak var thirdRestaurantNameLabel: UILabel!
-    
-    var restaurantNameArray: [UILabel] = [firstRestaurantNameLabel, secondRestaurantNameLabel, thirdRestaurantNameLabel]
     
     @IBOutlet weak var firstRestaurantButton: UIButton!
     @IBOutlet weak var secondRestaurantButton: UIButton!
     @IBOutlet weak var thirdRestaurantButton: UIButton!
     
-    var restaurantButtonArray: [UIButton] = [firstRestaurantButton, secondRestaurantButton, thirdRestaurantButton]
-    
     @IBOutlet weak var firstRestaurantRatingLabel: UILabel!
     @IBOutlet weak var secondRestaurantRatingLabel: UILabel!
     @IBOutlet weak var thirdRestaurantRatingLabel: UILabel!
-    
-    var restaurantRatingArray: [UILabel] = [firstRestaurantRatingLabel, secondRestaurantRatingLabel, thirdRestaurantRatingLabel]
-    
     // =========================
 
     override func viewDidLoad() {
@@ -157,55 +148,64 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]?) {
         
+        println("restaurantsReceived function called...")
+        
         // check to see if there are results
         if let restaurants = restaurants {
-            
-            // Find out how many results and set max results equal to that number
-            // ^ update this variable only if it's less than 2, based on the dictionary received
-            var restaurantsCount = restaurants.count
-            
-            if restaurantsCount > 0 {
+            if restaurants.count > 0 {
+                // Find out how many results and set max results equal to that number
+                // ^ update this variable only if it's less than 2, based on the dictionary received
+                var restaurantsCount = restaurants.count
                 
-                if restaurantsCount < maxResults {
-                    maxResults = restaurantsCount
-                }
-                
-                for x in 0...maxResults {
+                if restaurantsCount > 0 {
                     
-                    var place = restaurants[x]
+                    if restaurantsCount < maxResults {
+                        maxResults = restaurantsCount
+                    }
                     
-                    // Get the Google Details request
-                    if let placeReference = place["reference"] as? String {
-                        self.detailsRequest(placeReference)
+                    for x in 0...maxResults {
+                        
+                        var place = restaurants[x]
+                        
+                        // Get the Google Details request
+                        if let placeReference = place["reference"] as? String {
+                            self.detailsRequest(placeReference)
+                        }
                     }
                 }
             }
         } else {
             retryRequest()
         }
-        
-        
-        
     }
     
     // function that looks at the restaurant array and updates buttons/info based on this info.
     func displayRestaurantInformation() {
-        for var i = 0; i < restaurantArray.count; i++ {
+        for x in 0...maxResults {
             
+            
+            var restaurantImageArray: [UIImageView] = [firstRestaurantImage, secondRestaurantImage, thirdRestaurantImage]
+            var restaurantNameArray: [UILabel] = [firstRestaurantNameLabel, secondRestaurantNameLabel, thirdRestaurantNameLabel]
+            var restaurantButtonArray: [UIButton] = [firstRestaurantButton, secondRestaurantButton, thirdRestaurantButton]
+            var restaurantRatingArray: [UILabel] = [firstRestaurantRatingLabel, secondRestaurantRatingLabel, thirdRestaurantRatingLabel]
+            
+            
+            restaurantNameArray[x].text = restaurantArray[x].name
+            restaurantRatingArray[x].text = "\(restaurantArray[x].rating)"
+            restaurantImageArray[x].image = restaurantArray[x].image
         }
-        
     }
     
     // Retry the request if request returns nothing
     func retryRequest(){
-        // Debugging
+        
         println("no results, trying again")
         println()
         
         // Switch to main thread
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            //self.restaurantLabel.text = "Still loading..."
-        }
+//        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+//            self.restaurantLabel.text = "Still loading..."
+//        }
         
         // Restart the request with a different country!
         generateRandomCountry()
@@ -219,7 +219,7 @@ class RestaurantOverviewViewController: UIViewController {
     func downloadAndDisplayImage(photoReference: String, restaurant: Restaurant) {
         if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
             if let data = NSData(contentsOfURL: url) {
-                restaurant.image = UIImage(data: data)
+                restaurant.image = UIImage(data: data)!
             }
         }
     }
@@ -236,6 +236,7 @@ class RestaurantOverviewViewController: UIViewController {
     
     // Google Details Results
     func detailsReceived(restaurantDetails: NSDictionary) {
+        
         let restaurant = Restaurant()
         
         restaurant.name = restaurantDetails["name"] as! String
@@ -256,12 +257,7 @@ class RestaurantOverviewViewController: UIViewController {
         restaurantArray.append(restaurant)
     }
     
-    func displayRestaurantInformation() {
-        for x in 0...maxResults {
-            restaurantNameArray[x].text = restaurantArray[x].name
-            restaurantImageArray[x].image = restaurantArray[x].image
-        }
-    }
+
 
     // MARK: - Navigation
 
