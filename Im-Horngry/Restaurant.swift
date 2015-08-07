@@ -14,4 +14,10 @@ class Restaurant: Object {
     dynamic var rating: Double = 0
     dynamic var address: String = ""
     dynamic var detailsReferenceID: String = ""
+    dynamic var phoneNumber: String = ""
+    
+    // UIIMage variables
+    dynamic var contentMode: UIViewContentMode = UIViewContentMode.ScaleAspectFit
+    dynamic var image: UIImage = UIImage()
 }
+
