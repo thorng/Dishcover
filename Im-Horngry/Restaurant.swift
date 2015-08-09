@@ -11,7 +11,7 @@ import RealmSwift
 class Restaurant: Object {
     dynamic var name: String = ""
     dynamic var photoReferenceID: String = ""
-    dynamic var rating: Double = 0
+    dynamic var rating: String = ""
     dynamic var address: String = ""
     dynamic var detailsReferenceID: String = ""
     dynamic var phoneNumber: String = ""

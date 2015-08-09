@@ -30,13 +30,7 @@ class RestaurantOverviewViewController: UIViewController {
     // === DEBUGGING VARIABLES ===
     var queriesCount: Int = 0 // counting the number of requests
     
-    var detailsReceivedCount: Int = 0 {
-        didSet {
-            if detailsReceivedCount == maxResults {
-               displayRestaurantInformation()
-            }
-        }
-    }
+    var detailsReceivedCount: Int = 0
     
     var maxResults = 2
     
@@ -202,7 +196,11 @@ class RestaurantOverviewViewController: UIViewController {
         let restaurant = Restaurant()
         
         restaurant.name = restaurantDetails["name"] as! String
-        restaurant.rating = restaurantDetails["rating"] as! Double
+        
+        if let rating = restaurantDetails["rating"] as? String {
+            restaurant.rating = rating
+        }
+        
         restaurant.address = restaurantDetails["formatted_address"] as! String
         restaurant.phoneNumber = restaurantDetails["formatted_phone_number"] as! String
         
@@ -210,31 +208,30 @@ class RestaurantOverviewViewController: UIViewController {
         if let photos = restaurantDetails["photos"] as? [NSDictionary] {
             if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
                 restaurant.photoReferenceID = photo_ref
-                downloadAndDisplayImage(restaurant.photoReferenceID, restaurantImages: restaurantImages, index: index)
             }
         }
         
         detailsReceivedCount++
         restaurantArray.append(restaurant)
+        
+        if detailsReceivedCount == maxResults {
+            displayRestaurantInformation(restaurant)
+        }
     }
     
     // Download and Display Image
-    func downloadAndDisplayImage(photoReference: String, restaurantImages: [UIImageView], index: Int) {
+    func downloadAndDisplayImage(photoReference: String, restaurantImageArray: [UIImageView], index: Int) {
         if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
             if let data = NSData(contentsOfURL: url) {
-                
-                let imageData = UIImageView()
-                imageData.image = UIImage(data: data)
-                imageData.contentMode = UIViewContentMode.ScaleAspectFill
-                
-                restaurantImages[index].append(imageData)
+                restaurantImageArray[index].contentMode = UIViewContentMode.ScaleAspectFill
+                restaurantImageArray[index].image = UIImage(data: data)
             }
         }
     }
     
     // function that looks at the restaurant array and updates buttons/info based on this info.
-    func displayRestaurantInformation() {
-        for x in 0...maxResults {
+    func displayRestaurantInformation(restaurant: Restaurant) {
+        for x in 0...detailsReceivedCount {
             
             var restaurantImageArray: [UIImageView] = [firstRestaurantImage, secondRestaurantImage, thirdRestaurantImage]
             var restaurantNameArray: [UILabel] = [firstRestaurantNameLabel, secondRestaurantNameLabel, thirdRestaurantNameLabel]
@@ -243,7 +240,8 @@ class RestaurantOverviewViewController: UIViewController {
             
             restaurantNameArray[x].text = restaurantArray[x].name
             restaurantRatingArray[x].text = "\(restaurantArray[x].rating)"
-            restaurantImageArray[x].image = restaurantImages[x].image
+            
+            downloadAndDisplayImage(restaurant.photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
         }
     }
     
