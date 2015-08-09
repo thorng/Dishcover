@@ -145,7 +145,6 @@ class RestaurantOverviewViewController: UIViewController {
     func restaurantsReceived(restaurants: [NSDictionary]) {
         
         println("restaurantsReceived function called...")
-        println(restaurants)
         
         // check to see if there are results
         //if let restaurants = restaurants {
@@ -157,8 +156,8 @@ class RestaurantOverviewViewController: UIViewController {
             
             if restaurantsCount > 0 {
                 
-                if restaurantsCount < maxResults {
-                    maxResults = restaurantsCount
+                if restaurantsCount <= maxResults {
+                    maxResults = restaurantsCount - 1
                 }
                 
                 for x in 0...maxResults {
@@ -182,6 +181,9 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Google Details Request
     func detailsRequest(referenceIdentifier: String, index: Int) {
         let placeDetailsURL = Network.buildDetailsURL(referenceIdentifier)
+        println("=============")
+        println(placeDetailsURL)
+        println("=============")
         Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
             if let response = response {
                 self.detailsReceived(response, index: index)
@@ -192,17 +194,26 @@ class RestaurantOverviewViewController: UIViewController {
     // Google Details Results
     func detailsReceived(restaurantDetails: NSDictionary, index: Int) {
         
+        println("detailsReceived function called...")
+        
         // create a new restaurant object to store all the info
         let restaurant = Restaurant()
         
-        restaurant.name = restaurantDetails["name"] as! String
+        if let name = restaurantDetails["name"] as? String {
+            restaurant.name = name
+        }
         
         if let rating = restaurantDetails["rating"] as? String {
             restaurant.rating = rating
         }
         
-        restaurant.address = restaurantDetails["formatted_address"] as! String
-        restaurant.phoneNumber = restaurantDetails["formatted_phone_number"] as! String
+        if let address = restaurantDetails["formatted_address"] as? String {
+            restaurant.address = address
+        }
+        
+        if let phoneNumber = restaurantDetails["formatted_phone_number"] as? String {
+            restaurant.phoneNumber = phoneNumber
+        }
         
         // grab and display photo
         if let photos = restaurantDetails["photos"] as? [NSDictionary] {
@@ -214,7 +225,7 @@ class RestaurantOverviewViewController: UIViewController {
         detailsReceivedCount++
         restaurantArray.append(restaurant)
         
-        if detailsReceivedCount == maxResults {
+        if detailsReceivedCount - 1 == maxResults {
             displayRestaurantInformation(restaurant)
         }
     }
@@ -231,17 +242,20 @@ class RestaurantOverviewViewController: UIViewController {
     
     // function that looks at the restaurant array and updates buttons/info based on this info.
     func displayRestaurantInformation(restaurant: Restaurant) {
-        for x in 0...detailsReceivedCount {
-            
-            var restaurantImageArray: [UIImageView] = [firstRestaurantImage, secondRestaurantImage, thirdRestaurantImage]
-            var restaurantNameArray: [UILabel] = [firstRestaurantNameLabel, secondRestaurantNameLabel, thirdRestaurantNameLabel]
-            var restaurantButtonArray: [UIButton] = [firstRestaurantButton, secondRestaurantButton, thirdRestaurantButton]
-            var restaurantRatingArray: [UILabel] = [firstRestaurantRatingLabel, secondRestaurantRatingLabel, thirdRestaurantRatingLabel]
-            
-            restaurantNameArray[x].text = restaurantArray[x].name
-            restaurantRatingArray[x].text = "\(restaurantArray[x].rating)"
-            
-            downloadAndDisplayImage(restaurant.photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
+        
+        var restaurantImageArray: [UIImageView] = [self.firstRestaurantImage, self.secondRestaurantImage, self.thirdRestaurantImage]
+        var restaurantNameArray: [UILabel] = [self.firstRestaurantNameLabel, self.secondRestaurantNameLabel, self.thirdRestaurantNameLabel]
+        var restaurantButtonArray: [UIButton] = [self.firstRestaurantButton, self.secondRestaurantButton, self.thirdRestaurantButton]
+        var restaurantRatingArray: [UILabel] = [self.firstRestaurantRatingLabel, self.secondRestaurantRatingLabel, self.thirdRestaurantRatingLabel]
+        
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            for x in 0...self.detailsReceivedCount - 1 {
+                
+                restaurantRatingArray[x].text = self.restaurantArray[x].rating
+                restaurantNameArray[x].text = self.restaurantArray[x].name
+                
+                self.downloadAndDisplayImage(self.restaurantArray[x].photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
+            }
         }
     }
     
@@ -263,9 +277,6 @@ class RestaurantOverviewViewController: UIViewController {
         queriesCount++
         println(queriesCount)
     }
-
-    
-
 
     // MARK: - Navigation
 

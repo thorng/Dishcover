@@ -42,12 +42,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Im-Horngry/RestaurantOverviewViewController.swift"
-            timestampString = "460793639.625391"
+            timestampString = "460795866.983823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "displayRestaurantInformation(_:)"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "detailsReceived(_:index:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Im-Horngry/RestaurantOverviewViewController.swift"
+            timestampString = "460795866.983823"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "detailsReceived(_:index:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
