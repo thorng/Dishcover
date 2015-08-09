@@ -146,35 +146,39 @@ class RestaurantOverviewViewController: UIViewController {
     }
     
     // MARK: Google search results
-    func restaurantsReceived(restaurants: [NSDictionary]?) {
+    func restaurantsReceived(restaurants: [NSDictionary]) {
         
         println("restaurantsReceived function called...")
+        println(restaurants)
         
         // check to see if there are results
-        if let restaurants = restaurants {
-            if restaurants.count > 0 {
-                // Find out how many results and set max results equal to that number
-                // ^ update this variable only if it's less than 2, based on the dictionary received
-                var restaurantsCount = restaurants.count
+        //if let restaurants = restaurants {
+        println("if statement called")
+        if restaurants.count > 0 {
+            // Find out how many results and set max results equal to that number
+            // ^ update this variable only if it's less than 2, based on the dictionary received
+            var restaurantsCount = restaurants.count
+            
+            if restaurantsCount > 0 {
                 
-                if restaurantsCount > 0 {
+                if restaurantsCount < maxResults {
+                    maxResults = restaurantsCount
+                }
+                
+                for x in 0...maxResults {
                     
-                    if restaurantsCount < maxResults {
-                        maxResults = restaurantsCount
-                    }
+                    var place = restaurants[x]
                     
-                    for x in 0...maxResults {
-                        
-                        var place = restaurants[x]
-                        
-                        // Get the Google Details request
-                        if let placeReference = place["reference"] as? String {
-                            self.detailsRequest(placeReference)
-                        }
+                    // Get the Google Details request
+                    if let placeReference = place["reference"] as? String {
+                        self.detailsRequest(placeReference)
                     }
                 }
             }
-        } else {
+        }
+        //}
+        else {
+            println("else statement called")
             retryRequest()
         }
     }

@@ -33,7 +33,6 @@ class Network {
         count++
         if let parseJSON = json {
             println(count)
-            println(parseJSON)
             completionHandler?(parseJSON)
         }
         else {
