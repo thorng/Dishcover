@@ -25,6 +25,8 @@ class RestaurantOverviewViewController: UIViewController {
     var contentMode: UIViewContentMode?
     var image: UIImage?
     
+    var restaurantImages: [UIImageView] = []
+    
     // === DEBUGGING VARIABLES ===
     var queriesCount: Int = 0 // counting the number of requests
     
@@ -171,7 +173,7 @@ class RestaurantOverviewViewController: UIViewController {
                     
                     // Get the Google Details request
                     if let placeReference = place["reference"] as? String {
-                        self.detailsRequest(placeReference)
+                        self.detailsRequest(placeReference, index: x)
                     }
                 }
             }
@@ -183,20 +185,65 @@ class RestaurantOverviewViewController: UIViewController {
         }
     }
     
+    // MARK: Google Details Request
+    func detailsRequest(referenceIdentifier: String, index: Int) {
+        let placeDetailsURL = Network.buildDetailsURL(referenceIdentifier)
+        Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
+            if let response = response {
+                self.detailsReceived(response, index: index)
+            }
+        })
+    }
+    
+    // Google Details Results
+    func detailsReceived(restaurantDetails: NSDictionary, index: Int) {
+        
+        // create a new restaurant object to store all the info
+        let restaurant = Restaurant()
+        
+        restaurant.name = restaurantDetails["name"] as! String
+        restaurant.rating = restaurantDetails["rating"] as! Double
+        restaurant.address = restaurantDetails["formatted_address"] as! String
+        restaurant.phoneNumber = restaurantDetails["formatted_phone_number"] as! String
+        
+        // grab and display photo
+        if let photos = restaurantDetails["photos"] as? [NSDictionary] {
+            if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
+                restaurant.photoReferenceID = photo_ref
+                downloadAndDisplayImage(restaurant.photoReferenceID, restaurantImages: restaurantImages, index: index)
+            }
+        }
+        
+        detailsReceivedCount++
+        restaurantArray.append(restaurant)
+    }
+    
+    // Download and Display Image
+    func downloadAndDisplayImage(photoReference: String, restaurantImages: [UIImageView], index: Int) {
+        if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
+            if let data = NSData(contentsOfURL: url) {
+                
+                let imageData = UIImageView()
+                imageData.image = UIImage(data: data)
+                imageData.contentMode = UIViewContentMode.ScaleAspectFill
+                
+                restaurantImages[index].append(imageData)
+            }
+        }
+    }
+    
     // function that looks at the restaurant array and updates buttons/info based on this info.
     func displayRestaurantInformation() {
         for x in 0...maxResults {
-            
             
             var restaurantImageArray: [UIImageView] = [firstRestaurantImage, secondRestaurantImage, thirdRestaurantImage]
             var restaurantNameArray: [UILabel] = [firstRestaurantNameLabel, secondRestaurantNameLabel, thirdRestaurantNameLabel]
             var restaurantButtonArray: [UIButton] = [firstRestaurantButton, secondRestaurantButton, thirdRestaurantButton]
             var restaurantRatingArray: [UILabel] = [firstRestaurantRatingLabel, secondRestaurantRatingLabel, thirdRestaurantRatingLabel]
             
-            
             restaurantNameArray[x].text = restaurantArray[x].name
             restaurantRatingArray[x].text = "\(restaurantArray[x].rating)"
-            restaurantImageArray[x].image = restaurantArray[x].image
+            restaurantImageArray[x].image = restaurantImages[x].image
         }
     }
     
@@ -218,48 +265,7 @@ class RestaurantOverviewViewController: UIViewController {
         queriesCount++
         println(queriesCount)
     }
-    
-    // Download and Display Image
-    func downloadAndDisplayImage(photoReference: String, restaurant: Restaurant) {
-        if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
-            if let data = NSData(contentsOfURL: url) {
-                restaurant.image = UIImage(data: data)!
-            }
-        }
-    }
-    
-    // MARK: Google Details Request
-    func detailsRequest(referenceIdentifier: String) {
-        let placeDetailsURL = Network.buildDetailsURL(referenceIdentifier)
-        Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
-            if let response = response {
-                self.detailsReceived(response)
-            }
-        })
-    }
-    
-    // Google Details Results
-    func detailsReceived(restaurantDetails: NSDictionary) {
-        
-        let restaurant = Restaurant()
-        
-        restaurant.name = restaurantDetails["name"] as! String
-        restaurant.rating = restaurantDetails["rating"] as! Double
-        restaurant.address = restaurantDetails["formatted_address"] as! String
-        restaurant.phoneNumber = restaurantDetails["formatted_phone_number"] as! String
-        
-        restaurant.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        if let photos = restaurantDetails["photos"] as? [NSDictionary] {
-            if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-                restaurant.photoReferenceID = photo_ref
-                downloadAndDisplayImage(restaurant.photoReferenceID, restaurant: restaurant)
-            }
-        }
-        
-        detailsReceivedCount++
-        restaurantArray.append(restaurant)
-    }
+
     
 
 

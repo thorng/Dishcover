@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Timothy Horng. All rights reserved.
 //
 
-import UIKIt
-
-class RestaurantOverview{
-    // UIIMage variables
-    var contentMode: UIViewContentMode = UIViewContentMode.ScaleAspectFit
-    var image: UIImage = UIImage()
-}
+//import UIKIt
+//
+//class RestaurantOverview{
+//    // UIIMage variables
+//    dynamic var contentMode: UIViewContentMode = UIViewContentMode.ScaleAspectFit
+//    dynamic var image: UIImage = UIImage()
+//}

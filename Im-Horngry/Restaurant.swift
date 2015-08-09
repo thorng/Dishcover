@@ -15,7 +15,5 @@ class Restaurant: Object {
     dynamic var address: String = ""
     dynamic var detailsReferenceID: String = ""
     dynamic var phoneNumber: String = ""
-    
-
 }
 
