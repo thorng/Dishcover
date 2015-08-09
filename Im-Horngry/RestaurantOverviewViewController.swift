@@ -25,13 +25,9 @@ class RestaurantOverviewViewController: UIViewController {
     var contentMode: UIViewContentMode?
     var image: UIImage?
     
-    var restaurantImages: [UIImageView] = []
-    
     // === DEBUGGING VARIABLES ===
     var queriesCount: Int = 0 // counting the number of requests
-    
     var detailsReceivedCount: Int = 0
-    
     var maxResults = 2
     
     // === OUTLET VARIABLES ===
@@ -262,28 +258,32 @@ class RestaurantOverviewViewController: UIViewController {
     // Retry the request if request returns nothing
     func retryRequest(){
         
-        println("no results, trying again")
+        println("NO RESULTS, TRYING AGAIN")
         println()
-        
-        // Switch to main thread
-//        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-//            self.restaurantLabel.text = "Still loading..."
-//        }
         
         // Restart the request with a different country!
         generateRandomCountry()
         startRestaurantRequest()
         
         queriesCount++
-        println(queriesCount)
+        println("Queries Count: \(queriesCount)")
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var infoViewController = segue.destinationViewController as! InfoViewController
+        
         if segue.identifier == "firstRestaurant" {
-            
+            infoViewController.restaurant = restaurantArray[0]
+        }
+        if segue.identifier == "secondRestaurant" {
+            infoViewController.restaurant = restaurantArray[1]
+        }
+        if segue.identifier == "thirdRestaurant" {
+            infoViewController.restaurant = restaurantArray[2]
         }
     }
 

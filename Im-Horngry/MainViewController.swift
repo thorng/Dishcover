@@ -42,8 +42,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             // variables being passed into Network
             infoViewController.priceSelected = priceSelected
             infoViewController.radius = radius
-            infoViewController.locValue = locValue
-            infoViewController.randomCountry = randomCountry
         }
         if segue.identifier == "liftOffToRestaurantOverview" {
             var restaurantOverview = segue.destinationViewController as! RestaurantOverviewViewController

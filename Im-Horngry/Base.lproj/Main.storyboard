@@ -164,7 +164,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1PQ-ue-tya" secondAttribute="trailing" id="1on-Cw-5n2"/>
                                     <constraint firstItem="cSw-yN-get" firstAttribute="top" secondItem="Q2d-ba-7qV" secondAttribute="top" id="7ey-Vj-KGF"/>
@@ -205,11 +204,10 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="3zA-Xo-J73" kind="show" identifier="thirdRestaurant" id="xSY-9w-5Ym"/>
+                                            <segue destination="3zA-Xo-J73" kind="show" identifier="secondRestaurant" id="xSY-9w-5Ym"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ar0-AS-e63" firstAttribute="top" secondItem="dDT-nw-u0q" secondAttribute="top" id="0Mb-tE-Uzr"/>
                                     <constraint firstAttribute="bottom" secondItem="3fr-Vq-qDS" secondAttribute="bottom" constant="8" id="1Kq-UG-Zq8"/>
@@ -250,11 +248,10 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="3zA-Xo-J73" kind="show" identifier="secondRestaurant" id="bes-ex-fA2"/>
+                                            <segue destination="3zA-Xo-J73" kind="show" identifier="thirdRestaurant" id="bes-ex-fA2"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Fq6-pO-qpe" firstAttribute="leading" secondItem="GTM-di-WE8" secondAttribute="leading" id="1Nw-NR-bZ3"/>
                                     <constraint firstAttribute="trailing" secondItem="7sA-Hr-zg8" secondAttribute="trailing" constant="120" id="64j-gy-R47"/>
@@ -549,6 +546,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xSY-9w-5Ym"/>
+        <segue reference="bes-ex-fA2"/>
     </inferredMetricsTieBreakers>
 </document>
