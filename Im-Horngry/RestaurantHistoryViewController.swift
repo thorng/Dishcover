@@ -49,7 +49,6 @@ class RestaurantHistoryViewController: UIViewController {
 
 }
 
-
 extension RestaurantHistoryViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

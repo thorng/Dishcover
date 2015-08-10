@@ -34,7 +34,6 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
-    @IBOutlet weak var images: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +49,8 @@ class InfoViewController: UIViewController {
         ratingLabel.text = "\(restaurant.rating)"
         addressLabel.text = restaurant.address
         countryLabel.text = restaurant.countrySelected
+        
+        // MARK: Paginated Scroll View Setup
         
         // create array of photo reference ID's
         for i in 0...restaurant.photoReferenceID.count - 1 {
@@ -72,14 +73,6 @@ class InfoViewController: UIViewController {
 
     }
     
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        println("MEMORY WARNING")
-    }
-    
     func downloadImage(photoReference: String) {
         if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
             if let data = NSData(contentsOfURL: url) {
@@ -90,38 +83,33 @@ class InfoViewController: UIViewController {
     
     // adds restaurant name to Realm
     func addObjectToRealm() {
-
-            Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
+        Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
+            
+            if let response = response {
                 
-                if let response = response {
-                    
-                    let realm = Realm()
-                    let results = response as NSDictionary
-                    
-                    realm.write {
-                        realm.create(Restaurant.self, value: results, update: true)
-                    }
-                    
+                let realm = Realm()
+                let results = response as NSDictionary
+                
+                realm.write {
+                    realm.create(Restaurant.self, value: results, update: true)
                 }
                 
-            })
-        
+            }
+        })
     }
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        println("MEMORY WARNING")
+    }
+    
+    // MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "exitFromInfoController" {
             self.addObjectToRealm()
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
