@@ -50,24 +50,6 @@ class RestaurantOverviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        firstRestaurantNameLabel.text = ""
-//        secondRestaurantNameLabel.text = ""
-//        thirdRestaurantNameLabel.text = ""
-//        
-//        firstRestaurantRatingLabel.text = ""
-//        secondRestaurantRatingLabel.text = ""
-//        thirdRestaurantRatingLabel.text = ""
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
         // resets count variables
         detailsReceivedCount = 0
@@ -82,6 +64,17 @@ class RestaurantOverviewViewController: UIViewController {
         
         // Start the restaurant request
         startRestaurantRequest()
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
     
     // MARK: Creating the dictionary
@@ -226,9 +219,22 @@ class RestaurantOverviewViewController: UIViewController {
         
         // grab and display photo
         if let photos = restaurantDetails["photos"] as? [NSDictionary] {
-            if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-                restaurant.photoReferenceID = photo_ref
+            
+            // store all photo_reference ID's in the request
+            for i in 0...photos.count - 1 {
+                
+                let photo_dictionary = photos[i]
+                
+                if let photo_ref = photo_dictionary["photo_reference"] as? String {
+                    restaurant.photoReferenceID.append(photo_ref)
+                }
             }
+            
+//            for i in 0...restaurant.photoReferenceID.count - 1 {
+//                
+//                println("Photo reference ID #\(i): \(restaurant.photoReferenceID)")
+//            }
+            
         }
         
         detailsReceivedCount++
@@ -263,7 +269,7 @@ class RestaurantOverviewViewController: UIViewController {
                 restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
                 restaurantNameArray[x].text = self.restaurantArray[x].name
                 
-                self.downloadAndDisplayImage(self.restaurantArray[x].photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
+                self.downloadAndDisplayImage(self.restaurantArray[x].photoReferenceID[0], restaurantImageArray: restaurantImageArray, index: x)
             }
         }
     }
