@@ -13,195 +13,103 @@ import RealmSwift
 
 class InfoViewController: UIViewController {
     
-    var randomCountryKey: String?
-    var randomCountry: String?
-    var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
+    var restaurant = Restaurant()
+    var paginatedScrollView: PaginatedScrollView?
+    var placeDetailsURL: String = ""
+    
+    var address: String = ""
+    var rating: Double = 0.0
+    var country: String = ""
+    var restaurantName: String = ""
+    
+    var photoReferenceID: [String] = []
+    var restaurantPhotos: [UIImage] = []
+    
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
-    var photoReference: String? // photo reference to display on the view
     
-    var selectedRestaurantName: String? // the restaurant selected from the API request
+    var queriesCount: Int = 0 // counting the number of requests
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
-    @IBOutlet weak var imageURL: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("price selected: \(priceSelected)")
-        println("radius selected: \(radius)")
-        
-        restaurantLabel.text = "Loading..."
-        countryLabel.text = ""
-        ratingLabel.text = ""
-        addressLabel.text = ""
-        
-        // Creates dictionary of Countries and Adjectivals
-        parseTxtToDictionary()
-        
-        // Randomly generate dict value
-        generateRandomCountry()
-        
-        // Start the restaurant request
-        startRestaurantRequest()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        placeDetailsURL = restaurant.placeDetailsURL
+        
+        restaurantLabel.text = restaurant.name
+        ratingLabel.text = "\(restaurant.rating)"
+        addressLabel.text = restaurant.address
+        countryLabel.text = restaurant.countrySelected
+        
+        // MARK: Paginated Scroll View Setup
+        
+        // create array of photo reference ID's
+        for i in 0...restaurant.photoReferenceID.count - 1 {
+            photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
+        }
+        var maxImages = photoReferenceID.count - 1
+        var imageIndex: NSInteger = 0
+        
+        // downloading the photos
+        for index in 0...photoReferenceID.count - 1 {
+            downloadImage(photoReferenceID[index])
+        }
+        
+        paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
+        self.view.addSubview(paginatedScrollView!) // add to the
+        
+       //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
+        
+        self.paginatedScrollView?.images = restaurantPhotos
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // Parse .txt file into a dictionary
-    func parseTxtToDictionary() {
-        var arraySeparated = [String]()
-        var countryName: String?
-        var countryAdjectival: String?
-        
-        let path = NSBundle.mainBundle().pathForResource("countries_of_the_world", ofType: "txt")
-        
-        if let content = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil) {
-            
-            var array = content.componentsSeparatedByString("\n")
-            
-            for rows in array {
-                arraySeparated = rows.componentsSeparatedByString(",")
-                countryName = arraySeparated[0]
-                countryAdjectival = arraySeparated[1].stringByReplacingOccurrencesOfString(" ", withString: "_")
-                countryDict[countryName!] = countryAdjectival
+    func downloadImage(photoReference: String) {
+        if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
+            if let data = NSData(contentsOfURL: url) {
+                restaurantPhotos.append(UIImage(data: data)!)
             }
-        }
-    }
-    
-    
-    // Randomly generate dict value
-    func generateRandomCountry () {
-        let index: Int = Int(arc4random_uniform(UInt32(countryDict.count)))
-        randomCountryKey = Array(countryDict.keys)[index]
-        randomCountry = Array(countryDict.values)[index]
-        
-        println(randomCountryKey)
-        println(randomCountry)
-    }
-    
-    func startRestaurantRequest() {
-        if locValue != nil {
-            let url = Network.buildSearchURL(priceSelected!, radius: radius!, locValue: locValue!, countryKeyword: randomCountry!)
-            println(url)
-            Network.getGooglePlaces(url, completionHandler: { response -> Void in
-                if let dict = response {
-                    self.restaurantsReceived(dict)
-                }
-            })
-        }
-        else {
-            println("Sorry, location not found")
-        }
-    }
-    
-    // MARK: Google search results
-    func restaurantsReceived(restaurants: [NSDictionary]) {
-        var restaurantNameArray: [String] = []
-        
-        // check to see if there's a first result, and only display that one
-        if let place = restaurants.first {
-            
-            let results = place["name"] as? String ?? ""
-            let rating = place["rating"] as? Double
-            
-            let reference = place["reference"] as? String
-            
-            // Get the Google Details request
-            let placeDetailsURL = Network.buildDetailsURL(reference!)
-            Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
-                if let response = response {
-                    self.detailsReceived(response)
-                }
-            })
-            
-            // grab photo reference string
-            if let photos = place["photos"] as? [NSDictionary] {
-                if let photo_dictionary = photos.first, photo_ref = photo_dictionary["photo_reference"] as? String {
-                    photoReference = photo_ref
-                }
-            }
-            
-            restaurantNameArray.append(results)
-            
-            println("your place selected is: \(results)")
-            
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.countryLabel.text = "You're flying to \(self.randomCountryKey!) today."
-                self.restaurantLabel.text = "\(restaurantNameArray[0])"
-                self.downloadImage()
-                
-                self.addressLabel.text = "Loading address..."
-                
-                if let rating = rating {
-                    self.ratingLabel.text = "Rating: \(rating)"
-                }
-                
-                self.addObjectToRealm(restaurantNameArray[0])
-            }
-        } else {
-            
-            // Debugging
-            println("no results, trying again")
-            println()
-            
-            // Switch to main thread
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.restaurantLabel.text = "Sorry, no restaurants found. Trying again..."
-            }
-            
-            // Restart the request with a different country!
-            generateRandomCountry()
-            startRestaurantRequest()
-        }
-    }
-    
-    // Download Image
-    func downloadImage() {
-        if let photoReference = photoReference {
-            if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
-                if let data = NSData(contentsOfURL: url){
-                    imageURL.contentMode = UIViewContentMode.ScaleAspectFit
-                    imageURL.image = UIImage(data: data)
-                }
-            }
-        }
-    }
-    
-    // MARK: Google Details Results
-    func detailsReceived(restaurantDetails: NSDictionary) {
-        println("detailsReceived function called")
-        
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            let address = restaurantDetails["formatted_address"] as? String ?? ""
-            self.addressLabel.text = address
         }
     }
     
     // adds restaurant name to Realm
-    func addObjectToRealm(restaurantName: String) {
-        let restaurantVisited = Restaurant()
-        let realm = Realm()
-        
-        realm.write {
-            restaurantVisited.name = restaurantName
-            realm.add(restaurantVisited)
+    func addObjectToRealm() {
+        Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
+            
+            if let response = response {
+                
+                let realm = Realm()
+                let results = response as NSDictionary
+                
+                realm.write {
+                    realm.create(Restaurant.self, value: results, update: true)
+                }
+                
+            }
+        })
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        println("MEMORY WARNING")
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "exitFromInfoController" {
+            self.addObjectToRealm()
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

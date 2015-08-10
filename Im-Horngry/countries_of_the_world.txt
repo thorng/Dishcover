@@ -216,7 +216,7 @@ Thailand,Thai
 Togo,Togolese
 Tonga,Tongan
 Trinidad and Tobago,Trinidadian
-Tunisia,Tunisian
+Tunisia,Tunisian,Yahya
 Turkey,Turkish
 Turkmenistan,Turkmen
 Tuvalu,Tuvaluan
@@ -224,7 +224,7 @@ Uganda,Ugandan
 Ukraine,Ukrainian
 United Arab Emirates,Emirati
 United Kingdom,British
-United States,AmericanSaharan
+United States,American
 Uruguay,Uruguayan
 Uzbekistan,Uzbekistani
 Vanuatu,Vanuatuan

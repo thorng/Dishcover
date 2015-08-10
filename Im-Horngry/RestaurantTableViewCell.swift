@@ -11,10 +11,12 @@ import UIKit
 class RestaurantTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eatenRestaurantLabel: UILabel!
+    @IBOutlet weak var eatenCountryLabel: UILabel!
     
     var restaurant: Restaurant? {
         didSet {
             eatenRestaurantLabel.text = restaurant?.name
+            eatenCountryLabel.text = restaurant?.countrySelected
         }
     }
     
