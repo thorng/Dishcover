@@ -50,6 +50,15 @@ class RestaurantOverviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        
+//        firstRestaurantNameLabel.text = ""
+//        secondRestaurantNameLabel.text = ""
+//        thirdRestaurantNameLabel.text = ""
+//        
+//        firstRestaurantRatingLabel.text = ""
+//        secondRestaurantRatingLabel.text = ""
+//        thirdRestaurantRatingLabel.text = ""
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -195,11 +204,15 @@ class RestaurantOverviewViewController: UIViewController {
         // create a new restaurant object to store all the info
         let restaurant = Restaurant()
         
+        if let randomCountry = randomCountry {
+            restaurant.countrySelected = randomCountry
+        }
+        
         if let name = restaurantDetails["name"] as? String {
             restaurant.name = name
         }
         
-        if let rating = restaurantDetails["rating"] as? String {
+        if let rating = restaurantDetails["rating"] as? Double {
             restaurant.rating = rating
         }
         
@@ -247,7 +260,7 @@ class RestaurantOverviewViewController: UIViewController {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             for x in 0...self.detailsReceivedCount - 1 {
                 
-                restaurantRatingArray[x].text = self.restaurantArray[x].rating
+                restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
                 restaurantNameArray[x].text = self.restaurantArray[x].name
                 
                 self.downloadAndDisplayImage(self.restaurantArray[x].photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
@@ -274,17 +287,22 @@ class RestaurantOverviewViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var infoViewController = segue.destinationViewController as! InfoViewController
-        
         if segue.identifier == "firstRestaurant" {
+            var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[0]
         }
         if segue.identifier == "secondRestaurant" {
+            var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[1]
         }
         if segue.identifier == "thirdRestaurant" {
+            var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[2]
         }
+    }
+    
+    @IBAction func unwindToRestaurantOverviewViewController(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
     }
 
 }

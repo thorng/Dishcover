@@ -15,13 +15,14 @@ class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
     
+    var address: String = ""
+    var rating: Double = 0.0
+    var country: String = ""
+    var restaurantName: String = ""
+    
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
     var photoReference: String? // photo reference to display on the view
-    
-    var selectedRestaurantName: String? // the restaurant selected from the API request
-    
-    var restaurantNameArray: [String] = [] // the restaurant names
     
     var queriesCount: Int = 0 // counting the number of requests
     
@@ -33,14 +34,75 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("price selected: \(priceSelected)")
-        println("radius selected: \(radius)")
         
-        restaurantLabel.text = "Loading..."
-        countryLabel.text = ""
-        ratingLabel.text = ""
-        addressLabel.text = ""
+        restaurantLabel.text = restaurant.name
+        ratingLabel.text = "\(restaurant.rating)"
+        addressLabel.text = restaurant.address
+        countryLabel.text = restaurant.countrySelected
+        
+        // Swipe gestures
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
     }
+    
+//    func swiped(gesture: UIGestureRecognizer) {
+//        
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+//            
+//            switch swipeGesture.direction {
+//                
+//            case UISwipeGestureRecognizerDirection.Right :
+//                println("User swiped right")
+//                
+//                // decrease index first
+//                
+//                imageIndex--
+//                
+//                // check if index is in range
+//                
+//                if imageIndex < 0 {
+//                    
+//                    imageIndex = maxImages
+//                    
+//                }
+//                
+//                image.image = UIImage(named: imageList[imageIndex])
+//                
+//            case UISwipeGestureRecognizerDirection.Left:
+//                println("User swiped Left")
+//                
+//                // increase index first
+//                
+//                imageIndex++
+//                
+//                // check if index is in range
+//                
+//                if imageIndex > maxImages {
+//                    
+//                    imageIndex = 0
+//                    
+//                }
+//                
+//                image.image = UIImage(named: imageList[imageIndex])
+//                
+//                
+//                
+//                
+//            default:
+//                break //stops the code/codes nothing.
+//                
+//                
+//            }
+//            
+//        }
+//        
+//        
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,13 +111,14 @@ class InfoViewController: UIViewController {
     
     // adds restaurant name to Realm
     func addObjectToRealm() {
-        let restaurantVisited = Restaurant()
+        var restaurantVisited = Restaurant()
         let realm = Realm()
         
         realm.write {
-            if self.restaurantNameArray.count > 0 {
-                restaurantVisited.name = self.restaurantNameArray[0]
+            if self.restaurant.name != "" {
+                restaurantVisited = self.restaurant
                 realm.add(restaurantVisited)
+                println("Object added to Realm")
             }
         }
     }

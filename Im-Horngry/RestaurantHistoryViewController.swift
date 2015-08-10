@@ -61,6 +61,7 @@ extension RestaurantHistoryViewController: UITableViewDataSource {
         cell.restaurant = restaurant
                 
         return cell
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
