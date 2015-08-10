@@ -42,17 +42,10 @@ class InfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
-        paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
-        self.view.addSubview(paginatedScrollView!) // add to the
-        
-       //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
-        
-        self.paginatedScrollView?.images = restaurantPhotos
-        
         super.viewWillAppear(animated)
         
         placeDetailsURL = restaurant.placeDetailsURL
-
+        
         restaurantLabel.text = restaurant.name
         ratingLabel.text = "\(restaurant.rating)"
         addressLabel.text = restaurant.address
@@ -67,8 +60,15 @@ class InfoViewController: UIViewController {
         
         // downloading the photos
         for index in 0...photoReferenceID.count - 1 {
-          downloadImage(photoReferenceID[index], restaurantImage: images)
+            downloadImage(photoReferenceID[index])
         }
+        
+        paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
+        self.view.addSubview(paginatedScrollView!) // add to the
+        
+       //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
+        
+        self.paginatedScrollView?.images = restaurantPhotos
 
     }
     
@@ -80,11 +80,10 @@ class InfoViewController: UIViewController {
         println("MEMORY WARNING")
     }
     
-    func downloadImage(photoReference: String, restaurantImage: UIImageView) {
+    func downloadImage(photoReference: String) {
         if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
             if let data = NSData(contentsOfURL: url) {
                 restaurantPhotos.append(UIImage(data: data)!)
-                //restaurantPhoto.image = UIImage(data: data)
             }
         }
     }
