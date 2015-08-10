@@ -178,24 +178,32 @@ class RestaurantOverviewViewController: UIViewController {
     
     // MARK: Google Details Request
     func detailsRequest(referenceIdentifier: String, index: Int) {
+        
         let placeDetailsURL = Network.buildDetailsURL(referenceIdentifier)
         println("=============")
         println(placeDetailsURL)
         println("=============")
+        
         Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
             if let response = response {
-                self.detailsReceived(response, index: index)
+                self.detailsReceived(response, index: index, placeDetailsURL: placeDetailsURL)
             }
         })
     }
     
     // Google Details Results
-    func detailsReceived(restaurantDetails: NSDictionary, index: Int) {
+    func detailsReceived(restaurantDetails: NSDictionary, index: Int, placeDetailsURL: String) {
         
         println("detailsReceived function called...")
         
         // create a new restaurant object to store all the info
         let restaurant = Restaurant()
+        
+        // create a new photoID object to store all the photo reference IDs
+        let photoID = PhotoID()
+        
+        // store the details URL
+        restaurant.placeDetailsURL = placeDetailsURL
         
         if let randomCountry = randomCountry {
             restaurant.countrySelected = randomCountry
@@ -226,14 +234,17 @@ class RestaurantOverviewViewController: UIViewController {
                 let photo_dictionary = photos[i]
                 
                 if let photo_ref = photo_dictionary["photo_reference"] as? String {
-                    restaurant.photoReferenceID.append(photo_ref)
+                    
+                    let photoIDObject = PhotoID()
+                    photoIDObject.photoReferenceID = photo_ref
+                    
+                    restaurant.photoReferenceID.append(photoIDObject)
                 }
             }
             
-//            for i in 0...restaurant.photoReferenceID.count - 1 {
-//                
-//                println("Photo reference ID #\(i): \(restaurant.photoReferenceID)")
-//            }
+//            println()
+//            println("restaurant.photoReferenceID: \(restaurant.photoReferenceID)")
+//            println()
             
         }
         
@@ -269,7 +280,11 @@ class RestaurantOverviewViewController: UIViewController {
                 restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
                 restaurantNameArray[x].text = self.restaurantArray[x].name
                 
-                self.downloadAndDisplayImage(self.restaurantArray[x].photoReferenceID[0], restaurantImageArray: restaurantImageArray, index: x)
+                let restaurantChosen = self.restaurantArray[x]
+                if restaurantChosen.photoReferenceID.count > 0 {
+                    self.downloadAndDisplayImage(restaurantChosen.photoReferenceID.first!.photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
+                }
+                
             }
         }
     }

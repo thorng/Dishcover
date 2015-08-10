@@ -579,6 +579,7 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ryQ-6v-xbi">
                                         <rect key="frame" x="150" y="128" width="300" height="250"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="IRJ-VO-58Q"/>
                                             <constraint firstAttribute="height" constant="250" id="reb-zB-ADd"/>
@@ -588,6 +589,9 @@
                                                 <exclude reference="reb-zB-ADd"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="7cc-WA-Eqj" appends="YES" id="khx-iL-eGf"/>
+                                        </connections>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ws-ka-Yyu">
                                         <rect key="frame" x="8" y="8" width="48" height="30"/>
@@ -668,13 +672,14 @@
                     <connections>
                         <outlet property="addressLabel" destination="h3t-pP-K8n" id="ceD-9W-ZSF"/>
                         <outlet property="countryLabel" destination="nTe-Ht-4RK" id="ojN-pR-mKT"/>
-                        <outlet property="imageURL" destination="ryQ-6v-xbi" id="BO2-GY-Ll3"/>
+                        <outlet property="images" destination="ryQ-6v-xbi" id="h2e-73-Ay5"/>
                         <outlet property="ratingLabel" destination="08w-BN-6S5" id="Kte-0f-uD2"/>
                         <outlet property="restaurantLabel" destination="3XV-pR-Ymt" id="BR1-KK-LdJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lX7-Wt-8cM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zsl-ak-J6x" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="right" id="7cc-WA-Eqj"/>
             </objects>
             <point key="canvasLocation" x="2304" y="-424"/>
         </scene>

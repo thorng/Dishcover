@@ -11,8 +11,9 @@ import CoreLocation
 import UIKit
 
 // Requesting from Google Places API
-private let GOOGLE_PLACES_API_KEY:String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM"
-var count:Int = 0
+private let GOOGLE_PLACES_API_KEY: String = "AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM"
+var count: Int = 0
+
 class Network {
     
     class func get(urlString:String, completionHandler: ((NSDictionary?) -> Void)?, errorHandler:(() -> Void)?) {
@@ -28,14 +29,16 @@ class Network {
     }
     
     class func handleRESTResponse(completionHandler: ((NSDictionary?) -> Void)?, data:NSData?, response:NSURLResponse?, error: NSError?, errorHandler:(() -> Void)?){
+        
         var err: NSError?
         var json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves, error: &err) as? NSDictionary
+        
         count++
+        
         if let parseJSON = json {
             println(count)
             completionHandler?(parseJSON)
-        }
-        else {
+        } else {
             println(count)
             println("Very bad error")
             errorHandler?()

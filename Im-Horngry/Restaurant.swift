@@ -10,13 +10,20 @@ import RealmSwift
 
 class Restaurant: Object {
     
+    dynamic var placeDetailsURL: String = ""
+
     dynamic var countrySelected: String = ""
     dynamic var name: String = ""
-    dynamic var photoReferenceID: [String] = []
     dynamic var rating: Double = 0
     dynamic var address: String = ""
     dynamic var detailsReferenceID: String = ""
     dynamic var phoneNumber: String = ""
+    
+    let photoReferenceID = List<PhotoID>()
+    
+    override class func primaryKey() -> String {
+        return "name"
+    }
     
 }
 

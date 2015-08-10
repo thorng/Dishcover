@@ -15,14 +15,17 @@ class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
     
+    var placeDetailsURL: String = ""
+    
     var address: String = ""
     var rating: Double = 0.0
     var country: String = ""
     var restaurantName: String = ""
     
+    var photoReferenceID: [String] = []
+    
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
-    var photoReference: String? // photo reference to display on the view
     
     var queriesCount: Int = 0 // counting the number of requests
     
@@ -30,24 +33,42 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
-    @IBOutlet weak var imageURL: UIImageView!
+    @IBOutlet weak var images: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
+        placeDetailsURL = restaurant.placeDetailsURL
+
         restaurantLabel.text = restaurant.name
         ratingLabel.text = "\(restaurant.rating)"
         addressLabel.text = restaurant.address
         countryLabel.text = restaurant.countrySelected
         
-        // Swipe gestures
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-        self.view.addGestureRecognizer(swipeRight)
+        // create array of photo reference ID's
+        for i in 0...restaurant.photoReferenceID.count - 1 {
+            photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
+        }
+        var maxImages = photoReferenceID.count - 1
+        var imageIndex: NSInteger = 0
         
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.view.addGestureRecognizer(swipeLeft)
+        // downloading the photos
+        for index in 0...photoReferenceID.count - 1 {
+            downloadImage(photoReferenceID[index], restaurantImage: images)
+        }
+        
+        // Swipe gestures
+//        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
+//        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+//        self.view.addGestureRecognizer(swipeRight)
+//        
+//        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
+//        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+//        self.view.addGestureRecognizer(swipeLeft)
     }
     
 //    func swiped(gesture: UIGestureRecognizer) {
@@ -107,20 +128,37 @@ class InfoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        println("MEMORY WARNING")
+    }
+    
+    func downloadImage(photoReference: String, restaurantImage: UIImageView) {
+        if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
+            if let data = NSData(contentsOfURL: url) {
+                restaurantImage.contentMode = UIViewContentMode.ScaleAspectFit
+                restaurantImage.image = UIImage(data: data)
+            }
+        }
     }
     
     // adds restaurant name to Realm
     func addObjectToRealm() {
-        var restaurantVisited = Restaurant()
-        let realm = Realm()
+
+            Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
+                
+                if let response = response {
+                    
+                    let realm = Realm()
+                    
+                    let results = response as NSDictionary
+                    
+                    realm.write {
+                        realm.create(Restaurant.self, value: results, update: true)
+                    }
+                    
+                }
+                
+            })
         
-        realm.write {
-            if self.restaurant.name != "" {
-                restaurantVisited = self.restaurant
-                realm.add(restaurantVisited)
-                println("Object added to Realm")
-            }
-        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
