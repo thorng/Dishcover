@@ -14,7 +14,7 @@ import RealmSwift
 class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
-    
+    var paginatedScrollView: PaginatedScrollView?
     var placeDetailsURL: String = ""
     
     var address: String = ""
@@ -23,6 +23,7 @@ class InfoViewController: UIViewController {
     var restaurantName: String = ""
     
     var photoReferenceID: [String] = []
+    var restaurantPhotos: [UIImage] = []
     
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
@@ -40,6 +41,14 @@ class InfoViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
+        self.view.addSubview(paginatedScrollView!) // add to the
+        
+       //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
+        
+        self.paginatedScrollView?.images = restaurantPhotos
+        
         super.viewWillAppear(animated)
         
         placeDetailsURL = restaurant.placeDetailsURL
@@ -58,72 +67,12 @@ class InfoViewController: UIViewController {
         
         // downloading the photos
         for index in 0...photoReferenceID.count - 1 {
-            downloadImage(photoReferenceID[index], restaurantImage: images)
+          downloadImage(photoReferenceID[index], restaurantImage: images)
         }
-        
-        // Swipe gestures
-//        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
-//        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-//        self.view.addGestureRecognizer(swipeRight)
-//        
-//        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swiped:") // put : at the end of method name
-//        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-//        self.view.addGestureRecognizer(swipeLeft)
+
     }
     
-//    func swiped(gesture: UIGestureRecognizer) {
-//        
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-//            
-//            switch swipeGesture.direction {
-//                
-//            case UISwipeGestureRecognizerDirection.Right :
-//                println("User swiped right")
-//                
-//                // decrease index first
-//                
-//                imageIndex--
-//                
-//                // check if index is in range
-//                
-//                if imageIndex < 0 {
-//                    
-//                    imageIndex = maxImages
-//                    
-//                }
-//                
-//                image.image = UIImage(named: imageList[imageIndex])
-//                
-//            case UISwipeGestureRecognizerDirection.Left:
-//                println("User swiped Left")
-//                
-//                // increase index first
-//                
-//                imageIndex++
-//                
-//                // check if index is in range
-//                
-//                if imageIndex > maxImages {
-//                    
-//                    imageIndex = 0
-//                    
-//                }
-//                
-//                image.image = UIImage(named: imageList[imageIndex])
-//                
-//                
-//                
-//                
-//            default:
-//                break //stops the code/codes nothing.
-//                
-//                
-//            }
-//            
-//        }
-//        
-//        
-//    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -134,8 +83,8 @@ class InfoViewController: UIViewController {
     func downloadImage(photoReference: String, restaurantImage: UIImageView) {
         if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAKtrEj6qZ17YcjfD4SlijGbZd96ZZPkRM") {
             if let data = NSData(contentsOfURL: url) {
-                restaurantImage.contentMode = UIViewContentMode.ScaleAspectFit
-                restaurantImage.image = UIImage(data: data)
+                restaurantPhotos.append(UIImage(data: data)!)
+                //restaurantPhoto.image = UIImage(data: data)
             }
         }
     }
@@ -148,7 +97,6 @@ class InfoViewController: UIViewController {
                 if let response = response {
                     
                     let realm = Realm()
-                    
                     let results = response as NSDictionary
                     
                     realm.write {
@@ -166,6 +114,7 @@ class InfoViewController: UIViewController {
             self.addObjectToRealm()
         }
     }
+    
     /*
     // MARK: - Navigation
 

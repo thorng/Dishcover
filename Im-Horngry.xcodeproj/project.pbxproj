@@ -20,6 +20,7 @@
 		3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F8427901B55B9770075884B /* LaunchScreen.xib */; };
 		3F84279E1B55B9770075884B /* Im_HorngryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84279D1B55B9770075884B /* Im_HorngryTests.swift */; };
 		3FA25F4E1B7932370043EA2D /* PhotoID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA25F4D1B7932370043EA2D /* PhotoID.swift */; };
+		3FA25F501B79395A0043EA2D /* PaginatedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA25F4F1B79395A0043EA2D /* PaginatedScrollView.swift */; };
 		3FE2EEBA1B712B6F00430EF9 /* RestaurantOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2EEB91B712B6F00430EF9 /* RestaurantOverviewViewController.swift */; };
 		3FE8C0891B6ACFCF00F7B936 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8C0881B6ACFCF00F7B936 /* Network.swift */; };
 		D9FD597521A10FDF6A9390AD /* Pods_Im_Horngry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27DBA3A0055F570B406AF31 /* Pods_Im_Horngry.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -55,6 +56,7 @@
 		3F84279C1B55B9770075884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F84279D1B55B9770075884B /* Im_HorngryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Im_HorngryTests.swift; sourceTree = "<group>"; };
 		3FA25F4D1B7932370043EA2D /* PhotoID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoID.swift; sourceTree = "<group>"; };
+		3FA25F4F1B79395A0043EA2D /* PaginatedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedScrollView.swift; sourceTree = "<group>"; };
 		3FE2EEB91B712B6F00430EF9 /* RestaurantOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantOverviewViewController.swift; sourceTree = "<group>"; };
 		3FE8C0881B6ACFCF00F7B936 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		D27DBA3A0055F570B406AF31 /* Pods_Im_Horngry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Im_Horngry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				3F02CA941B64284700220C40 /* InfoViewController.swift */,
 				3FE2EEB91B712B6F00430EF9 /* RestaurantOverviewViewController.swift */,
 				3F7D9E0C1B6F467700752433 /* RestaurantHistoryViewController.swift */,
+				3FA25F4F1B79395A0043EA2D /* PaginatedScrollView.swift */,
 				3F7D9E0F1B6FDE9300752433 /* RestaurantTableViewCell.swift */,
 				3F7D9E0A1B6F33E200752433 /* Restaurant.swift */,
 				3FA25F4D1B7932370043EA2D /* PhotoID.swift */,
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FE2EEBA1B712B6F00430EF9 /* RestaurantOverviewViewController.swift in Sources */,
+				3FA25F501B79395A0043EA2D /* PaginatedScrollView.swift in Sources */,
 				3F7D9E0B1B6F33E200752433 /* Restaurant.swift in Sources */,
 				3FE8C0891B6ACFCF00F7B936 /* Network.swift in Sources */,
 				3FA25F4E1B7932370043EA2D /* PhotoID.swift in Sources */,
