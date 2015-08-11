@@ -15,8 +15,6 @@ class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
     //var restaurants: Results<Restaurant>!
-    
-    let realm = Realm()
     //restaurants = realm.objects(Restaurant)
     
     var paginatedScrollView: PaginatedScrollView?
@@ -48,13 +46,15 @@ class InfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-                
+        
+        placeDetailsURL = restaurant.placeDetailsURL
         if restaurant.photoReferenceID.count == 0 {
             println("if function called")
-            println("placeDetailsURL: \(restaurant.placeDetailsURL)")
+            println("placeDetailsURL: \(placeDetailsURL)")
             
-            Network.getGooglePlacesDetails(restaurant.placeDetailsURL, completionHandler: { response -> Void in
+            Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
                 if let response = response {
+                    let realm = Realm()
                     self.detailsReceived(response)
                 }
             })
@@ -63,6 +63,8 @@ class InfoViewController: UIViewController {
             println("else function called")
             downloadArrayOfPhotos()
         }
+        
+        let realm = Realm()
         
         restaurantLabel.text = restaurant.name
         ratingLabel.text = "\(restaurant.rating)"
@@ -84,6 +86,7 @@ class InfoViewController: UIViewController {
             
             // downloading the photos
             for index in 0...photoReferenceID.count - 1 {
+                let realm = Realm()
                 downloadImage(photoReferenceID[index])
             }
             
@@ -105,24 +108,27 @@ class InfoViewController: UIViewController {
     func detailsReceived(restaurantDetails: NSDictionary) {
         
         // grab and display photo
-            if let photos = restaurantDetails["photos"] as? [NSDictionary] {
+        if let photos = restaurantDetails["photos"] as? [NSDictionary] {
+            
+            // store all photo_reference ID's in the request
+            for i in 0...photos.count - 1 {
                 
-                // store all photo_reference ID's in the request
-                for i in 0...photos.count - 1 {
+                let photo_dictionary = photos[i]
+                
+                if let photo_ref = photo_dictionary["photo_reference"] as? String {
+
+                    let realm = Realm()
+                    let photoIDObject = PhotoID()
+                    let restaurantObject = Restaurant()
                     
-                    let photo_dictionary = photos[i]
+                    photoIDObject.photoReferenceID = photo_ref
                     
-                    if let photo_ref = photo_dictionary["photo_reference"] as? String {
-                        
-                        let photoIDObject = PhotoID()
-                        
-                        photoIDObject.photoReferenceID = photo_ref
-                        
-                        // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
-                        restaurant.photoReferenceID.append(photoIDObject)
-                    }
+                    // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
+                    restaurantObject.photoReferenceID.append(photoIDObject)
+                    
                 }
             }
+        }
         
         downloadArrayOfPhotos()
     }
