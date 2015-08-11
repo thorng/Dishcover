@@ -14,8 +14,6 @@ import RealmSwift
 class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
-    //var restaurants: Results<Restaurant>!
-    //restaurants = realm.objects(Restaurant)
     
     var paginatedScrollView: PaginatedScrollView?
     
@@ -33,6 +31,7 @@ class InfoViewController: UIViewController {
     var radius: Int? // radius constraint
     
     var queriesCount: Int = 0 // counting the number of requests
+    var isSegueFromRestaurantHistory = false
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -47,14 +46,14 @@ class InfoViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
+        println(restaurant)
+
         placeDetailsURL = restaurant.placeDetailsURL
         if restaurant.photoReferenceID.count == 0 {
-            println("if function called")
             println("placeDetailsURL: \(placeDetailsURL)")
             
             Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
                 if let response = response {
-                    let realm = Realm()
                     self.detailsReceived(response)
                 }
             })
@@ -107,30 +106,33 @@ class InfoViewController: UIViewController {
     
     func detailsReceived(restaurantDetails: NSDictionary) {
         
-        // grab and display photo
-        if let photos = restaurantDetails["photos"] as? [NSDictionary] {
+        NSOperationQueue.mainQueue().addOperationWithBlock() {
             
-            // store all photo_reference ID's in the request
-            for i in 0...photos.count - 1 {
+            // grab and display photo
+            if let photos = restaurantDetails["photos"] as? [NSDictionary] {
                 
-                let photo_dictionary = photos[i]
-                
-                if let photo_ref = photo_dictionary["photo_reference"] as? String {
-
-                    let realm = Realm()
-                    let photoIDObject = PhotoID()
-                    let restaurantObject = Restaurant()
+                // store all photo_reference ID's in the request
+                for i in 0...photos.count - 1 {
                     
-                    photoIDObject.photoReferenceID = photo_ref
+                    let photo_dictionary = photos[i]
                     
-                    // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
-                    restaurantObject.photoReferenceID.append(photoIDObject)
-                    
+                    if let photo_ref = photo_dictionary["photo_reference"] as? String {
+                        
+                        let realm = Realm()
+                        let photoIDObject = PhotoID()
+                        
+                        photoIDObject.photoReferenceID = photo_ref
+                        
+                        // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
+                        realm.write {
+                            self.restaurant.photoReferenceID.append(photoIDObject)
+                        }
+                    }
                 }
             }
+            self.downloadArrayOfPhotos()
+
         }
-        
-        downloadArrayOfPhotos()
     }
     
     func downloadImage(photoReference: String) {
@@ -143,22 +145,9 @@ class InfoViewController: UIViewController {
     
     // adds restaurant name to Realm
     func addObjectToRealm() {
-        
-//        Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
-//            
-//            if let response = response {
-//                
-//                let results = response as NSDictionary
-//                
-//                
-//                }
-//                
-//            }
-//        })
-    
         let realm = Realm()
 
-        let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber])
+        let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber, "rating": self.restaurant.rating])
         
         realm.write {
             //realm.create(Restaurant.self, value: results, update: true)

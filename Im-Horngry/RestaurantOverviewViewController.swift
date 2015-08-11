@@ -20,6 +20,8 @@ class RestaurantOverviewViewController: UIViewController {
     var priceSelected: Int? // price constraint
     var radius: Int? // radius constraint
     
+    var isSegueFromRestaurantHistory = false
+    
     // ==== OUTPUT VARIABLES ===
     var restaurantArray: [Restaurant] = []
     var contentMode: UIViewContentMode?
@@ -301,14 +303,20 @@ class RestaurantOverviewViewController: UIViewController {
         if segue.identifier == "firstRestaurant" {
             var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[0]
+            
+            infoViewController.isSegueFromRestaurantHistory = false
         }
         if segue.identifier == "secondRestaurant" {
             var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[1]
+            
+            infoViewController.isSegueFromRestaurantHistory = false
         }
         if segue.identifier == "thirdRestaurant" {
             var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[2]
+            
+            infoViewController.isSegueFromRestaurantHistory = false
         }
     }
     
