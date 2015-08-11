@@ -46,13 +46,16 @@ class InfoViewController: UIViewController {
         
         placeDetailsURL = restaurant.placeDetailsURL
         
-        if photoReferenceID.count == 0 {
+        if restaurant.photoReferenceID.count == 0 {
+            println("if function called")
+            println("placeDetailsURL: \(placeDetailsURL)")
             Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
                 if let response = response {
                     self.detailsReceived(response)
                 }
             })
         } else {
+            println("else function called")
             downloadArrayOfPhotos()
         }
         

@@ -42,7 +42,9 @@ class RestaurantHistoryViewController: UIViewController {
             if let destination = segue.destinationViewController as? InfoViewController {
                 if let index = mainTableView.indexPathForSelectedRow()?.row {
                     var restaurant = restaurants[index] as Restaurant
-                    destination.placeDetailsURL = restaurant.placeDetailsURL
+                    destination.restaurant = restaurant
+                    //destination.placeDetailsURL = restaurant.placeDetailsURL
+                    
                 }
             }
         }
