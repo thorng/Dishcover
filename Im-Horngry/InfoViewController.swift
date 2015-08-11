@@ -14,6 +14,11 @@ import RealmSwift
 class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
+    //var restaurants: Results<Restaurant>!
+    
+    let realm = Realm()
+    //restaurants = realm.objects(Restaurant)
+    
     var paginatedScrollView: PaginatedScrollView?
     
     var placeDetailsURL: String = ""
@@ -109,12 +114,11 @@ class InfoViewController: UIViewController {
                     
                     if let photo_ref = photo_dictionary["photo_reference"] as? String {
                         
-                        let restaurant = Restaurant()
-                        
                         let photoIDObject = PhotoID()
                         
                         photoIDObject.photoReferenceID = photo_ref
                         
+                        // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
                         restaurant.photoReferenceID.append(photoIDObject)
                     }
                 }
