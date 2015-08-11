@@ -59,6 +59,7 @@ class Network {
             if let json = data, places = json["results"] as? [NSDictionary] {
                 completionHandler(places)
             } else {
+                println("Something happened with Network 'get' request. Maybe bad internet connection")
                 completionHandler(nil)
             }
         }, errorHandler: nil)

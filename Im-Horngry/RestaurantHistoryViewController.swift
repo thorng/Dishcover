@@ -37,9 +37,16 @@ class RestaurantHistoryViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
         if segue.identifier == "fromHistorytoInfo" {
-
+            if let destination = segue.destinationViewController as? InfoViewController {
+                if let index = mainTableView.indexPathForSelectedRow()?.row {
+                    var restaurant = restaurants[index] as Restaurant
+                    destination.placeDetailsURL = restaurant.placeDetailsURL
+                }
+            }
         }
+        
     }
 
 }

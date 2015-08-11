@@ -142,11 +142,7 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]) {
         
-        println("restaurantsReceived function called...")
-        
         // check to see if there are results
-        //if let restaurants = restaurants {
-        println("if statement called")
         if restaurants.count > 0 {
             // Find out how many results and set max results equal to that number
             // ^ update this variable only if it's less than 2, based on the dictionary received
@@ -168,9 +164,7 @@ class RestaurantOverviewViewController: UIViewController {
                     }
                 }
             }
-        }
-        //}
-        else {
+        } else {
             println("else statement called")
             retryRequest()
         }

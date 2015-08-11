@@ -46,6 +46,14 @@ class InfoViewController: UIViewController {
         
         placeDetailsURL = restaurant.placeDetailsURL
         
+        if photoReferenceID.count == 0 {
+            Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
+                if let response = response {
+                    self.detailsReceived(response, index: index, placeDetailsURL: placeDetailsURL)
+                }
+            })
+        }
+        
         restaurantLabel.text = restaurant.name
         ratingLabel.text = "\(restaurant.rating)"
         addressLabel.text = restaurant.address
@@ -102,7 +110,7 @@ class InfoViewController: UIViewController {
     
         let realm = Realm()
 
-        let realmRestaurant = Restaurant(value: ["name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "placeDetailsURL": self.restaurant.placeDetailsURL])
+        let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber])
         
         realm.write {
             //realm.create(Restaurant.self, value: results, update: true)
