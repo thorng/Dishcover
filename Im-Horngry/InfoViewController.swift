@@ -49,25 +49,26 @@ class InfoViewController: UIViewController {
         if photoReferenceID.count == 0 {
             Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
                 if let response = response {
-                    self.detailsReceived(response, index: index, placeDetailsURL: placeDetailsURL)
+                    self.detailsReceived(response)
                 }
             })
+        } else {
+            downloadArrayOfPhotos()
         }
         
         restaurantLabel.text = restaurant.name
         ratingLabel.text = "\(restaurant.rating)"
         addressLabel.text = restaurant.address
         countryLabel.text = restaurant.countrySelected
-        
-        // MARK: Paginated Scroll View Setup
-        
-        // create array of photo reference ID's
-        if restaurant.photoReferenceID.count > 0 {
-            for i in 0...restaurant.photoReferenceID.count - 1 {
-                photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
-            }
-        }
 
+    }
+    
+    func downloadArrayOfPhotos() {
+        
+        for i in 0...restaurant.photoReferenceID.count - 1 {
+            photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
+        }
+        
         var maxImages = photoReferenceID.count - 1
         var imageIndex: NSInteger = 0
         
@@ -76,13 +77,42 @@ class InfoViewController: UIViewController {
             downloadImage(photoReferenceID[index])
         }
         
+        paginatedScrollViewSetup()
+
+    }
+    
+    // MARK: Paginated Scroll View Setup
+    func paginatedScrollViewSetup() {
+        
         paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
         self.view.addSubview(paginatedScrollView!) // add to the
         
-       //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
+        //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
         
         self.paginatedScrollView?.images = restaurantPhotos
-
+        
+    }
+    
+    func detailsReceived(restaurantDetails: NSDictionary) {
+        // grab and display photo
+        if let photos = restaurantDetails["photos"] as? [NSDictionary] {
+            
+            // store all photo_reference ID's in the request
+            for i in 0...photos.count - 1 {
+                
+                let photo_dictionary = photos[i]
+                
+                if let photo_ref = photo_dictionary["photo_reference"] as? String {
+                    
+                    let photoIDObject = PhotoID()
+                    photoIDObject.photoReferenceID = photo_ref
+                    
+                    restaurant.photoReferenceID.append(photoIDObject)
+                }
+            }
+        }
+        
+        downloadArrayOfPhotos()
     }
     
     func downloadImage(photoReference: String) {
