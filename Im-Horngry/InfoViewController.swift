@@ -43,17 +43,17 @@ class InfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-        
-        placeDetailsURL = restaurant.placeDetailsURL
-        
+                
         if restaurant.photoReferenceID.count == 0 {
             println("if function called")
-            println("placeDetailsURL: \(placeDetailsURL)")
-            Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
+            println("placeDetailsURL: \(restaurant.placeDetailsURL)")
+            
+            Network.getGooglePlacesDetails(restaurant.placeDetailsURL, completionHandler: { response -> Void in
                 if let response = response {
                     self.detailsReceived(response)
                 }
             })
+            
         } else {
             println("else function called")
             downloadArrayOfPhotos()
@@ -68,20 +68,23 @@ class InfoViewController: UIViewController {
     
     func downloadArrayOfPhotos() {
         
-        for i in 0...restaurant.photoReferenceID.count - 1 {
-            photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
+        if restaurant.photoReferenceID.count > 0 {
+            
+            for i in 0...restaurant.photoReferenceID.count - 1 {
+                photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
+            }
+            
+            var maxImages = photoReferenceID.count - 1
+            var imageIndex: NSInteger = 0
+            
+            // downloading the photos
+            for index in 0...photoReferenceID.count - 1 {
+                downloadImage(photoReferenceID[index])
+            }
+            
+            paginatedScrollViewSetup()
         }
         
-        var maxImages = photoReferenceID.count - 1
-        var imageIndex: NSInteger = 0
-        
-        // downloading the photos
-        for index in 0...photoReferenceID.count - 1 {
-            downloadImage(photoReferenceID[index])
-        }
-        
-        paginatedScrollViewSetup()
-
     }
     
     // MARK: Paginated Scroll View Setup
@@ -90,30 +93,32 @@ class InfoViewController: UIViewController {
         paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
         self.view.addSubview(paginatedScrollView!) // add to the
         
-        //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
-        
         self.paginatedScrollView?.images = restaurantPhotos
         
     }
     
     func detailsReceived(restaurantDetails: NSDictionary) {
+        
         // grab and display photo
-        if let photos = restaurantDetails["photos"] as? [NSDictionary] {
-            
-            // store all photo_reference ID's in the request
-            for i in 0...photos.count - 1 {
+            if let photos = restaurantDetails["photos"] as? [NSDictionary] {
                 
-                let photo_dictionary = photos[i]
-                
-                if let photo_ref = photo_dictionary["photo_reference"] as? String {
+                // store all photo_reference ID's in the request
+                for i in 0...photos.count - 1 {
                     
-                    let photoIDObject = PhotoID()
-                    photoIDObject.photoReferenceID = photo_ref
+                    let photo_dictionary = photos[i]
                     
-                    restaurant.photoReferenceID.append(photoIDObject)
+                    if let photo_ref = photo_dictionary["photo_reference"] as? String {
+                        
+                        let restaurant = Restaurant()
+                        
+                        let photoIDObject = PhotoID()
+                        
+                        photoIDObject.photoReferenceID = photo_ref
+                        
+                        restaurant.photoReferenceID.append(photoIDObject)
+                    }
                 }
             }
-        }
         
         downloadArrayOfPhotos()
     }
