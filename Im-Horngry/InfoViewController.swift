@@ -15,6 +15,7 @@ class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
     var paginatedScrollView: PaginatedScrollView?
+    
     var placeDetailsURL: String = ""
     
     var address: String = ""
@@ -53,9 +54,12 @@ class InfoViewController: UIViewController {
         // MARK: Paginated Scroll View Setup
         
         // create array of photo reference ID's
-        for i in 0...restaurant.photoReferenceID.count - 1 {
-            photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
+        if restaurant.photoReferenceID.count > 0 {
+            for i in 0...restaurant.photoReferenceID.count - 1 {
+                photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
+            }
         }
+
         var maxImages = photoReferenceID.count - 1
         var imageIndex: NSInteger = 0
         
@@ -83,19 +87,27 @@ class InfoViewController: UIViewController {
     
     // adds restaurant name to Realm
     func addObjectToRealm() {
-        Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
-            
-            if let response = response {
-                
-                let realm = Realm()
-                let results = response as NSDictionary
-                
-                realm.write {
-                    realm.create(Restaurant.self, value: results, update: true)
-                }
-                
-            }
-        })
+        
+//        Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
+//            
+//            if let response = response {
+//                
+//                let results = response as NSDictionary
+//                
+//                
+//                }
+//                
+//            }
+//        })
+    
+        let realm = Realm()
+
+        let realmRestaurant = Restaurant(value: ["name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "placeDetailsURL": self.restaurant.placeDetailsURL])
+        
+        realm.write {
+            //realm.create(Restaurant.self, value: results, update: true)
+            realm.add(realmRestaurant)
+        }
     }
     
     override func didReceiveMemoryWarning() {

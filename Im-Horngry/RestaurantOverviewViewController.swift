@@ -205,8 +205,9 @@ class RestaurantOverviewViewController: UIViewController {
         // store the details URL
         restaurant.placeDetailsURL = placeDetailsURL
         
-        if let randomCountry = randomCountry {
+        if let randomCountry = randomCountry, randomCountryKey = randomCountryKey {
             restaurant.countrySelected = randomCountry
+            restaurant.countrySelectedKey = randomCountryKey
         }
         
         if let name = restaurantDetails["name"] as? String {
@@ -241,11 +242,6 @@ class RestaurantOverviewViewController: UIViewController {
                     restaurant.photoReferenceID.append(photoIDObject)
                 }
             }
-            
-//            println()
-//            println("restaurant.photoReferenceID: \(restaurant.photoReferenceID)")
-//            println()
-            
         }
         
         detailsReceivedCount++

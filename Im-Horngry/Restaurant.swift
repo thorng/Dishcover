@@ -13,6 +13,8 @@ class Restaurant: Object {
     dynamic var placeDetailsURL: String = ""
 
     dynamic var countrySelected: String = ""
+    dynamic var countrySelectedKey: String = ""
+    
     dynamic var name: String = ""
     dynamic var rating: Double = 0
     dynamic var address: String = ""
