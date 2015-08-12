@@ -125,7 +125,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Dishcover" id="U8X-cd-MLK">
+                    <navigationItem key="navigationItem" title="dishcover" id="U8X-cd-MLK">
                         <barButtonItem key="leftBarButtonItem" title="History" id="WCF-HU-hl9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
