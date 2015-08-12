@@ -19,6 +19,7 @@
 		3F84278F1B55B9770075884B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F84278E1B55B9770075884B /* Images.xcassets */; };
 		3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F8427901B55B9770075884B /* LaunchScreen.xib */; };
 		3F84279E1B55B9770075884B /* Im_HorngryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F84279D1B55B9770075884B /* Im_HorngryTests.swift */; };
+		3F92B66B1B7BD90D00697000 /* IMG_0674.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F92B66A1B7BD90D00697000 /* IMG_0674.png */; };
 		3FA25F4E1B7932370043EA2D /* PhotoID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA25F4D1B7932370043EA2D /* PhotoID.swift */; };
 		3FA25F501B79395A0043EA2D /* PaginatedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA25F4F1B79395A0043EA2D /* PaginatedScrollView.swift */; };
 		3FE2EEBA1B712B6F00430EF9 /* RestaurantOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2EEB91B712B6F00430EF9 /* RestaurantOverviewViewController.swift */; };
@@ -55,6 +56,7 @@
 		3F8427971B55B9770075884B /* Im-HorngryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Im-HorngryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F84279C1B55B9770075884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F84279D1B55B9770075884B /* Im_HorngryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Im_HorngryTests.swift; sourceTree = "<group>"; };
+		3F92B66A1B7BD90D00697000 /* IMG_0674.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0674.png; sourceTree = "<group>"; };
 		3FA25F4D1B7932370043EA2D /* PhotoID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoID.swift; sourceTree = "<group>"; };
 		3FA25F4F1B79395A0043EA2D /* PaginatedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedScrollView.swift; sourceTree = "<group>"; };
 		3FE2EEB91B712B6F00430EF9 /* RestaurantOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantOverviewViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		3F8427791B55B9770075884B = {
 			isa = PBXGroup;
 			children = (
+				3F92B66C1B7BD91900697000 /* Images */,
 				3F8427841B55B9770075884B /* Im-Horngry */,
 				3F84279A1B55B9770075884B /* Im-HorngryTests */,
 				3F8427831B55B9770075884B /* Products */,
@@ -165,6 +168,14 @@
 				3F84279C1B55B9770075884B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F92B66C1B7BD91900697000 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3F92B66A1B7BD90D00697000 /* IMG_0674.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F84278D1B55B9770075884B /* Main.storyboard in Resources */,
+				3F92B66B1B7BD90D00697000 /* IMG_0674.png in Resources */,
 				3F02CA931B5F85F200220C40 /* countries_of_the_world.txt in Resources */,
 				3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */,
 				3F84278F1B55B9770075884B /* Images.xcassets in Resources */,

@@ -13,7 +13,6 @@ class Restaurant: Object {
     dynamic var placeDetailsURL: String = ""
 
     dynamic var countrySelected: String = ""
-    dynamic var countrySelectedKey: String = ""
     
     dynamic var name: String = ""
     dynamic var rating: Double = 0
@@ -27,7 +26,7 @@ class Restaurant: Object {
     let photoReferenceID = List<PhotoID>()
     
     override class func primaryKey() -> String {
-        return "countrySelectedKey"
+        return "countrySelected"
     }
     
 }

@@ -125,22 +125,17 @@ class RestaurantOverviewViewController: UIViewController {
         randomCountryKey = Array(countryDict.keys)[index]
         randomCountry = Array(countryDict.values)[index]
         
-//        let realm = Realm()
-//        var realmRestaurants: Results<Restaurant>!
-//        realmRestaurants = Realm().objects(Restaurant)
         
-        // trying to search within realm objects
+        // Check to see if country has been eaten at before!
+        let realm = Realm()
         
-//        if realmRestaurants.valueForKey("randomCountryKey") == randomCountryKey {
-//            println("valueForKey: \(realmRestaurants.valueForKey(randomCountryKey!))")
-//            println("same country called!")
-//        }
+        let predicate = NSPredicate(format: "countrySelected = %@", randomCountryKey!)
+        var results = realm.objects(Restaurant).filter(predicate)
         
-//        if realm.objects(Restaurant).filter("randomCountryKey == \(randomCountryKey)") != nil {
-//            println("SAME COUNTRY CALLED")
-//            println(realm.objects(Restaurant).filter("randomCountryKey == \(randomCountryKey)"))
-//            println()
-//        }
+        if results.count > 0 {
+            println("same country called!")
+            generateRandomCountry()
+        }
         
         
         println(randomCountryKey)
