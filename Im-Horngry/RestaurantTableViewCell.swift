@@ -27,14 +27,6 @@ class RestaurantTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-//        Network.getGooglePlacesDetails(restaurant!.placeDetailsURL, completionHandler: { response -> Void in
-//            if let response = response {
-//                self.detailsReceived(response)
-//            }
-//        })
-
-        // Configure the view for the selected state
     }
     
     func detailsReceived(restaurantDetails: NSDictionary) {

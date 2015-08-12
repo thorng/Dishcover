@@ -37,4 +37,5 @@ class PaginatedScrollView: UIScrollView {
             
         }
     }
+    
 }

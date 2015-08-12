@@ -52,7 +52,7 @@ Costa Rica,Costa Rican
 Côte d'Ivoire,Ivorian
 Croatia,Croatian
 Cuba,Cuban
-Curaçao,Curaçaoan
+Curacao,Curacaoan
 Cyprus,Cypriot
 Czech Republic,Czech
 Denmark,Danish

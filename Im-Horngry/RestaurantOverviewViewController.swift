@@ -48,6 +48,11 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var firstRestaurantRatingLabel: UILabel!
     @IBOutlet weak var secondRestaurantRatingLabel: UILabel!
     @IBOutlet weak var thirdRestaurantRatingLabel: UILabel!
+    
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var secondView: UIView!
+    @IBOutlet weak var thirdView: UIView!
+    
     // =========================
 
     override func viewDidLoad() {
@@ -268,6 +273,22 @@ class RestaurantOverviewViewController: UIViewController {
         var restaurantRatingArray: [UILabel] = [self.firstRestaurantRatingLabel, self.secondRestaurantRatingLabel, self.thirdRestaurantRatingLabel]
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
+
+            // setting the opacity of each image
+            self.firstRestaurantImage.alpha = 0.6
+            self.secondRestaurantImage.alpha = 0.6
+            self.thirdRestaurantImage.alpha = 0.6
+
+            // hide views as needed
+            if self.detailsReceivedCount == 1 {
+                self.secondView.hidden = true
+                self.thirdView.hidden = true
+            }
+            
+            if self.detailsReceivedCount == 2 {
+                self.thirdView.hidden = true
+            }
+            
             for x in 0...self.detailsReceivedCount - 1 {
                 
                 restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
