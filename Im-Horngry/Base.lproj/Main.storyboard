@@ -57,53 +57,6 @@
                                     <segue destination="WLX-Yo-doC" kind="show" identifier="liftOffToRestaurantOverview" id="OrI-vy-og1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-wC-dDb" userLabel="$">
-                                <rect key="frame" x="0.0" y="357" width="200" height="200"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="oCD-wC-dDb" secondAttribute="height" multiplier="100:100" id="McN-Q4-qFg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <state key="normal" title="$">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="firstPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qyF-nr-FWW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-gV-4mN" userLabel="$$">
-                                <rect key="frame" x="200" y="357" width="200" height="200"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <state key="normal" title="$$">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="secondPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="efa-rb-zgL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8c0-qn-ybF" userLabel="$$$">
-                                <rect key="frame" x="400" y="357" width="200" height="200"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="72f-KA-VpA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <state key="normal" title="$$$">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="72f-KA-VpA"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="thirdPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5XY-ZC-zMb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88o-fa-xOU" userLabel="Walk">
                                 <rect key="frame" x="0.0" y="337" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,7 +74,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="firstPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ons-qH-Me3"/>
+                                    <action selector="walkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iWv-Ek-X5g"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tc7-qR-8qA" userLabel="Bike">
@@ -133,7 +86,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="secondPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uAc-jU-EKM"/>
+                                    <action selector="bikeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fjl-ah-qxi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8r-5R-M1H" userLabel="Car">
@@ -153,7 +106,54 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="thirdPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GCr-si-XrL"/>
+                                    <action selector="carButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f2J-Pf-oPR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-wC-dDb" userLabel="$">
+                                <rect key="frame" x="0.0" y="137" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oCD-wC-dDb" secondAttribute="height" multiplier="100:100" id="McN-Q4-qFg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="$">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="firstPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qyF-nr-FWW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-gV-4mN" userLabel="$$">
+                                <rect key="frame" x="200" y="137" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="$$">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="secondPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="efa-rb-zgL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8c0-qn-ybF" userLabel="$$$">
+                                <rect key="frame" x="400" y="137" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="72f-KA-VpA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="$$$">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="72f-KA-VpA"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="thirdPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5XY-ZC-zMb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -188,12 +188,16 @@
                             <constraint firstItem="RiF-gV-4mN" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" id="SyT-jY-7i7"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-2" id="T7c-NI-DSd"/>
                             <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" id="U3J-GM-x88"/>
+                            <constraint firstItem="88o-fa-xOU" firstAttribute="top" secondItem="oCD-wC-dDb" secondAttribute="bottom" id="V7p-Mt-qIm"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="X60-D0-L60"/>
+                            <constraint firstItem="T8r-5R-M1H" firstAttribute="top" secondItem="8c0-qn-ybF" secondAttribute="bottom" id="YEJ-gr-law"/>
                             <constraint firstItem="oCD-wC-dDb" firstAttribute="height" secondItem="RiF-gV-4mN" secondAttribute="height" id="YPa-0p-kcl"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="width" id="alG-Sm-fUU"/>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="top" secondItem="RiF-gV-4mN" secondAttribute="bottom" id="b4h-LA-w9N"/>
                             <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-100" id="cOo-So-duf"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dRK-ZU-0lC"/>
                             <constraint firstItem="Tc7-qR-8qA" firstAttribute="width" secondItem="88o-fa-xOU" secondAttribute="width" id="eBh-F0-LI3"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-180" id="faN-Y9-FjH"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="8c0-qn-ybF" secondAttribute="bottom" constant="200" id="foX-Hq-vpj"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="oCD-wC-dDb" secondAttribute="height" id="gXD-7C-s0X"/>
                             <constraint firstItem="Tc7-qR-8qA" firstAttribute="width" secondItem="88o-fa-xOU" secondAttribute="height" multiplier="1:1" id="jXW-ei-cQc"/>
@@ -206,6 +210,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="4" id="pT4-Bp-hXk"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pXV-yz-aJA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="8" id="r98-rA-80p"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-180" id="rNa-HH-wg6"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rg7-Nw-8bg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" id="vRg-tW-BJm"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="RiF-gV-4mN" secondAttribute="height" id="wXn-Os-4ZY"/>
@@ -218,12 +223,13 @@
                                 <exclude reference="pT4-Bp-hXk"/>
                                 <exclude reference="rg7-Nw-8bg"/>
                                 <exclude reference="xcy-wF-Di4"/>
+                                <exclude reference="U3J-GM-x88"/>
                                 <exclude reference="cOo-So-duf"/>
+                                <exclude reference="faN-Y9-FjH"/>
                                 <exclude reference="l5b-3d-KGB"/>
-                                <exclude reference="IWd-vR-86S"/>
-                                <exclude reference="NYe-rM-qnQ"/>
-                                <exclude reference="dRK-ZU-0lC"/>
-                                <exclude reference="foX-Hq-vpj"/>
+                                <exclude reference="rNa-HH-wg6"/>
+                                <exclude reference="SyT-jY-7i7"/>
+                                <exclude reference="24b-XU-da2"/>
                                 <exclude reference="9hS-Sf-XY7"/>
                                 <exclude reference="BDg-DG-osM"/>
                                 <exclude reference="E6M-op-fBQ"/>
@@ -231,6 +237,10 @@
                                 <exclude reference="alG-Sm-fUU"/>
                                 <exclude reference="gXD-7C-s0X"/>
                                 <exclude reference="wXn-Os-4ZY"/>
+                                <exclude reference="IWd-vR-86S"/>
+                                <exclude reference="NYe-rM-qnQ"/>
+                                <exclude reference="dRK-ZU-0lC"/>
+                                <exclude reference="foX-Hq-vpj"/>
                                 <exclude reference="GpB-YR-W5O"/>
                                 <exclude reference="SpW-94-I6G"/>
                             </mask>
@@ -245,9 +255,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bikeButton" destination="Tc7-qR-8qA" id="KHI-0E-ca5"/>
+                        <outlet property="carButton" destination="T8r-5R-M1H" id="Jvx-Vp-Lt1"/>
                         <outlet property="firstPrice" destination="oCD-wC-dDb" id="RnC-yN-Pby"/>
                         <outlet property="secondPrice" destination="RiF-gV-4mN" id="nMf-u1-cGC"/>
                         <outlet property="thirdPrice" destination="8c0-qn-ybF" id="eoT-Vm-1rT"/>
+                        <outlet property="walkButton" destination="88o-fa-xOU" id="YiS-zx-lap"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
