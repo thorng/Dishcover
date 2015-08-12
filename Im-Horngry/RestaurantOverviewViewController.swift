@@ -251,6 +251,18 @@ class RestaurantOverviewViewController: UIViewController {
             restaurant.phoneNumber = phoneNumber
         }
         
+        // grab latitude and longitude
+        if let geometry = restaurantDetails["geometry"] as? NSDictionary {
+            if let location = geometry["location"] as? NSDictionary {
+                if let latitude = location["lat"] as? Double {
+                    restaurant.destLatitude = latitude
+                }
+                if let longitude = location["long"] as? Double {
+                    restaurant.destLongitude = longitude
+                }
+            }
+        }
+        
         // grab and display photo
         if let photos = restaurantDetails["photos"] as? [NSDictionary] {
             
