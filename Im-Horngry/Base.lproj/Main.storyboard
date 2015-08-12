@@ -427,10 +427,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="104" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fsT-wB-93T">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="104" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fsT-wB-93T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -440,7 +441,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euV-jr-15z" userLabel="Restaurant Label">
-                                                    <rect key="frame" x="16" y="12" width="584" height="36"/>
+                                                    <rect key="frame" x="16" y="12" width="568" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -461,10 +462,18 @@
                                                 <constraint firstItem="euV-jr-15z" firstAttribute="leading" secondItem="gqv-hF-c5b" secondAttribute="leadingMargin" constant="8" id="AdZ-98-pMk"/>
                                                 <constraint firstItem="P19-Vz-tQS" firstAttribute="leading" secondItem="euV-jr-15z" secondAttribute="leading" id="VWd-6C-4JZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="P19-Vz-tQS" secondAttribute="bottom" constant="18.5" id="geK-67-eFH"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="euV-jr-15z" secondAttribute="trailing" id="oTz-lE-vtH"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="euV-jr-15z" secondAttribute="trailing" constant="8" id="paG-vP-fu1"/>
                                                 <constraint firstItem="euV-jr-15z" firstAttribute="top" secondItem="gqv-hF-c5b" secondAttribute="topMargin" constant="4" id="qfa-74-a1u"/>
                                                 <constraint firstItem="P19-Vz-tQS" firstAttribute="top" secondItem="euV-jr-15z" secondAttribute="bottom" constant="8" id="uhx-iv-nuh"/>
                                                 <constraint firstAttribute="trailing" secondItem="euV-jr-15z" secondAttribute="trailing" id="vE4-oV-9cg"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="oTz-lE-vtH"/>
+                                                    <exclude reference="vE4-oV-9cg"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="eatenCountryLabel" destination="P19-Vz-tQS" id="QNf-Cu-UR9"/>
@@ -667,7 +676,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xSY-9w-5Ym"/>
+        <segue reference="5g2-vr-XSJ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.27058823529999998" green="0.40000000000000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>

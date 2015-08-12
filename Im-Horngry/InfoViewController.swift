@@ -47,10 +47,12 @@ class InfoViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
+        // hide eaten button if accessing from History
         if isSegueFromRestaurantHistory == true {
             eatenButton.hidden = true
         }
         
+        // if accessing from history, get photos and display. else, just display the photos
         placeDetailsURL = restaurant.placeDetailsURL
         if restaurant.photoReferenceID.count == 0 {
             println("placeDetailsURL: \(placeDetailsURL)")
@@ -65,8 +67,6 @@ class InfoViewController: UIViewController {
             println("else function called")
             downloadArrayOfPhotos()
         }
-        
-        let realm = Realm()
         
         restaurantLabel.text = restaurant.name
         ratingLabel.text = "\(restaurant.rating)"
@@ -100,8 +100,9 @@ class InfoViewController: UIViewController {
     // MARK: Paginated Scroll View Setup
     func paginatedScrollViewSetup() {
         
-        paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
-        self.view.addSubview(paginatedScrollView!) // add to the
+        paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, -5, self.view.frame.size.width, 330))
+        
+        self.view.addSubview(paginatedScrollView!) // add to the subview
         
         self.paginatedScrollView?.images = restaurantPhotos
         
