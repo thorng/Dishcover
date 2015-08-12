@@ -124,9 +124,9 @@ class RestaurantOverviewViewController: UIViewController {
         randomCountryKey = Array(countryDict.keys)[index]
         randomCountry = Array(countryDict.values)[index]
         
-        let realm = Realm()
-        var realmRestaurants: Results<Restaurant>!
-        realmRestaurants = Realm().objects(Restaurant)
+//        let realm = Realm()
+//        var realmRestaurants: Results<Restaurant>!
+//        realmRestaurants = Realm().objects(Restaurant)
         
         // trying to search within realm objects
         

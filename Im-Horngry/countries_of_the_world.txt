@@ -186,7 +186,7 @@ Saint-Pierre and Miquelon,Saint-Pierrais
 St. Vincent and the Grenadines,St Vincentian
 Samoa,Samoan
 San Marino,Sammarinese
-São Tomé and Príncipe,São Toméan
+Sao Tome and Principe,Sao Tomean
 Saudi Arabia,Saudi Arabian
 Scotland,Scottish
 Senegal,Senegalese

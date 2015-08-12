@@ -12,6 +12,7 @@ import RealmSwift
 class RestaurantHistoryViewController: UIViewController {
     
     @IBOutlet var mainTableView: UITableView!
+    @IBOutlet weak var countriesVisitedNumberLabel: UILabel!
     
     var isSegueFromRestaurantHistory = true
     
@@ -23,6 +24,9 @@ class RestaurantHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        countriesVisitedNumberLabel.text = "\(Int(restaurants?.count ?? 0))"
+        println(Int(restaurants?.count ?? 0))
         
         // Tell the table view where its data source is
         mainTableView.dataSource = self
