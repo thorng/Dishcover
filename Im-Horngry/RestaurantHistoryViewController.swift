@@ -13,6 +13,8 @@ class RestaurantHistoryViewController: UIViewController {
     
     @IBOutlet var mainTableView: UITableView!
     
+    var isSegueFromRestaurantHistory = true
+    
     var restaurants: Results<Restaurant>! {
         didSet {
             mainTableView?.reloadData()
@@ -26,8 +28,6 @@ class RestaurantHistoryViewController: UIViewController {
         mainTableView.dataSource = self
         
         restaurants = Realm().objects(Restaurant)
-
-        // Do any additional setup after loading the view.
         
     }
 
@@ -42,10 +42,16 @@ class RestaurantHistoryViewController: UIViewController {
             if let destination = segue.destinationViewController as? InfoViewController {
                 if let index = mainTableView.indexPathForSelectedRow()?.row {
                     var restaurant = restaurants[index] as Restaurant
-                    destination.placeDetailsURL = restaurant.placeDetailsURL
+                    destination.restaurant = restaurant
+                    
+                    destination.isSegueFromRestaurantHistory = true
                 }
             }
         }
+        
+    }
+    
+    @IBAction func unwindToHistory(segue: UIStoryboardSegue, sender: AnyObject!) {
         
     }
 

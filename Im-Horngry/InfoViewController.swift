@@ -14,6 +14,7 @@ import RealmSwift
 class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
+    
     var paginatedScrollView: PaginatedScrollView?
     
     var placeDetailsURL: String = ""
@@ -30,11 +31,13 @@ class InfoViewController: UIViewController {
     var radius: Int? // radius constraint
     
     var queriesCount: Int = 0 // counting the number of requests
+    var isSegueFromRestaurantHistory = false
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
+    @IBOutlet weak var eatenButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,45 +47,99 @@ class InfoViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        placeDetailsURL = restaurant.placeDetailsURL
+        if isSegueFromRestaurantHistory == true {
+            eatenButton.hidden = true
+        }
         
-        if photoReferenceID.count == 0 {
+        placeDetailsURL = restaurant.placeDetailsURL
+        if restaurant.photoReferenceID.count == 0 {
+            println("placeDetailsURL: \(placeDetailsURL)")
+            
             Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
                 if let response = response {
-                    self.detailsReceived(response, index: index, placeDetailsURL: placeDetailsURL)
+                    self.detailsReceived(response)
                 }
             })
+            
+        } else {
+            println("else function called")
+            downloadArrayOfPhotos()
         }
+        
+        let realm = Realm()
         
         restaurantLabel.text = restaurant.name
         ratingLabel.text = "\(restaurant.rating)"
         addressLabel.text = restaurant.address
         countryLabel.text = restaurant.countrySelected
+
+    }
+    
+    func downloadArrayOfPhotos() {
         
-        // MARK: Paginated Scroll View Setup
-        
-        // create array of photo reference ID's
         if restaurant.photoReferenceID.count > 0 {
+            
             for i in 0...restaurant.photoReferenceID.count - 1 {
                 photoReferenceID.append(restaurant.photoReferenceID[i].photoReferenceID)
             }
+            
+            var maxImages = photoReferenceID.count - 1
+            var imageIndex: NSInteger = 0
+            
+            // downloading the photos
+            for index in 0...photoReferenceID.count - 1 {
+                let realm = Realm()
+                downloadImage(photoReferenceID[index])
+            }
+            
+            paginatedScrollViewSetup()
         }
-
-        var maxImages = photoReferenceID.count - 1
-        var imageIndex: NSInteger = 0
         
-        // downloading the photos
-        for index in 0...photoReferenceID.count - 1 {
-            downloadImage(photoReferenceID[index])
-        }
+    }
+    
+    // MARK: Paginated Scroll View Setup
+    func paginatedScrollViewSetup() {
         
         paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, 50, self.view.frame.size.width, 330))
         self.view.addSubview(paginatedScrollView!) // add to the
         
-       //let restaurantPhotos: [UIImage] = [ (restaurantPhotos!.image.value)!,  (post!.image2.value)!, (post!.image3.value)!]
-        
         self.paginatedScrollView?.images = restaurantPhotos
+        
+    }
+    
+    func detailsReceived(restaurantDetails: NSDictionary) {
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock() {
+            
+            // grab and display photo
+            if let photos = restaurantDetails["photos"] as? [NSDictionary] {
+                
+                // store all photo_reference ID's in the request
+                for i in 0...photos.count - 1 {
+                    
+                    let photo_dictionary = photos[i]
+                    
+                    if let photo_ref = photo_dictionary["photo_reference"] as? String {
+                        
+                        let realm = Realm()
+                        let photoIDObject = PhotoID()
+                        
+                        photoIDObject.photoReferenceID = photo_ref
+                        
+                        // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
+                        
+                        // Create array of photoReferenceID's
+                        realm.write {
+                            self.restaurant.photoReferenceID.append(photoIDObject)
+                        }
+                    }
+                }
+            }
+            
+            // Download photos using above array of photoReferenceID's
+            self.downloadArrayOfPhotos()
 
+        }
     }
     
     func downloadImage(photoReference: String) {
@@ -95,22 +152,9 @@ class InfoViewController: UIViewController {
     
     // adds restaurant name to Realm
     func addObjectToRealm() {
-        
-//        Network.getGooglePlacesDetails(self.placeDetailsURL, completionHandler: { response -> Void in
-//            
-//            if let response = response {
-//                
-//                let results = response as NSDictionary
-//                
-//                
-//                }
-//                
-//            }
-//        })
-    
         let realm = Realm()
 
-        let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber])
+        let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber, "rating": self.restaurant.rating])
         
         realm.write {
             //realm.create(Restaurant.self, value: results, update: true)
@@ -127,9 +171,15 @@ class InfoViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "exitFromInfoController" {
             self.addObjectToRealm()
         }
+        
+        if segue.identifier == "exitToHistory" {
+            
+        }
+        
     }
 
 }
