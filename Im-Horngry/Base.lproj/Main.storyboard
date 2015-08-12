@@ -272,7 +272,7 @@
             </objects>
             <point key="canvasLocation" x="1092" y="242"/>
         </scene>
-        <!--Restaurant Overview View Controller-->
+        <!--Title-->
         <scene sceneID="0o8-pp-TCL">
             <objects>
                 <viewController id="WLX-Yo-doC" customClass="RestaurantOverviewViewController" customModule="Im_Horngry" customModuleProvider="target" sceneMemberID="viewController">
@@ -523,7 +523,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="bsK-mu-MAx">
+                        <barButtonItem key="backBarButtonItem" title=" " id="GKt-dq-lsn"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="countrySelectedTitle" destination="bsK-mu-MAx" id="kgP-h7-ECo"/>
                         <outlet property="firstRestaurantButton" destination="1PQ-ue-tya" id="vKJ-T5-oRs"/>
                         <outlet property="firstRestaurantImage" destination="cSw-yN-get" id="QlL-28-PgM"/>
                         <outlet property="firstRestaurantNameLabel" destination="HZg-ap-dcN" id="pGv-kZ-4ce"/>
@@ -829,7 +833,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5g2-vr-XSJ"/>
+        <segue reference="xSY-9w-5Ym"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.27058823529999998" green="0.40000000000000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>

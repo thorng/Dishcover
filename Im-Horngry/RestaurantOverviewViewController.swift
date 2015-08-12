@@ -55,6 +55,7 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var thirdView: UIView!
     
+    @IBOutlet weak var countrySelectedTitle: UINavigationItem!
     // =========================
 
     override func viewDidLoad() {
@@ -143,6 +144,7 @@ class RestaurantOverviewViewController: UIViewController {
         
         
         println(randomCountryKey)
+        countrySelectedTitle.title = randomCountryKey
         
     }
     
