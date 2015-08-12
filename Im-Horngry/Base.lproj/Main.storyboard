@@ -779,10 +779,19 @@
                         </variation>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="q4T-nt-PlK">
+                        <barButtonItem key="rightBarButtonItem" title="Directions" id="2pa-qU-f20">
+                            <color key="tintColor" red="0.17396843765222239" green="0.89866565470885318" blue="0.24610464221558623" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="startRouting:" destination="3zA-Xo-J73" id="5eL-o8-hrJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addressLabel" destination="h3t-pP-K8n" id="ceD-9W-ZSF"/>
                         <outlet property="countryLabel" destination="nTe-Ht-4RK" id="ojN-pR-mKT"/>
+                        <outlet property="directionsButton" destination="2pa-qU-f20" id="aYO-L0-Lhw"/>
                         <outlet property="eatenButton" destination="KZ6-8j-jb6" id="hGU-y9-4Rq"/>
                         <outlet property="ratingLabel" destination="08w-BN-6S5" id="Kte-0f-uD2"/>
                         <outlet property="restaurantLabel" destination="3XV-pR-Ymt" id="BR1-KK-LdJ"/>

@@ -257,7 +257,7 @@ class RestaurantOverviewViewController: UIViewController {
                 if let latitude = location["lat"] as? Double {
                     restaurant.destLatitude = latitude
                 }
-                if let longitude = location["long"] as? Double {
+                if let longitude = location["lng"] as? Double {
                     restaurant.destLongitude = longitude
                 }
             }

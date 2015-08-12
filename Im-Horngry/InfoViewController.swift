@@ -42,6 +42,8 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var eatenButton: UIButton!
     
+    @IBOutlet weak var directionsButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -169,6 +171,9 @@ class InfoViewController: UIViewController {
         
         var latitude = restaurant.destLatitude
         var longitude = restaurant.destLongitude
+        
+        println(latitude)
+        println(longitude)
         
         if shouldUseGoogleMaps == true {
             let url = NSURL(string: "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)")
