@@ -254,6 +254,7 @@ class RestaurantOverviewViewController: UIViewController {
             if let data = NSData(contentsOfURL: url) {
                 restaurantImageArray[index].contentMode = UIViewContentMode.ScaleAspectFill
                 restaurantImageArray[index].image = UIImage(data: data)
+                restaurantImageArray[index].clipsToBounds = true
             }
         }
     }

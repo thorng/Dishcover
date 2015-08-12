@@ -37,6 +37,7 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
+    @IBOutlet weak var eatenButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +47,10 @@ class InfoViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        println(restaurant)
-
+        if isSegueFromRestaurantHistory == true {
+            eatenButton.hidden = true
+        }
+        
         placeDetailsURL = restaurant.placeDetailsURL
         if restaurant.photoReferenceID.count == 0 {
             println("placeDetailsURL: \(placeDetailsURL)")
@@ -124,12 +127,16 @@ class InfoViewController: UIViewController {
                         photoIDObject.photoReferenceID = photo_ref
                         
                         // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
+                        
+                        // Create array of photoReferenceID's
                         realm.write {
                             self.restaurant.photoReferenceID.append(photoIDObject)
                         }
                     }
                 }
             }
+            
+            // Download photos using above array of photoReferenceID's
             self.downloadArrayOfPhotos()
 
         }
@@ -164,9 +171,15 @@ class InfoViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "exitFromInfoController" {
             self.addObjectToRealm()
         }
+        
+        if segue.identifier == "exitToHistory" {
+            
+        }
+        
     }
 
 }

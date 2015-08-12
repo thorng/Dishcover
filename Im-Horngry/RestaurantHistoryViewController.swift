@@ -50,6 +50,10 @@ class RestaurantHistoryViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func unwindToHistory(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+    }
 
 }
 
