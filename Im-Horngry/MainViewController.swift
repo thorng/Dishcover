@@ -11,8 +11,8 @@ import CoreLocation
 
 var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
 var randomCountry: String = "" // Random Value from countryDict
-var priceSelected = 1 // price constraint
-var radius = 800 // radius constraint
+var priceSelected = 0 // price constraint
+var radius = 0 // radius constraint
 
 var countryDict = [String: String]() // Country & Adjectival dictionary
 
@@ -25,6 +25,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var walkButton: UIButton!
     @IBOutlet weak var bikeButton: UIButton!
     @IBOutlet weak var carButton: UIButton!
+    
+    @IBOutlet weak var takeOffButton: UIButton!
     
     let locManager = CLLocationManager() // Location Variable
     
@@ -83,6 +85,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // disable Take Off button if no buttons are pressed
+        if radius == 0 || priceSelected == 0 {
+            takeOffButton.titleLabel?.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+            takeOffButton.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
+            takeOffButton.enabled = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,6 +143,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         secondPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         secondPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        
     }
     
     @IBAction func walkButton(sender: UIButton) {
@@ -148,6 +158,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         carButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         carButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
         
+        takeOffButton.enabled = true
+        takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
     }
     
     @IBAction func bikeButton(sender: UIButton) {
@@ -161,6 +174,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         carButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         carButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        
+        takeOffButton.enabled = true
+        takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
     }
     
     @IBAction func carButton(sender: UIButton) {
@@ -174,6 +191,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         bikeButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         bikeButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        
+        takeOffButton.enabled = true
+        takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
     }
     
     @IBAction func goButton(sender: UIButton) {

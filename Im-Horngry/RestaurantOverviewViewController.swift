@@ -129,7 +129,7 @@ class RestaurantOverviewViewController: UIViewController {
         // Check to see if country has been eaten at before!
         let realm = Realm()
         
-        let predicate = NSPredicate(format: "countrySelected = %@", randomCountryKey!)
+        let predicate = NSPredicate(format: "countrySelectedKey = %@", randomCountryKey!)
         var results = realm.objects(Restaurant).filter(predicate)
         
         if results.count > 0 {
@@ -139,8 +139,6 @@ class RestaurantOverviewViewController: UIViewController {
         
         
         println(randomCountryKey)
-        countrySelectedTitle.title = randomCountryKey
-        
     }
     
     func startRestaurantRequest() {
@@ -170,6 +168,8 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]) {
         
+        countrySelectedTitle.title = randomCountryKey
+
         // check to see if there are results
         if restaurants.count > 0 {
             // Find out how many results and set max results equal to that number
