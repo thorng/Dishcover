@@ -38,6 +38,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locManager.distanceFilter = kCLDistanceFilterNone
         locManager.startUpdatingLocation() // calls locationManager delegate
+        
+        firstPrice.layer.borderWidth = 1
+        secondPrice.layer.borderWidth = 1
+        thirdPrice.layer.borderWidth = 1
+        
+        walkButton.layer.borderWidth = 1
+        bikeButton.layer.borderWidth = 1
+        carButton.layer.borderWidth = 1
+        
+        firstPrice.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
+        secondPrice.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
+        thirdPrice.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
+
+        walkButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
+        bikeButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
+        carButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
+        
+        firstPrice.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:1.0).CGColor
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -71,17 +90,23 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: UIButton Customization
+    
     @IBAction func firstPrice(sender: UIButton) {
         priceSelected = 1
         
         sender.backgroundColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
         sender.setTitleColor(UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0), forState: UIControlState.Normal)
         
+        sender.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:1.0).CGColor
+        sender.layer.shadowRadius = 10
+        
         secondPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         secondPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
         
         thirdPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         thirdPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        
     }
     
     @IBAction func secondPrice(sender: UIButton) {

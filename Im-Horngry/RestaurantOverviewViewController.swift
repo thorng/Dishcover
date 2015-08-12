@@ -8,12 +8,14 @@
 
 import UIKit
 import MapKit
+import RealmSwift
 
 class RestaurantOverviewViewController: UIViewController {
     
     // =========================
     
     // === INPUT VARIABLES ===
+    
     var randomCountryKey: String? // random country key
     var randomCountry: String? // random country adjectival
     var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
@@ -71,7 +73,10 @@ class RestaurantOverviewViewController: UIViewController {
         
         // Start the restaurant request
         startRestaurantRequest()
-        
+    }
+    
+    func goBack() {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,15 +116,34 @@ class RestaurantOverviewViewController: UIViewController {
     
     // Randomly generate dict value
     func generateRandomCountry () {
-        
+        //NSOperationQueue.mainQueue().addOperationWithBlock() {
+
         println("Generating random country...")
         
         let index: Int = Int(arc4random_uniform(UInt32(countryDict.count)))
         randomCountryKey = Array(countryDict.keys)[index]
         randomCountry = Array(countryDict.values)[index]
         
+        let realm = Realm()
+        var realmRestaurants: Results<Restaurant>!
+        realmRestaurants = Realm().objects(Restaurant)
+        
+        // trying to search within realm objects
+        
+//        if realmRestaurants.valueForKey("randomCountryKey") == randomCountryKey {
+//            println("valueForKey: \(realmRestaurants.valueForKey(randomCountryKey!))")
+//            println("same country called!")
+//        }
+        
+//        if realm.objects(Restaurant).filter("randomCountryKey == \(randomCountryKey)") != nil {
+//            println("SAME COUNTRY CALLED")
+//            println(realm.objects(Restaurant).filter("randomCountryKey == \(randomCountryKey)"))
+//            println()
+//        }
+        
+        
         println(randomCountryKey)
-        println(randomCountry)
+        
     }
     
     func startRestaurantRequest() {

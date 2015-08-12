@@ -127,8 +127,6 @@ class InfoViewController: UIViewController {
                         
                         photoIDObject.photoReferenceID = photo_ref
                         
-                        // ERROR: Terminating app due to uncaught exception 'RLMException', reason: 'Realm accessed from incorrect thread'
-                        
                         // Create array of photoReferenceID's
                         realm.write {
                             self.restaurant.photoReferenceID.append(photoIDObject)
@@ -158,7 +156,6 @@ class InfoViewController: UIViewController {
         let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber, "rating": self.restaurant.rating])
         
         realm.write {
-            //realm.create(Restaurant.self, value: results, update: true)
             realm.add(realmRestaurant)
         }
     }
@@ -175,10 +172,6 @@ class InfoViewController: UIViewController {
         
         if segue.identifier == "exitFromInfoController" {
             self.addObjectToRealm()
-        }
-        
-        if segue.identifier == "exitToHistory" {
-            
         }
         
     }

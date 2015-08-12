@@ -30,7 +30,7 @@ Brazil,Brazilian
 British Virgin Islands,British Virgin Island
 Brunei,Bruneian
 Bulgaria,Bulgarian
-Burkina Fasoa,Burkinabè
+Burkina Fasoa,Burkinabe
 Burmab,Burmese
 Burundi,Burundian
 Cambodia,Cambodian
