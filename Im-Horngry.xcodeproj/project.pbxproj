@@ -219,6 +219,7 @@
 				TargetAttributes = {
 					3F8427811B55B9770075884B = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = GHPL4SN6Q2;
 					};
 					3F8427961B55B9770075884B = {
 						CreatedOnToolsVersion = 6.4;
@@ -457,6 +458,8 @@
 			baseConfigurationReference = 3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -464,6 +467,7 @@
 				INFOPLIST_FILE = "Im-Horngry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -472,6 +476,8 @@
 			baseConfigurationReference = 34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -479,6 +485,7 @@
 				INFOPLIST_FILE = "Im-Horngry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -141,7 +141,7 @@ Mayotte,Mahoran
 Mexico,Mexican
 Micronesia,Micronesian
 Moldova,Moldovan
-Monaco,Monégasque
+Monaco,Monegasque
 Mongolia,Mongolian
 Montenegro,Montenegrin
 Montserrat,Montserratian
@@ -175,7 +175,7 @@ Portugal,Portuguese
 Puerto Rico,Puerto Rican
 Qatar,Qatari
 Republic of Ireland,Irish
-Réunion,Réunionese
+Reunion,Reunionese
 Romania,Romanian
 Russia,Russian
 Rwanda,Rwandan

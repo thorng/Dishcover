@@ -17,9 +17,12 @@ class Restaurant: Object {
     
     dynamic var name: String = ""
     dynamic var rating: Double = 0
-    dynamic var address: String = ""
     dynamic var detailsReferenceID: String = ""
     dynamic var phoneNumber: String = ""
+    
+    dynamic var address: String = ""
+    dynamic var destLatitude: Double = 0
+    dynamic var destLongitude: Double = 0
     
     let photoReferenceID = List<PhotoID>()
     

@@ -33,14 +33,21 @@ class InfoViewController: UIViewController {
     var queriesCount: Int = 0 // counting the number of requests
     var isSegueFromRestaurantHistory = false
     
+    //google maps
+    var shouldUseGoogleMaps: Bool!
+    
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var eatenButton: UIButton!
     
+    @IBOutlet weak var directionsButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shouldUseGoogleMaps = (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -160,6 +167,27 @@ class InfoViewController: UIViewController {
         }
     }
     
+    @IBAction func startRouting(sender: AnyObject) {
+        
+        var latitude = restaurant.destLatitude
+        var longitude = restaurant.destLongitude
+        
+        println(latitude)
+        println(longitude)
+        
+        if shouldUseGoogleMaps == true {
+            let url = NSURL(string: "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)")
+            UIApplication.sharedApplication().openURL(url!)
+            //Mixpanel.sharedInstance().track("Used Routing", properties: ["Type" : "Google with location set"])
+        }
+        else {
+            let url = NSURL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(latitude),\(longitude)")
+            UIApplication.sharedApplication().openURL(url!)
+            //Mixpanel.sharedInstance().track("Used Routing", properties: ["Type" : "Apple with location set"])
+        }
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

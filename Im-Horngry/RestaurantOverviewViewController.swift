@@ -55,6 +55,7 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var thirdView: UIView!
     
+    @IBOutlet weak var countrySelectedTitle: UINavigationItem!
     // =========================
 
     override func viewDidLoad() {
@@ -143,6 +144,7 @@ class RestaurantOverviewViewController: UIViewController {
         
         
         println(randomCountryKey)
+        countrySelectedTitle.title = randomCountryKey
         
     }
     
@@ -249,6 +251,18 @@ class RestaurantOverviewViewController: UIViewController {
         
         if let phoneNumber = restaurantDetails["formatted_phone_number"] as? String {
             restaurant.phoneNumber = phoneNumber
+        }
+        
+        // grab latitude and longitude
+        if let geometry = restaurantDetails["geometry"] as? NSDictionary {
+            if let location = geometry["location"] as? NSDictionary {
+                if let latitude = location["lat"] as? Double {
+                    restaurant.destLatitude = latitude
+                }
+                if let longitude = location["lng"] as? Double {
+                    restaurant.destLongitude = longitude
+                }
+            }
         }
         
         // grab and display photo
