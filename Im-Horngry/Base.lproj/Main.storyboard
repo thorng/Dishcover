@@ -23,9 +23,10 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67d-a8-Gzp">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" red="0.15294117647058825" green="0.15294117647058825" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your budget and travel constraints." lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bo9-c2-6WU">
-                                <rect key="frame" x="16" y="90" width="564" height="267"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your budget and travel preferences" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bo9-c2-6WU">
+                                <rect key="frame" x="16" y="90" width="560" height="267"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="267" id="Cob-OD-rzX"/>
                                 </constraints>
@@ -33,32 +34,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="E7n-7R-WAf">
-                                <rect key="frame" x="0.0" y="422" width="600" height="29"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                <segments>
-                                    <segment title="$"/>
-                                    <segment title="$$"/>
-                                    <segment title="$$$"/>
-                                </segments>
-                                <color key="tintColor" red="0.1137254902" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="price:" destination="BYZ-38-t0r" eventType="valueChanged" id="dsq-qP-udq"/>
-                                    <action selector="radiusConstraint:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bjv-eI-qwF"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ExU-e2-2a2">
-                                <rect key="frame" x="0.0" y="458" width="600" height="29"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                <segments>
-                                    <segment title="Feet"/>
-                                    <segment title="Bike"/>
-                                    <segment title="Car"/>
-                                </segments>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrE-02-RLG">
-                                <rect key="frame" x="0.0" y="526" width="600" height="74"/>
+                                <rect key="frame" x="0.0" y="535" width="600" height="65"/>
                                 <color key="backgroundColor" red="0.10588235294117647" green="0.72549019607843135" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="129" id="9BH-rE-rFJ"/>
@@ -80,46 +57,180 @@
                                     <segue destination="WLX-Yo-doC" kind="show" identifier="liftOffToRestaurantOverview" id="OrI-vy-og1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-wC-dDb" userLabel="$">
+                                <rect key="frame" x="0.0" y="357" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oCD-wC-dDb" secondAttribute="height" multiplier="100:100" id="McN-Q4-qFg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="$">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="firstPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qyF-nr-FWW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-gV-4mN" userLabel="$$">
+                                <rect key="frame" x="200" y="357" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="$$">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="secondPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="efa-rb-zgL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8c0-qn-ybF" userLabel="$$$">
+                                <rect key="frame" x="400" y="357" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="72f-KA-VpA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="$$$">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="72f-KA-VpA"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="thirdPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5XY-ZC-zMb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88o-fa-xOU" userLabel="Walk">
+                                <rect key="frame" x="0.0" y="337" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="88o-fa-xOU" secondAttribute="height" multiplier="100:100" id="Ulj-dn-Xl8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="Walk">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ulj-dn-Xl8"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="firstPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ons-qH-Me3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tc7-qR-8qA" userLabel="Bike">
+                                <rect key="frame" x="200" y="337" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="Bike">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="secondPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uAc-jU-EKM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8r-5R-M1H" userLabel="Car">
+                                <rect key="frame" x="400" y="337" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tl1-Wt-SyW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <state key="normal" title="Car">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tl1-Wt-SyW"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="thirdPrice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GCr-si-XrL"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.28627450980392155" green="0.46666666666666667" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.28627450980392155" green="0.46666666666666667" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.28627450980000002" green="0.46666666670000001" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="width" secondItem="T8r-5R-M1H" secondAttribute="width" id="056-tk-03h"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" id="24b-XU-da2"/>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="height" secondItem="T8r-5R-M1H" secondAttribute="height" id="3hY-hD-vJz"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="Tc7-qR-8qA" secondAttribute="bottom" constant="-2" id="51I-ow-EBU"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="5kY-Vi-L2J"/>
                             <constraint firstAttribute="trailing" secondItem="OrE-02-RLG" secondAttribute="trailing" id="6Ka-TW-25K"/>
+                            <constraint firstItem="T8r-5R-M1H" firstAttribute="leading" secondItem="Tc7-qR-8qA" secondAttribute="trailing" id="7Hi-P3-QvH"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="T8r-5R-M1H" secondAttribute="bottom" constant="-2" id="9J8-b8-UT0"/>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="width" secondItem="T8r-5R-M1H" secondAttribute="height" multiplier="1:1" id="9TJ-G5-Uoh"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="width" id="9hS-Sf-XY7"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="oCD-wC-dDb" secondAttribute="width" id="BDg-DG-osM"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="BtI-DA-aob"/>
-                            <constraint firstItem="E7n-7R-WAf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DDT-qS-IZh"/>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="height" secondItem="88o-fa-xOU" secondAttribute="height" id="C15-Qb-XyP"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="width" id="Dxi-0N-y4t"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="RiF-gV-4mN" secondAttribute="height" id="E6M-op-fBQ"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="F40-qm-ZHe"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="leading" secondItem="RiF-gV-4mN" secondAttribute="trailing" id="FJg-sJ-kwu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" id="GpB-YR-W5O"/>
-                            <constraint firstItem="ExU-e2-2a2" firstAttribute="width" secondItem="E7n-7R-WAf" secondAttribute="width" id="Ifm-pl-v1f"/>
-                            <constraint firstItem="ExU-e2-2a2" firstAttribute="leading" secondItem="E7n-7R-WAf" secondAttribute="leading" id="Ld3-uG-CSf"/>
-                            <constraint firstItem="E7n-7R-WAf" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" constant="-53" id="LlS-8X-fNT"/>
-                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="ExU-e2-2a2" secondAttribute="bottom" constant="50" id="M8b-gb-PKN"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="oCD-wC-dDb" secondAttribute="bottom" constant="200" id="IWd-vR-86S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T8r-5R-M1H" secondAttribute="trailing" constant="-16" id="L4V-qq-W9q"/>
+                            <constraint firstAttribute="trailing" secondItem="8c0-qn-ybF" secondAttribute="trailing" id="L9H-r8-hJu"/>
+                            <constraint firstItem="RiF-gV-4mN" firstAttribute="leading" secondItem="oCD-wC-dDb" secondAttribute="trailing" id="MPW-Q0-0ct"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="RiF-gV-4mN" secondAttribute="bottom" constant="200" id="NYe-rM-qnQ"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="height" multiplier="20:3" id="RGv-lk-xKE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" constant="60" id="SpW-94-I6G"/>
-                            <constraint firstItem="ExU-e2-2a2" firstAttribute="height" secondItem="E7n-7R-WAf" secondAttribute="height" id="Ux9-NY-VRk"/>
+                            <constraint firstItem="RiF-gV-4mN" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" id="SyT-jY-7i7"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-2" id="T7c-NI-DSd"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" id="U3J-GM-x88"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="X60-D0-L60"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="height" secondItem="RiF-gV-4mN" secondAttribute="height" id="YPa-0p-kcl"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="width" id="alG-Sm-fUU"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-100" id="cOo-So-duf"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dRK-ZU-0lC"/>
-                            <constraint firstItem="ExU-e2-2a2" firstAttribute="top" secondItem="E7n-7R-WAf" secondAttribute="bottom" constant="8" id="dq9-mS-xlZ"/>
-                            <constraint firstItem="ExU-e2-2a2" firstAttribute="trailing" secondItem="E7n-7R-WAf" secondAttribute="trailing" id="eOX-dv-sdP"/>
-                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="ExU-e2-2a2" secondAttribute="bottom" constant="40" id="fMY-Ip-bo7"/>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="width" secondItem="88o-fa-xOU" secondAttribute="width" id="eBh-F0-LI3"/>
+                            <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="8c0-qn-ybF" secondAttribute="bottom" constant="200" id="foX-Hq-vpj"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="oCD-wC-dDb" secondAttribute="height" id="gXD-7C-s0X"/>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="width" secondItem="88o-fa-xOU" secondAttribute="height" multiplier="1:1" id="jXW-ei-cQc"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="k4E-oA-VJf"/>
-                            <constraint firstAttribute="bottom" secondItem="ExU-e2-2a2" secondAttribute="bottom" constant="114" id="lZO-uS-UjT"/>
+                            <constraint firstItem="Tc7-qR-8qA" firstAttribute="leading" secondItem="88o-fa-xOU" secondAttribute="trailing" id="kUY-2J-QaC"/>
+                            <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" constant="-222" id="l5b-3d-KGB"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="oCD-wC-dDb" secondAttribute="width" id="l83-hi-6lo"/>
+                            <constraint firstItem="88o-fa-xOU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="lEq-WO-VcQ"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="oCD-wC-dDb" secondAttribute="height" id="lUy-hH-TB9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="4" id="pT4-Bp-hXk"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pXV-yz-aJA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="4" id="r98-rA-80p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="8" id="r98-rA-80p"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rg7-Nw-8bg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" id="vRg-tW-BJm"/>
-                            <constraint firstAttribute="trailing" secondItem="E7n-7R-WAf" secondAttribute="trailing" id="wth-Sf-hD0"/>
+                            <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="RiF-gV-4mN" secondAttribute="height" id="wXn-Os-4ZY"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="centerX" secondItem="OrE-02-RLG" secondAttribute="centerX" id="xcy-wF-Di4"/>
-                            <constraint firstItem="bo9-c2-6WU" firstAttribute="centerX" secondItem="E7n-7R-WAf" secondAttribute="centerX" id="yad-Cs-N8v"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="5kY-Vi-L2J"/>
+                                <exclude reference="k4E-oA-VJf"/>
                                 <exclude reference="pT4-Bp-hXk"/>
                                 <exclude reference="rg7-Nw-8bg"/>
                                 <exclude reference="xcy-wF-Di4"/>
-                                <exclude reference="yad-Cs-N8v"/>
-                                <exclude reference="LlS-8X-fNT"/>
-                                <exclude reference="M8b-gb-PKN"/>
+                                <exclude reference="cOo-So-duf"/>
+                                <exclude reference="l5b-3d-KGB"/>
+                                <exclude reference="IWd-vR-86S"/>
+                                <exclude reference="NYe-rM-qnQ"/>
                                 <exclude reference="dRK-ZU-0lC"/>
+                                <exclude reference="foX-Hq-vpj"/>
+                                <exclude reference="9hS-Sf-XY7"/>
+                                <exclude reference="BDg-DG-osM"/>
+                                <exclude reference="E6M-op-fBQ"/>
+                                <exclude reference="RGv-lk-xKE"/>
+                                <exclude reference="alG-Sm-fUU"/>
+                                <exclude reference="gXD-7C-s0X"/>
+                                <exclude reference="wXn-Os-4ZY"/>
                                 <exclude reference="GpB-YR-W5O"/>
                                 <exclude reference="SpW-94-I6G"/>
                             </mask>
@@ -134,8 +245,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="segmentedControlPrice" destination="E7n-7R-WAf" id="qrf-ax-1WZ"/>
-                        <outlet property="segmentedControlRadius" destination="ExU-e2-2a2" id="Sy4-g1-hH5"/>
+                        <outlet property="firstPrice" destination="oCD-wC-dDb" id="RnC-yN-Pby"/>
+                        <outlet property="secondPrice" destination="RiF-gV-4mN" id="nMf-u1-cGC"/>
+                        <outlet property="thirdPrice" destination="8c0-qn-ybF" id="eoT-Vm-1rT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
