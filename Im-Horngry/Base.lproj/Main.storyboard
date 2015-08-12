@@ -25,14 +25,19 @@
                                 <color key="backgroundColor" red="0.15294117647058825" green="0.15294117647058825" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your budget and travel preferences" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bo9-c2-6WU">
-                                <rect key="frame" x="16" y="90" width="560" height="267"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your budget and travel preferences" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bo9-c2-6WU">
+                                <rect key="frame" x="21" y="69" width="558" height="88.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="267" id="Cob-OD-rzX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="44"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="37"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Cob-OD-rzX"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrE-02-RLG">
                                 <rect key="frame" x="0.0" y="535" width="600" height="65"/>
@@ -171,7 +176,7 @@
                             <constraint firstItem="Tc7-qR-8qA" firstAttribute="width" secondItem="T8r-5R-M1H" secondAttribute="height" multiplier="1:1" id="9TJ-G5-Uoh"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="width" id="9hS-Sf-XY7"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="oCD-wC-dDb" secondAttribute="width" id="BDg-DG-osM"/>
-                            <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="BtI-DA-aob"/>
+                            <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="BtI-DA-aob"/>
                             <constraint firstItem="Tc7-qR-8qA" firstAttribute="height" secondItem="88o-fa-xOU" secondAttribute="height" id="C15-Qb-XyP"/>
                             <constraint firstItem="oCD-wC-dDb" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="width" id="Dxi-0N-y4t"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="RiF-gV-4mN" secondAttribute="height" id="E6M-op-fBQ"/>
@@ -189,7 +194,7 @@
                             <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-2" id="T7c-NI-DSd"/>
                             <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="bo9-c2-6WU" secondAttribute="bottom" id="U3J-GM-x88"/>
                             <constraint firstItem="88o-fa-xOU" firstAttribute="top" secondItem="oCD-wC-dDb" secondAttribute="bottom" id="V7p-Mt-qIm"/>
-                            <constraint firstItem="bo9-c2-6WU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="X60-D0-L60"/>
+                            <constraint firstItem="bo9-c2-6WU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="X60-D0-L60"/>
                             <constraint firstItem="T8r-5R-M1H" firstAttribute="top" secondItem="8c0-qn-ybF" secondAttribute="bottom" id="YEJ-gr-law"/>
                             <constraint firstItem="oCD-wC-dDb" firstAttribute="height" secondItem="RiF-gV-4mN" secondAttribute="height" id="YPa-0p-kcl"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="width" secondItem="RiF-gV-4mN" secondAttribute="width" id="alG-Sm-fUU"/>
@@ -209,7 +214,7 @@
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="height" secondItem="oCD-wC-dDb" secondAttribute="height" id="lUy-hH-TB9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="4" id="pT4-Bp-hXk"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pXV-yz-aJA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="8" id="r98-rA-80p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="5" id="r98-rA-80p"/>
                             <constraint firstItem="oCD-wC-dDb" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" constant="-180" id="rNa-HH-wg6"/>
                             <constraint firstItem="bo9-c2-6WU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rg7-Nw-8bg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OrE-02-RLG" secondAttribute="bottom" id="vRg-tW-BJm"/>
