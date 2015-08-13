@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F02CA931B5F85F200220C40 /* countries_of_the_world.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F02CA921B5F85F200220C40 /* countries_of_the_world.txt */; };
 		3F02CA951B64284700220C40 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CA941B64284700220C40 /* InfoViewController.swift */; };
+		3F6B24B91B7C9A6B00E5ED23 /* FinishedSavingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6B24B81B7C9A6B00E5ED23 /* FinishedSavingView.xib */; };
 		3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */; };
 		3F7D9E0B1B6F33E200752433 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D9E0A1B6F33E200752433 /* Restaurant.swift */; };
 		3F7D9E0D1B6F467700752433 /* RestaurantHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7D9E0C1B6F467700752433 /* RestaurantHistoryViewController.swift */; };
@@ -19,9 +20,6 @@
 		3F808D9E1B7BE87500F5DA35 /* bicycle-white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808D9B1B7BE87500F5DA35 /* bicycle-white@3x.png */; };
 		3F808D9F1B7BE87500F5DA35 /* bicycle-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808D9C1B7BE87500F5DA35 /* bicycle-white.png */; };
 		3F808DA01B7BE87500F5DA35 /* bicycle-black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808D9D1B7BE87500F5DA35 /* bicycle-black@3x.png */; };
-		3F808DA71B7BE8ED00F5DA35 /* car-white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808DA11B7BE8ED00F5DA35 /* car-white@3x.png */; };
-		3F808DA81B7BE8ED00F5DA35 /* car-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808DA21B7BE8ED00F5DA35 /* car-white@2x.png */; };
-		3F808DA91B7BE8ED00F5DA35 /* car-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808DA31B7BE8ED00F5DA35 /* car-white.png */; };
 		3F808DAA1B7BE8ED00F5DA35 /* car-black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808DA41B7BE8ED00F5DA35 /* car-black@3x.png */; };
 		3F808DAB1B7BE8ED00F5DA35 /* car-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808DA51B7BE8ED00F5DA35 /* car-black@2x.png */; };
 		3F808DAC1B7BE8ED00F5DA35 /* car-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F808DA61B7BE8ED00F5DA35 /* car-black.png */; };
@@ -54,6 +52,7 @@
 		3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Im-Horngry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry.debug.xcconfig"; sourceTree = "<group>"; };
 		3F02CA921B5F85F200220C40 /* countries_of_the_world.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries_of_the_world.txt; sourceTree = "<group>"; };
 		3F02CA941B64284700220C40 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		3F6B24B81B7C9A6B00E5ED23 /* FinishedSavingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedSavingView.xib; sourceTree = "<group>"; };
 		3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F7D9E0A1B6F33E200752433 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		3F7D9E0C1B6F467700752433 /* RestaurantHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantHistoryViewController.swift; sourceTree = "<group>"; };
@@ -64,20 +63,17 @@
 		3F808D9B1B7BE87500F5DA35 /* bicycle-white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bicycle-white@3x.png"; sourceTree = "<group>"; };
 		3F808D9C1B7BE87500F5DA35 /* bicycle-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bicycle-white.png"; sourceTree = "<group>"; };
 		3F808D9D1B7BE87500F5DA35 /* bicycle-black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bicycle-black@3x.png"; sourceTree = "<group>"; };
-		3F808DA11B7BE8ED00F5DA35 /* car-white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-white@3x.png"; sourceTree = "<group>"; };
-		3F808DA21B7BE8ED00F5DA35 /* car-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-white@2x.png"; sourceTree = "<group>"; };
-		3F808DA31B7BE8ED00F5DA35 /* car-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-white.png"; sourceTree = "<group>"; };
 		3F808DA41B7BE8ED00F5DA35 /* car-black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-black@3x.png"; sourceTree = "<group>"; };
 		3F808DA51B7BE8ED00F5DA35 /* car-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-black@2x.png"; sourceTree = "<group>"; };
 		3F808DA61B7BE8ED00F5DA35 /* car-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-black.png"; sourceTree = "<group>"; };
-		3F8427821B55B9770075884B /* Im-Horngry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Im-Horngry.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F8427821B55B9770075884B /* Dishcover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dishcover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F8427861B55B9770075884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F8427871B55B9770075884B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F8427891B55B9770075884B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3F84278C1B55B9770075884B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F84278E1B55B9770075884B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3F8427911B55B9770075884B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3F8427971B55B9770075884B /* Im-HorngryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Im-HorngryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F8427971B55B9770075884B /* DishcoverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DishcoverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F84279C1B55B9770075884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F84279D1B55B9770075884B /* Im_HorngryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Im_HorngryTests.swift; sourceTree = "<group>"; };
 		3F92B66A1B7BD90D00697000 /* IMG_0674.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0674.png; sourceTree = "<group>"; };
@@ -129,9 +125,6 @@
 		3F808D901B7BE33B00F5DA35 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3F808DA11B7BE8ED00F5DA35 /* car-white@3x.png */,
-				3F808DA21B7BE8ED00F5DA35 /* car-white@2x.png */,
-				3F808DA31B7BE8ED00F5DA35 /* car-white.png */,
 				3F808DA41B7BE8ED00F5DA35 /* car-black@3x.png */,
 				3F808DA51B7BE8ED00F5DA35 /* car-black@2x.png */,
 				3F808DA61B7BE8ED00F5DA35 /* car-black.png */,
@@ -160,8 +153,8 @@
 		3F8427831B55B9770075884B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F8427821B55B9770075884B /* Im-Horngry.app */,
-				3F8427971B55B9770075884B /* Im-HorngryTests.xctest */,
+				3F8427821B55B9770075884B /* Dishcover.app */,
+				3F8427971B55B9770075884B /* DishcoverTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +176,7 @@
 				3F02CA921B5F85F200220C40 /* countries_of_the_world.txt */,
 				3F84278E1B55B9770075884B /* Images.xcassets */,
 				3F8427901B55B9770075884B /* LaunchScreen.xib */,
+				3F6B24B81B7C9A6B00E5ED23 /* FinishedSavingView.xib */,
 				3F808D901B7BE33B00F5DA35 /* Resources */,
 				3F8427851B55B9770075884B /* Supporting Files */,
 			);
@@ -225,9 +219,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3F8427811B55B9770075884B /* Im-Horngry */ = {
+		3F8427811B55B9770075884B /* Dishcover */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F8427A11B55B9770075884B /* Build configuration list for PBXNativeTarget "Im-Horngry" */;
+			buildConfigurationList = 3F8427A11B55B9770075884B /* Build configuration list for PBXNativeTarget "Dishcover" */;
 			buildPhases = (
 				D9C30CBA57564B61D4BC7179 /* Check Pods Manifest.lock */,
 				3F84277E1B55B9770075884B /* Sources */,
@@ -240,14 +234,14 @@
 			);
 			dependencies = (
 			);
-			name = "Im-Horngry";
+			name = Dishcover;
 			productName = "Im-Horngry";
-			productReference = 3F8427821B55B9770075884B /* Im-Horngry.app */;
+			productReference = 3F8427821B55B9770075884B /* Dishcover.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3F8427961B55B9770075884B /* Im-HorngryTests */ = {
+		3F8427961B55B9770075884B /* DishcoverTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F8427A41B55B9770075884B /* Build configuration list for PBXNativeTarget "Im-HorngryTests" */;
+			buildConfigurationList = 3F8427A41B55B9770075884B /* Build configuration list for PBXNativeTarget "DishcoverTests" */;
 			buildPhases = (
 				3F8427931B55B9770075884B /* Sources */,
 				3F8427941B55B9770075884B /* Frameworks */,
@@ -258,9 +252,9 @@
 			dependencies = (
 				3F8427991B55B9770075884B /* PBXTargetDependency */,
 			);
-			name = "Im-HorngryTests";
+			name = DishcoverTests;
 			productName = "Im-HorngryTests";
-			productReference = 3F8427971B55B9770075884B /* Im-HorngryTests.xctest */;
+			productReference = 3F8427971B55B9770075884B /* DishcoverTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -282,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3F84277D1B55B9770075884B /* Build configuration list for PBXProject "Im-Horngry" */;
+			buildConfigurationList = 3F84277D1B55B9770075884B /* Build configuration list for PBXProject "Dishcover" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -295,8 +289,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F8427811B55B9770075884B /* Im-Horngry */,
-				3F8427961B55B9770075884B /* Im-HorngryTests */,
+				3F8427811B55B9770075884B /* Dishcover */,
+				3F8427961B55B9770075884B /* DishcoverTests */,
 			);
 		};
 /* End PBXProject section */
@@ -306,16 +300,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F808DA91B7BE8ED00F5DA35 /* car-white.png in Resources */,
 				3F84278D1B55B9770075884B /* Main.storyboard in Resources */,
 				3F808D9F1B7BE87500F5DA35 /* bicycle-white.png in Resources */,
 				3F808D9A1B7BE7B700F5DA35 /* bicycle-black.png in Resources */,
 				3F92B66B1B7BD90D00697000 /* IMG_0674.png in Resources */,
 				3F808D981B7BE42500F5DA35 /* walking2@2x.png in Resources */,
 				3F808D971B7BE42500F5DA35 /* walking2.png in Resources */,
-				3F808DA71B7BE8ED00F5DA35 /* car-white@3x.png in Resources */,
 				3F808DAA1B7BE8ED00F5DA35 /* car-black@3x.png in Resources */,
-				3F808DA81B7BE8ED00F5DA35 /* car-white@2x.png in Resources */,
 				3F02CA931B5F85F200220C40 /* countries_of_the_world.txt in Resources */,
 				3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */,
 				3F808D9E1B7BE87500F5DA35 /* bicycle-white@3x.png in Resources */,
@@ -323,6 +314,7 @@
 				3F808DAB1B7BE8ED00F5DA35 /* car-black@2x.png in Resources */,
 				3F84278F1B55B9770075884B /* Images.xcassets in Resources */,
 				3F808DA01B7BE87500F5DA35 /* bicycle-black@3x.png in Resources */,
+				3F6B24B91B7C9A6B00E5ED23 /* FinishedSavingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +405,7 @@
 /* Begin PBXTargetDependency section */
 		3F8427991B55B9770075884B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3F8427811B55B9770075884B /* Im-Horngry */;
+			target = 3F8427811B55B9770075884B /* Dishcover */;
 			targetProxy = 3F8427981B55B9770075884B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -534,7 +526,7 @@
 				);
 				INFOPLIST_FILE = "Im-Horngry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dishcover;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -552,7 +544,7 @@
 				);
 				INFOPLIST_FILE = "Im-Horngry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dishcover;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -571,7 +563,7 @@
 				);
 				INFOPLIST_FILE = "Im-HorngryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DishcoverTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Im-Horngry.app/Im-Horngry";
 			};
 			name = Debug;
@@ -586,7 +578,7 @@
 				);
 				INFOPLIST_FILE = "Im-HorngryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DishcoverTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Im-Horngry.app/Im-Horngry";
 			};
 			name = Release;
@@ -594,7 +586,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3F84277D1B55B9770075884B /* Build configuration list for PBXProject "Im-Horngry" */ = {
+		3F84277D1B55B9770075884B /* Build configuration list for PBXProject "Dishcover" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F84279F1B55B9770075884B /* Debug */,
@@ -603,7 +595,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F8427A11B55B9770075884B /* Build configuration list for PBXNativeTarget "Im-Horngry" */ = {
+		3F8427A11B55B9770075884B /* Build configuration list for PBXNativeTarget "Dishcover" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F8427A21B55B9770075884B /* Debug */,
@@ -612,7 +604,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F8427A41B55B9770075884B /* Build configuration list for PBXNativeTarget "Im-HorngryTests" */ = {
+		3F8427A41B55B9770075884B /* Build configuration list for PBXNativeTarget "DishcoverTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F8427A51B55B9770075884B /* Debug */,

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3F8427811B55B9770075884B"
-               BuildableName = "Im-Horngry.app"
-               BlueprintName = "Im-Horngry"
-               ReferencedContainer = "container:Im-Horngry.xcodeproj">
+               BuildableName = "Dishcover.app"
+               BlueprintName = "Dishcover"
+               ReferencedContainer = "container:Dishcover.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3F8427961B55B9770075884B"
-               BuildableName = "Im-HorngryTests.xctest"
-               BlueprintName = "Im-HorngryTests"
-               ReferencedContainer = "container:Im-Horngry.xcodeproj">
+               BuildableName = "DishcoverTests.xctest"
+               BlueprintName = "DishcoverTests"
+               ReferencedContainer = "container:Dishcover.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3F8427961B55B9770075884B"
-               BuildableName = "Im-HorngryTests.xctest"
-               BlueprintName = "Im-HorngryTests"
-               ReferencedContainer = "container:Im-Horngry.xcodeproj">
+               BuildableName = "DishcoverTests.xctest"
+               BlueprintName = "DishcoverTests"
+               ReferencedContainer = "container:Dishcover.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F8427811B55B9770075884B"
-            BuildableName = "Im-Horngry.app"
-            BlueprintName = "Im-Horngry"
-            ReferencedContainer = "container:Im-Horngry.xcodeproj">
+            BuildableName = "Dishcover.app"
+            BlueprintName = "Dishcover"
+            ReferencedContainer = "container:Dishcover.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F8427811B55B9770075884B"
-            BuildableName = "Im-Horngry.app"
-            BlueprintName = "Im-Horngry"
-            ReferencedContainer = "container:Im-Horngry.xcodeproj">
+            BuildableName = "Dishcover.app"
+            BlueprintName = "Dishcover"
+            ReferencedContainer = "container:Dishcover.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -100,9 +100,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3F8427811B55B9770075884B"
-            BuildableName = "Im-Horngry.app"
-            BlueprintName = "Im-Horngry"
-            ReferencedContainer = "container:Im-Horngry.xcodeproj">
+            BuildableName = "Dishcover.app"
+            BlueprintName = "Dishcover"
+            ReferencedContainer = "container:Dishcover.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -15,7 +15,10 @@ class InfoViewController: UIViewController {
     
     var restaurant = Restaurant()
     
+    @IBOutlet weak var mainScrollView: UIScrollView!
     var paginatedScrollView: PaginatedScrollView?
+    
+    //@IBOutlet weak var paginatedScrollView: PaginatedScrollView!
     
     var placeDetailsURL: String = ""
     
@@ -42,7 +45,11 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var eatenButton: UIButton!
     
+    @IBOutlet weak var countryTitle: UINavigationItem!
+    
     @IBOutlet weak var directionsButton: UIBarButtonItem!
+    
+    @IBOutlet weak var imagesContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,31 +61,13 @@ class InfoViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
+        
+
         // hide eaten button if accessing from History
         if isSegueFromRestaurantHistory == true {
             eatenButton.hidden = true
         }
-        
-        // if accessing from history, get photos and display. else, just display the photos
-        placeDetailsURL = restaurant.placeDetailsURL
-        if restaurant.photoReferenceID.count == 0 {
-            println("placeDetailsURL: \(placeDetailsURL)")
-            
-            Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
-                if let response = response {
-                    self.detailsReceived(response)
-                }
-            })
-            
-        } else {
-            println("else function called")
-            downloadArrayOfPhotos()
-        }
-        
-        restaurantLabel.text = restaurant.name
-        ratingLabel.text = "\(restaurant.rating)"
-        addressLabel.text = restaurant.address
-        countryLabel.text = restaurant.countrySelected
+
 
     }
     
@@ -104,15 +93,63 @@ class InfoViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // if accessing from history, get photos and display. else, just display the photos
+        placeDetailsURL = restaurant.placeDetailsURL
+        if restaurant.photoReferenceID.count == 0 {
+            println("placeDetailsURL: \(placeDetailsURL)")
+            
+            Network.getGooglePlacesDetails(placeDetailsURL, completionHandler: { response -> Void in
+                if let response = response {
+                    self.detailsReceived(response)
+                }
+            })
+            
+        } else {
+            println("else function called")
+            downloadArrayOfPhotos()
+        }
+        
+        countryTitle.title = restaurant.name
+        
+        restaurantLabel.text = restaurant.name
+        ratingLabel.text = "\(restaurant.rating)"
+        addressLabel.text = restaurant.address
+        countryLabel.text = restaurant.countrySelectedKey
+        
+    }
+    
     // MARK: Paginated Scroll View Setup
     func paginatedScrollViewSetup() {
         
-        paginatedScrollView = PaginatedScrollView(frame: CGRectMake(0, -5, self.view.frame.size.width, 330))
-        
-        self.view.addSubview(paginatedScrollView!) // add to the subview
-        
+        let newFrame = CGRect(x: 0, y: 0, width: imagesContainerView.frame.width, height: imagesContainerView.frame.height)
+        paginatedScrollView = PaginatedScrollView(frame: newFrame)
+        paginatedScrollView!.canCancelContentTouches = false
+        mainScrollView!.delaysContentTouches = true
+//        
+//        self.view.addSubview(paginatedScrollView!) // add to the subview
+//        
+        self.view.layoutIfNeeded()
+        println(self.paginatedScrollView?.frame)
         self.paginatedScrollView?.images = restaurantPhotos
         
+        //self.addSubview(mainScrollView)
+        
+//        paginatedScrollView!.frame = CGRectMake(0, 0, mainScrollView.contentSize.width, mainScrollView.contentSize.height)
+      
+//      mainScrollView.addSubview(paginatedScrollView!)
+       // paginatedScrollView!.addSubview(mainScrollView)
+
+        
+        imagesContainerView.addSubview(paginatedScrollView!)
+//        self.view.addSubview(buttonOne)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
     }
     
     func detailsReceived(restaurantDetails: NSDictionary) {
@@ -172,20 +209,29 @@ class InfoViewController: UIViewController {
         var latitude = restaurant.destLatitude
         var longitude = restaurant.destLongitude
         
-        println(latitude)
-        println(longitude)
-        
         if shouldUseGoogleMaps == true {
             let url = NSURL(string: "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)")
             UIApplication.sharedApplication().openURL(url!)
-            //Mixpanel.sharedInstance().track("Used Routing", properties: ["Type" : "Google with location set"])
         }
         else {
             let url = NSURL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(latitude),\(longitude)")
             UIApplication.sharedApplication().openURL(url!)
-            //Mixpanel.sharedInstance().track("Used Routing", properties: ["Type" : "Apple with location set"])
         }
         
+    }
+    
+    @IBAction func eatenPressed(sender: UIButton) {
+        let finishedSavingViewNib = UINib(nibName: "FinishedSavingView", bundle: nil)
+        let finishedSavingView:UIView = finishedSavingViewNib.instantiateWithOwner(nil, options: nil).last as! UIView
+        
+        finishedSavingView.frame = self.view.frame
+        
+        self.view.addSubview(finishedSavingView)
+        let dispatchTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(3 * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue()) { () -> Void in
+            self.performSegueWithIdentifier("exitFromInfoController", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -38,6 +38,8 @@ class RestaurantOverviewViewController: UIViewController {
     var detailsReceivedCount: Int = 0
     var maxResults = 2
     
+    var startLoadingTimeInterval:NSTimeInterval!
+    
     // === OUTLET VARIABLES ===
     @IBOutlet weak var firstRestaurantImage: UIImageView!
     @IBOutlet weak var secondRestaurantImage: UIImageView!
@@ -65,6 +67,9 @@ class RestaurantOverviewViewController: UIViewController {
     
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var foundXRestaurantsLabel: UILabel!
+    
     // =========================
 
     override func viewDidLoad() {
@@ -98,6 +103,7 @@ class RestaurantOverviewViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if isFromMainViewcontroller == true {
+            startLoadingTimeInterval = NSDate().timeIntervalSince1970
             activityIndicator.startAnimating()
             loadingView.hidden = false
             activityIndicator.hidden = false
@@ -202,6 +208,8 @@ class RestaurantOverviewViewController: UIViewController {
                 if restaurantsCount <= maxResults {
                     maxResults = restaurantsCount - 1
                 }
+                
+                foundXRestaurantsLabel.text = "I found \(maxResults+1) restaurants for you"
                 
                 for x in 0...maxResults {
                     
@@ -357,14 +365,30 @@ class RestaurantOverviewViewController: UIViewController {
                 
             }
             
-            self.activityIndicator.stopAnimating()
-            self.loadingView.hidden = true
-            self.activityIndicator.hidden = true
+            let currentTimeInterval:NSTimeInterval = NSDate().timeIntervalSince1970
             
-            self.firstRestaurantButton.enabled = true
-            self.secondRestaurantButton.enabled = true
-            self.thirdRestaurantButton.enabled = true
+            let loadingTime = currentTimeInterval - self.startLoadingTimeInterval
+            
+            if loadingTime < 3.0 {
+                let dispatchTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,
+                    Int64((3.0 - loadingTime) * Double(NSEC_PER_SEC)))
+                dispatch_after(dispatchTime, dispatch_get_main_queue()) { () -> Void in
+                     self.displayFinishedLoading()
+                }
+            } else {
+                self.displayFinishedLoading()
+            }
         }
+    }
+    
+    func displayFinishedLoading(){
+        self.activityIndicator.stopAnimating()
+        self.loadingView.hidden = true
+        self.activityIndicator.hidden = true
+        
+        self.firstRestaurantButton.enabled = true
+        self.secondRestaurantButton.enabled = true
+        self.thirdRestaurantButton.enabled = true
     }
     
     // Retry the request if request returns nothing

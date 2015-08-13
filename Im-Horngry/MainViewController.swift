@@ -12,14 +12,56 @@ import RealmSwift
 
 var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
 var randomCountry: String = "" // Random Value from countryDict
-var priceSelected = 0 // price constraint
-var radius = 0 // radius constraint
 
 var countryDict = [String: String]() // Country & Adjectival dictionary
+
+let selectedChoiceBGColor:UIColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
+
+let selectedChoiceTextColor:UIColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+
+let unselectedChoiceBGColor:UIColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+
+let unselectedChoiceTextColor:UIColor = UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0)
+
+let enabledTakeOffBGColor:UIColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
+
+let enabledTakeOffTextColor:UIColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+
+var disabledTakeOffBGColor:UIColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
+
+var disabledTakeOffTextColor:UIColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     var restaurants: Results<Restaurant>!
+    
+    // price constraint
+    var priceSelected = 0 {
+        didSet{
+            if priceSelected != 0 && radius != 0 {
+                takeOffButton.enabled = true
+                takeOffButton.displayTakeOffEnabled()
+            } else {
+                takeOffButton.enabled = false
+                takeOffButton.displayTakeOffDisabled()
+            }
+        }
+    }
+    
+    // radius constraint
+    var radius = 0 {
+        didSet{
+            if priceSelected != 0 && radius != 0 {
+                takeOffButton.enabled = true
+                takeOffButton.displayTakeOffEnabled()
+            } else {
+                takeOffButton.enabled = false
+                takeOffButton.displayTakeOffDisabled()
+            }
+        }
+    }
+    
+    var isFromOverviewController = false
     
     @IBOutlet weak var firstPrice: UIButton!
     @IBOutlet weak var secondPrice: UIButton!
@@ -63,7 +105,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         carButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
         
         firstPrice.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:1.0).CGColor
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -73,6 +114,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             // variables being passed into Network
             infoViewController.priceSelected = priceSelected
             infoViewController.radius = radius
+            
         }
         if segue.identifier == "liftOffToRestaurantOverview" {
             var restaurantOverview = segue.destinationViewController as! RestaurantOverviewViewController
@@ -83,6 +125,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             restaurantOverview.radius = radius
             restaurantOverview.locValue = locValue
             restaurantOverview.randomCountry = randomCountry
+            
+            takeOffButton.enabled = false
+            isFromOverviewController = true
         }
     }
     
@@ -108,13 +153,37 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         restaurants = Realm().objects(Restaurant)
         let restaurantsCount = restaurants.count
         
-        countryStatisticsLabel.text = "You've been to \(restaurantsCount) countries."
+        if restaurants.count == 1 {
+            countryStatisticsLabel.text = "You've been to \(restaurantsCount) country."
+        } else {
+            countryStatisticsLabel.text = "You've been to \(restaurantsCount) countries."
+        }
         
         //iterate through all the buttons and deselect them
         for i in 0...buttonChoicesArray.count - 1 {
             buttonChoicesArray[i].selected = false
-            println("woah")
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // array of all buttons
+        let buttonChoicesArray: [UIButton] = [firstPrice, secondPrice, thirdPrice, walkButton, bikeButton, carButton]
+        
+        for i in 0...5 {
+            buttonChoicesArray[i].selected = false
+            buttonChoicesArray[i].displayUnselected()
+        }
+        
+        takeOffButton.displayTakeOffDisabled()
+
+//        if isFromOverviewController == true {
+//            takeOffButton.enabled = true
+//        }
+        
+        radius = 0
+        priceSelected = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,17 +196,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func firstPrice(sender: UIButton) {
         priceSelected = 1
         
-        sender.backgroundColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
-        sender.setTitleColor(UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0), forState: UIControlState.Normal)
-        
-        sender.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:1.0).CGColor
-        sender.layer.shadowRadius = 10
-        
-        secondPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        secondPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
-        
-        thirdPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        thirdPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        sender.displaySelected()
+        secondPrice.displayUnselected()
+        thirdPrice.displayUnselected()
         
         sender.selected = true
     }
@@ -145,14 +206,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func secondPrice(sender: UIButton) {
         priceSelected = 2
         
-        sender.backgroundColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
-        sender.setTitleColor(UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0), forState: UIControlState.Normal)
+        sender.displaySelected()
         
-        firstPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        firstPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        firstPrice.displayUnselected()
         
-        thirdPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        thirdPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        thirdPrice.displayUnselected()
         
         sender.selected = true
     }
@@ -160,14 +218,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func thirdPrice(sender: UIButton) {
         priceSelected = 3
         
-        sender.backgroundColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
-        sender.setTitleColor(UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0), forState: UIControlState.Normal)
+        sender.displaySelected()
         
-        firstPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        firstPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        firstPrice.displayUnselected()
         
-        secondPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        secondPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        secondPrice.displayUnselected()
         
         sender.selected = true
     }
@@ -175,18 +230,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func walkButton(sender: UIButton) {
         radius = 800
         
-        sender.backgroundColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
-        sender.setTitleColor(UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0), forState: UIControlState.Normal)
+        sender.displaySelected()
         
-        bikeButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        bikeButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        bikeButton.displayUnselected()
         
-        carButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        carButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
-        
-        takeOffButton.enabled = true
-        takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
-        takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
+        carButton.displayUnselected()
         
         sender.selected = true
     }
@@ -194,18 +242,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func bikeButton(sender: UIButton) {
         radius = 5000
         
-        sender.backgroundColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
-        sender.setTitleColor(UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0), forState: UIControlState.Normal)
+        sender.displaySelected()
         
-        walkButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        walkButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        walkButton.displayUnselected()
         
-        carButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        carButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
-        
-        takeOffButton.enabled = true
-        takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
-        takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
+        carButton.displayUnselected()
         
         sender.selected = true
     }
@@ -213,18 +254,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func carButton(sender: UIButton) {
         radius = 30000
         
-        sender.backgroundColor = UIColor(red:0.36, green:0.57, blue:1.00, alpha:1.0)
-        sender.setTitleColor(UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0), forState: UIControlState.Normal)
+        sender.displaySelected()
         
-        walkButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        walkButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
+        walkButton.displayUnselected()
         
-        bikeButton.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
-        bikeButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
-        
-        takeOffButton.enabled = true
-        takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
-        takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
+        bikeButton.displayUnselected()
         
         sender.selected = true
     }
@@ -240,4 +274,33 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+}
+
+extension UIButton {
+    func displaySelected() {
+        backgroundColor = selectedChoiceBGColor
+        setTitleColor(selectedChoiceTextColor, forState: UIControlState.Normal)
+        tintColor = UIColor.whiteColor()
+    }
+    
+//    func displaySelectedTravel() {
+//        backgroundColor = selectedChoiceBGColor
+//        tintColor = selectedChoiceTextColor
+//    }
+    
+    func displayUnselected() {
+        backgroundColor = unselectedChoiceBGColor
+        setTitleColor(unselectedChoiceTextColor, forState: UIControlState.Normal)
+        tintColor = UIColor.blackColor()
+    }
+
+    func displayTakeOffEnabled() {
+        backgroundColor = enabledTakeOffBGColor
+        setTitleColor(enabledTakeOffTextColor, forState: .Normal)
+    }
+    
+    func displayTakeOffDisabled() {
+        backgroundColor = disabledTakeOffBGColor
+        setTitleColor(disabledTakeOffTextColor, forState: .Normal)
+    }
 }
