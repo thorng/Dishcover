@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F02CA931B5F85F200220C40 /* countries_of_the_world.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F02CA921B5F85F200220C40 /* countries_of_the_world.txt */; };
 		3F02CA951B64284700220C40 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CA941B64284700220C40 /* InfoViewController.swift */; };
+		3F14712F1B7D451F002B5E25 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14712E1B7D451F002B5E25 /* Default-568h@2x.png */; };
 		3F6B24B91B7C9A6B00E5ED23 /* FinishedSavingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6B24B81B7C9A6B00E5ED23 /* FinishedSavingView.xib */; };
 		3F6B24BC1B7D339900E5ED23 /* bg-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F6B24BB1B7D339900E5ED23 /* bg-1.jpg */; };
 		3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */; };
@@ -35,7 +36,7 @@
 		3FA25F501B79395A0043EA2D /* PaginatedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA25F4F1B79395A0043EA2D /* PaginatedScrollView.swift */; };
 		3FE2EEBA1B712B6F00430EF9 /* RestaurantOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2EEB91B712B6F00430EF9 /* RestaurantOverviewViewController.swift */; };
 		3FE8C0891B6ACFCF00F7B936 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE8C0881B6ACFCF00F7B936 /* Network.swift */; };
-		D9FD597521A10FDF6A9390AD /* Pods_Im_Horngry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27DBA3A0055F570B406AF31 /* Pods_Im_Horngry.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		942021B8E399C9C6762ADD8C /* Pods_Dishcover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F48B4E3549EBE2E99245AFC /* Pods_Dishcover.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,10 +50,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F48B4E3549EBE2E99245AFC /* Pods_Dishcover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dishcover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Im-Horngry.release.xcconfig"; path = "Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry.release.xcconfig"; sourceTree = "<group>"; };
 		3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Im-Horngry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry.debug.xcconfig"; sourceTree = "<group>"; };
 		3F02CA921B5F85F200220C40 /* countries_of_the_world.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries_of_the_world.txt; sourceTree = "<group>"; };
 		3F02CA941B64284700220C40 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		3F14712E1B7D451F002B5E25 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3F6B24B81B7C9A6B00E5ED23 /* FinishedSavingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedSavingView.xib; sourceTree = "<group>"; };
 		3F6B24BB1B7D339900E5ED23 /* bg-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg-1.jpg"; sourceTree = "<group>"; };
 		3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -83,6 +86,8 @@
 		3FA25F4F1B79395A0043EA2D /* PaginatedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedScrollView.swift; sourceTree = "<group>"; };
 		3FE2EEB91B712B6F00430EF9 /* RestaurantOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantOverviewViewController.swift; sourceTree = "<group>"; };
 		3FE8C0881B6ACFCF00F7B936 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		6B69A7051AF3BA330733A154 /* Pods-Dishcover.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dishcover.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover.release.xcconfig"; sourceTree = "<group>"; };
+		91010A69E745A43B90F87085 /* Pods-Dishcover.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dishcover.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover.debug.xcconfig"; sourceTree = "<group>"; };
 		D27DBA3A0055F570B406AF31 /* Pods_Im_Horngry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Im_Horngry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,7 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */,
-				D9FD597521A10FDF6A9390AD /* Pods_Im_Horngry.framework in Frameworks */,
+				942021B8E399C9C6762ADD8C /* Pods_Dishcover.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +116,7 @@
 			children = (
 				3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */,
 				D27DBA3A0055F570B406AF31 /* Pods_Im_Horngry.framework */,
+				1F48B4E3549EBE2E99245AFC /* Pods_Dishcover.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +126,8 @@
 			children = (
 				3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */,
 				34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */,
+				91010A69E745A43B90F87085 /* Pods-Dishcover.debug.xcconfig */,
+				6B69A7051AF3BA330733A154 /* Pods-Dishcover.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -151,8 +159,9 @@
 		3F8427791B55B9770075884B = {
 			isa = PBXGroup;
 			children = (
+				3F14712E1B7D451F002B5E25 /* Default-568h@2x.png */,
 				3F92B66C1B7BD91900697000 /* Images */,
-				3F8427841B55B9770075884B /* Im-Horngry */,
+				3F8427841B55B9770075884B /* Dishcover */,
 				3F84279A1B55B9770075884B /* Im-HorngryTests */,
 				3F8427831B55B9770075884B /* Products */,
 				0850A8E24062F548A7FBF158 /* Pods */,
@@ -169,7 +178,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3F8427841B55B9770075884B /* Im-Horngry */ = {
+		3F8427841B55B9770075884B /* Dishcover */ = {
 			isa = PBXGroup;
 			children = (
 				3F8427871B55B9770075884B /* AppDelegate.swift */,
@@ -191,6 +200,7 @@
 				3F808D901B7BE33B00F5DA35 /* Resources */,
 				3F8427851B55B9770075884B /* Supporting Files */,
 			);
+			name = Dishcover;
 			path = "Im-Horngry";
 			sourceTree = "<group>";
 		};
@@ -319,6 +329,7 @@
 				3F808D971B7BE42500F5DA35 /* walking2.png in Resources */,
 				3F808DAA1B7BE8ED00F5DA35 /* car-black@3x.png in Resources */,
 				3F02CA931B5F85F200220C40 /* countries_of_the_world.txt in Resources */,
+				3F14712F1B7D451F002B5E25 /* Default-568h@2x.png in Resources */,
 				3F8427921B55B9770075884B /* LaunchScreen.xib in Resources */,
 				3F808D9E1B7BE87500F5DA35 /* bicycle-white@3x.png in Resources */,
 				3F808DAC1B7BE8ED00F5DA35 /* car-black.png in Resources */,
@@ -352,7 +363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8D11F71AC126C3EA5803719D /* Copy Pods Resources */ = {
@@ -367,7 +378,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9C30CBA57564B61D4BC7179 /* Check Pods Manifest.lock */ = {
@@ -527,7 +538,7 @@
 		};
 		3F8427A21B55B9770075884B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */;
+			baseConfigurationReference = 91010A69E745A43B90F87085 /* Pods-Dishcover.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -545,7 +556,7 @@
 		};
 		3F8427A31B55B9770075884B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */;
+			baseConfigurationReference = 6B69A7051AF3BA330733A154 /* Pods-Dishcover.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -573,10 +584,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Im-HorngryTests/Info.plist";
+				INFOPLIST_FILE = "Im-Horngry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = DishcoverTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Im-Horngry.app/Im-Horngry";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dishcover.app/Dishcover";
 			};
 			name = Debug;
 		};
@@ -588,10 +599,10 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Im-HorngryTests/Info.plist";
+				INFOPLIST_FILE = "Im-Horngry/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = DishcoverTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Im-Horngry.app/Im-Horngry";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dishcover.app/Dishcover";
 			};
 			name = Release;
 		};

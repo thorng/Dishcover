@@ -137,20 +137,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJQ-nj-LQG">
                                 <rect key="frame" x="0.0" y="64" width="600" height="471"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-ro-UxH" userLabel="County stats">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-ro-UxH" userLabel="County stats">
                                         <rect key="frame" x="8" y="28" width="584" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jya-FL-WvM" userLabel="Percentage">
-                                        <rect key="frame" x="188" y="176" width="224.5" height="119.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="jya-FL-WvM" userLabel="Percentage">
+                                        <rect key="frame" x="300" y="235" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="of the world." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfJ-b8-Aza" userLabel="of the world.">
-                                        <rect key="frame" x="236" y="281" width="129" height="30"/>
+                                        <rect key="frame" x="236" y="243" width="129" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -159,16 +159,18 @@
                                 <constraints>
                                     <constraint firstAttribute="trailingMargin" secondItem="L1E-ro-UxH" secondAttribute="trailing" id="0fl-j8-WbF"/>
                                     <constraint firstAttribute="centerX" secondItem="KfJ-b8-Aza" secondAttribute="centerX" id="Dwn-du-0Sa"/>
-                                    <constraint firstAttribute="centerX" secondItem="jya-FL-WvM" secondAttribute="centerX" id="HKm-y9-LKv"/>
+                                    <constraint firstItem="jya-FL-WvM" firstAttribute="top" secondItem="L1E-ro-UxH" secondAttribute="bottom" constant="40" id="KD1-o8-5Cv"/>
                                     <constraint firstItem="L1E-ro-UxH" firstAttribute="top" secondItem="hJQ-nj-LQG" secondAttribute="topMargin" constant="20" id="bRZ-xj-ppx"/>
-                                    <constraint firstAttribute="centerY" secondItem="jya-FL-WvM" secondAttribute="centerY" id="gaC-In-1Ck"/>
+                                    <constraint firstItem="KfJ-b8-Aza" firstAttribute="top" secondItem="jya-FL-WvM" secondAttribute="bottom" constant="8" id="hqj-kB-5cg"/>
                                     <constraint firstItem="L1E-ro-UxH" firstAttribute="leading" secondItem="hJQ-nj-LQG" secondAttribute="leadingMargin" id="itU-ru-Q3v"/>
+                                    <constraint firstAttribute="centerY" secondItem="jya-FL-WvM" secondAttribute="centerY" id="kiO-30-KLc"/>
                                     <constraint firstItem="KfJ-b8-Aza" firstAttribute="top" secondItem="jya-FL-WvM" secondAttribute="bottom" constant="15" id="q7p-oN-CEl"/>
-                                    <constraint firstItem="KfJ-b8-Aza" firstAttribute="top" secondItem="jya-FL-WvM" secondAttribute="bottom" constant="45" id="skd-RM-gkv"/>
+                                    <constraint firstAttribute="centerX" secondItem="jya-FL-WvM" secondAttribute="centerX" id="ytf-hX-QDS"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="q7p-oN-CEl"/>
+                                        <exclude reference="KD1-o8-5Cv"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -247,6 +249,7 @@
                             <constraint firstItem="hJQ-nj-LQG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lpo-DH-Cr2"/>
                             <constraint firstItem="8c0-qn-ybF" firstAttribute="top" secondItem="hJQ-nj-LQG" secondAttribute="bottom" id="msG-pc-p1Q"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="top" secondItem="88o-fa-xOU" secondAttribute="bottom" id="nrn-uG-JGE"/>
+                            <constraint firstAttribute="centerX" secondItem="hJQ-nj-LQG" secondAttribute="centerX" id="oqF-jS-vOd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="4" id="pT4-Bp-hXk"/>
                             <constraint firstItem="OrE-02-RLG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pXV-yz-aJA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bo9-c2-6WU" secondAttribute="trailing" constant="5" id="r98-rA-80p"/>

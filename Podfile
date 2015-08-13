@@ -2,12 +2,12 @@
 # platform :ios, '6.0'
 use_frameworks!
 
-target 'Im-Horngry' do
+target 'Dishcover' do
 	pod 'GoogleMaps'
 	pod 'RealmSwift'
 end
 
-target 'Im-HorngryTests' do
+target 'DishcoverTests' do
 
 end
 
