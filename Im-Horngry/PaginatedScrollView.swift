@@ -31,9 +31,7 @@ class PaginatedScrollView: UIScrollView {
                 imageView.frame = CGRectMake(self.frame.size.width * CGFloat(i), 0, self.frame.size.width, self.frame.size.height)
                 imageView.contentMode = .ScaleAspectFit // Size image according to scrollview size
                 imageView.clipsToBounds = true // don't let big images take up more space
-                self.addSubview(imageView)
-                println(imageView.frame)
-                
+                self.addSubview(imageView)                
             }
             
         }

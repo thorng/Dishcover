@@ -28,6 +28,8 @@ class RestaurantOverviewViewController: UIViewController {
     
     var isSegueFromRestaurantHistory = false
     
+    var displayRestaurantCount = 0
+    
     // ==== OUTPUT VARIABLES ===
     var restaurantArray: [Restaurant] = []
     var contentMode: UIViewContentMode?
@@ -68,6 +70,8 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    
+    @IBOutlet weak var flyingToLabel: UILabel!
     @IBOutlet weak var foundXRestaurantsLabel: UILabel!
     
     // =========================
@@ -166,6 +170,11 @@ class RestaurantOverviewViewController: UIViewController {
             generateRandomCountry()
         }
         
+        // update loading screen text
+        NSOperationQueue.mainQueue().addOperationWithBlock() {
+            println("flyingToLabel text called")
+            self.flyingToLabel.text = "You're flying to \(self.randomCountryKey!) today."
+        }
         
         println(randomCountryKey)
     }
@@ -199,6 +208,7 @@ class RestaurantOverviewViewController: UIViewController {
         
         // check to see if there are results
         if restaurants.count > 0 {
+            
             // Find out how many results and set max results equal to that number
             // ^ update this variable only if it's less than 2, based on the dictionary received
             var restaurantsCount = restaurants.count
@@ -209,8 +219,11 @@ class RestaurantOverviewViewController: UIViewController {
                     maxResults = restaurantsCount - 1
                 }
                 
-                foundXRestaurantsLabel.text = "I found \(maxResults+1) restaurants for you"
-                
+                NSOperationQueue.mainQueue().addOperationWithBlock() {
+                    println("foundXRestaurantsLabel text called")
+                    self.foundXRestaurantsLabel.text = "I found \(self.maxResults+1) restaurants near you"
+                }
+
                 for x in 0...maxResults {
                     
                     var place = restaurants[x]
@@ -363,15 +376,20 @@ class RestaurantOverviewViewController: UIViewController {
                     self.downloadAndDisplayImage(restaurantChosen.photoReferenceID.first!.photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
                 }
                 
+                if self.detailsReceivedCount == 1 {
+                    self.performSegueWithIdentifier("firstRestaurant", sender: self)
+                }
+                
             }
             
+            // have loading screen display for at least 5 seconds before showing results
             let currentTimeInterval:NSTimeInterval = NSDate().timeIntervalSince1970
             
             let loadingTime = currentTimeInterval - self.startLoadingTimeInterval
             
-            if loadingTime < 3.0 {
+            if loadingTime < 5.0 {
                 let dispatchTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,
-                    Int64((3.0 - loadingTime) * Double(NSEC_PER_SEC)))
+                    Int64((5.0 - loadingTime) * Double(NSEC_PER_SEC)))
                 dispatch_after(dispatchTime, dispatch_get_main_queue()) { () -> Void in
                      self.displayFinishedLoading()
                 }

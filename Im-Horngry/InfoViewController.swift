@@ -154,6 +154,8 @@ class InfoViewController: UIViewController {
     
     func detailsReceived(restaurantDetails: NSDictionary) {
         
+        
+        
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             
             // grab and display photo
@@ -220,6 +222,7 @@ class InfoViewController: UIViewController {
         
     }
     
+    // "Saved" screen that pops up after pressing Eaten
     @IBAction func eatenPressed(sender: UIButton) {
         let finishedSavingViewNib = UINib(nibName: "FinishedSavingView", bundle: nil)
         let finishedSavingView:UIView = finishedSavingViewNib.instantiateWithOwner(nil, options: nil).last as! UIView
@@ -227,8 +230,10 @@ class InfoViewController: UIViewController {
         finishedSavingView.frame = self.view.frame
         
         self.view.addSubview(finishedSavingView)
+        
+        // 3 seconds
         let dispatchTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,
-            Int64(3 * Double(NSEC_PER_SEC)))
+            Int64(1 * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue()) { () -> Void in
             self.performSegueWithIdentifier("exitFromInfoController", sender: self)
         }

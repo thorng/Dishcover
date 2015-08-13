@@ -74,6 +74,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var takeOffButton: UIButton!
     
     @IBOutlet weak var countryStatisticsLabel: UILabel!
+    @IBOutlet weak var percentageStatisticsLabel: UILabel!
+    
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     let locManager = CLLocationManager() // Location Variable
     
@@ -153,11 +156,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         restaurants = Realm().objects(Restaurant)
         let restaurantsCount = restaurants.count
         
+        var percentageOfTheWorld: Double = (Double(restaurants.count)/196) * 100
+        var percentageOfTheWorldTruncate: Double = Double(round(100*percentageOfTheWorld)/100)
+        
         if restaurants.count == 1 {
             countryStatisticsLabel.text = "You've been to \(restaurantsCount) country."
         } else {
             countryStatisticsLabel.text = "You've been to \(restaurantsCount) countries."
         }
+        
+        percentageStatisticsLabel.text = "\(percentageOfTheWorldTruncate)%"
         
         //iterate through all the buttons and deselect them
         for i in 0...buttonChoicesArray.count - 1 {
@@ -177,13 +185,23 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         takeOffButton.displayTakeOffDisabled()
-
-//        if isFromOverviewController == true {
-//            takeOffButton.enabled = true
-//        }
         
         radius = 0
         priceSelected = 0
+        
+        // frosted glass effect on background image
+        
+//        var ciimage :CIImage = CIImage(image: backgroundImage)
+//        
+//        var filter : CIFilter = CIFilter(name:"CIGaussianBlur")
+//        
+//        filter.setDefaults()
+//        
+//        filter.setValue(ciimage, forKey: kCIInputImageKey)
+//        
+//        filter.setValue(30, forKey: kCIInputRadiusKey)
+//        
+//        var outputImage : CIImage = filter.outputImage;
     }
 
     override func didReceiveMemoryWarning() {

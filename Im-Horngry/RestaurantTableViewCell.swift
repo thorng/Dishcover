@@ -16,7 +16,7 @@ class RestaurantTableViewCell: UITableViewCell {
     var restaurant: Restaurant? {
         didSet {
             eatenRestaurantLabel.text = restaurant?.name
-            eatenCountryLabel.text = restaurant?.countrySelected
+            eatenCountryLabel.text = restaurant?.countrySelectedKey
         }
     }
     
