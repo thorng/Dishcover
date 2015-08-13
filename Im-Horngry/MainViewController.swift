@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import RealmSwift
 
 var locValue: CLLocationCoordinate2D? // Latitude & Longitude value
 var randomCountry: String = "" // Random Value from countryDict
@@ -18,6 +19,8 @@ var countryDict = [String: String]() // Country & Adjectival dictionary
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
+    var restaurants: Results<Restaurant>!
+    
     @IBOutlet weak var firstPrice: UIButton!
     @IBOutlet weak var secondPrice: UIButton!
     @IBOutlet weak var thirdPrice: UIButton!
@@ -27,6 +30,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var carButton: UIButton!
     
     @IBOutlet weak var takeOffButton: UIButton!
+    
+    @IBOutlet weak var countryStatisticsLabel: UILabel!
     
     let locManager = CLLocationManager() // Location Variable
     
@@ -58,7 +63,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         carButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
         
         firstPrice.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:1.0).CGColor
-
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -86,11 +91,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        // array of all buttons
+        let buttonChoicesArray: [UIButton] = [firstPrice, secondPrice, thirdPrice, walkButton, bikeButton, carButton]
+        
         // disable Take Off button if no buttons are pressed
         if radius == 0 || priceSelected == 0 {
             takeOffButton.titleLabel?.textColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
             takeOffButton.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
             takeOffButton.enabled = false
+        }
+        
+        // fetching how many countires user has been to
+        let realm = Realm()
+        restaurants = Realm().objects(Restaurant)
+        let restaurantsCount = restaurants.count
+        
+        countryStatisticsLabel.text = "You've been to \(restaurantsCount) countries."
+        
+        //iterate through all the buttons and deselect them
+        for i in 0...buttonChoicesArray.count - 1 {
+            buttonChoicesArray[i].selected = false
+            println("woah")
         }
     }
 
@@ -116,6 +137,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         thirdPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         thirdPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
         
+        sender.selected = true
     }
     
     @IBAction func secondPrice(sender: UIButton) {
@@ -129,7 +151,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
         thirdPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         thirdPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
-
+        
+        sender.selected = true
     }
     
     @IBAction func thirdPrice(sender: UIButton) {
@@ -144,6 +167,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         secondPrice.setTitleColor(UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), forState: UIControlState.Normal)
         secondPrice.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0)
         
+        sender.selected = true
     }
     
     @IBAction func walkButton(sender: UIButton) {
@@ -161,6 +185,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         takeOffButton.enabled = true
         takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
+        
+        sender.selected = true
     }
     
     @IBAction func bikeButton(sender: UIButton) {
@@ -178,6 +204,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         takeOffButton.enabled = true
         takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
+        
+        sender.selected = true
     }
     
     @IBAction func carButton(sender: UIButton) {
@@ -195,10 +223,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         takeOffButton.enabled = true
         takeOffButton.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         takeOffButton.backgroundColor = UIColor(red:0.13, green:0.75, blue:0.39, alpha:1.0)
+        
+        sender.selected = true
     }
     
     @IBAction func goButton(sender: UIButton) {
-        println("LIFTOFFFFFFF")
+        
     }
     
     // This delegate is called, getting the location
