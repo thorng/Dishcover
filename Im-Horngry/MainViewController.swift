@@ -77,6 +77,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         if segue.identifier == "liftOffToRestaurantOverview" {
             var restaurantOverview = segue.destinationViewController as! RestaurantOverviewViewController
             
+            restaurantOverview.isFromMainViewcontroller = true
+            
             restaurantOverview.priceSelected = priceSelected
             restaurantOverview.radius = radius
             restaurantOverview.locValue = locValue

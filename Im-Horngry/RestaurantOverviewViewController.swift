@@ -14,6 +14,10 @@ class RestaurantOverviewViewController: UIViewController {
     
     // =========================
     
+    // boolean variables
+    
+    var isFromMainViewcontroller = false
+    
     // === INPUT VARIABLES ===
     
     var randomCountryKey: String? // random country key
@@ -56,6 +60,11 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var thirdView: UIView!
     
     @IBOutlet weak var countrySelectedTitle: UINavigationItem!
+    
+    @IBOutlet var mainView: UIView!
+    
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     // =========================
 
     override func viewDidLoad() {
@@ -87,7 +96,21 @@ class RestaurantOverviewViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
+        
+        if isFromMainViewcontroller == true {
+            activityIndicator.startAnimating()
+            loadingView.hidden = false
+            activityIndicator.hidden = false
+            
+            firstRestaurantButton.enabled = false
+            secondRestaurantButton.enabled = false
+            thirdRestaurantButton.enabled = false
+        } else {
+            firstRestaurantButton.enabled = true
+            secondRestaurantButton.enabled = true
+            thirdRestaurantButton.enabled = true
+        }
+        
     }
     
     // MARK: Creating the dictionary
@@ -168,8 +191,6 @@ class RestaurantOverviewViewController: UIViewController {
     // MARK: Google search results
     func restaurantsReceived(restaurants: [NSDictionary]) {
         
-        countrySelectedTitle.title = randomCountryKey
-
         // check to see if there are results
         if restaurants.count > 0 {
             // Find out how many results and set max results equal to that number
@@ -306,6 +327,8 @@ class RestaurantOverviewViewController: UIViewController {
         var restaurantRatingArray: [UILabel] = [self.firstRestaurantRatingLabel, self.secondRestaurantRatingLabel, self.thirdRestaurantRatingLabel]
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            
+            self.countrySelectedTitle.title = self.randomCountryKey
 
             // setting the opacity of each image
             self.firstRestaurantImage.alpha = 0.6
@@ -333,6 +356,14 @@ class RestaurantOverviewViewController: UIViewController {
                 }
                 
             }
+            
+            self.activityIndicator.stopAnimating()
+            self.loadingView.hidden = true
+            self.activityIndicator.hidden = true
+            
+            self.firstRestaurantButton.enabled = true
+            self.secondRestaurantButton.enabled = true
+            self.thirdRestaurantButton.enabled = true
         }
     }
     
@@ -356,18 +387,39 @@ class RestaurantOverviewViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "firstRestaurant" {
+            
+            isFromMainViewcontroller = false
+            
+            firstRestaurantButton.enabled = false
+            secondRestaurantButton.enabled = false
+            thirdRestaurantButton.enabled = false
+            
             var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[0]
             
             infoViewController.isSegueFromRestaurantHistory = false
         }
         if segue.identifier == "secondRestaurant" {
+            
+            isFromMainViewcontroller = false
+            
+            firstRestaurantButton.enabled = false
+            secondRestaurantButton.enabled = false
+            thirdRestaurantButton.enabled = false
+
             var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[1]
             
             infoViewController.isSegueFromRestaurantHistory = false
         }
         if segue.identifier == "thirdRestaurant" {
+            
+            isFromMainViewcontroller = false
+            
+            firstRestaurantButton.enabled = false
+            secondRestaurantButton.enabled = false
+            thirdRestaurantButton.enabled = false
+
             var infoViewController = segue.destinationViewController as! InfoViewController
             infoViewController.restaurant = restaurantArray[2]
             
@@ -376,7 +428,7 @@ class RestaurantOverviewViewController: UIViewController {
     }
     
     @IBAction func unwindToRestaurantOverviewViewController(segue: UIStoryboardSegue, sender: AnyObject!) {
-        
+
     }
 
 }
