@@ -106,8 +106,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         walkButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
         bikeButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
         carButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
-        
-        firstPrice.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:1.0).CGColor
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

@@ -27,7 +27,7 @@ class Restaurant: Object {
     let photoReferenceID = List<PhotoID>()
     
     override class func primaryKey() -> String {
-        return "countrySelected"
+        return "countrySelectedKey"
     }
     
 }

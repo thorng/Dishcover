@@ -51,8 +51,17 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var imagesContainerView: UIView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        countryTitle.title = ""
+        
+        restaurantLabel.text = ""
+        ratingLabel.text = ""
+        addressLabel.text = ""
+        countryLabel.text = ""
         
         shouldUseGoogleMaps = (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!))
     }
@@ -60,19 +69,23 @@ class InfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-        
-        
 
         // hide eaten button if accessing from History
         if isSegueFromRestaurantHistory == true {
             eatenButton.hidden = true
         }
-
+        
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
 
     }
     
     func downloadArrayOfPhotos() {
         
+        if restaurant.photoReferenceID.count == 0 {
+            activityIndicator.stopAnimating()
+            activityIndicator.hidden = true
+        }
         if restaurant.photoReferenceID.count > 0 {
             
             for i in 0...restaurant.photoReferenceID.count - 1 {
@@ -115,7 +128,13 @@ class InfoViewController: UIViewController {
         countryTitle.title = restaurant.name
         
         restaurantLabel.text = restaurant.name
-        ratingLabel.text = "\(restaurant.rating)"
+        
+        if restaurant.rating == 0 {
+            ratingLabel.text = "No rating"
+        } else {
+            ratingLabel.text = "\(restaurant.rating)"
+        }
+        
         addressLabel.text = restaurant.address
         countryLabel.text = restaurant.countrySelectedKey
         
@@ -132,7 +151,6 @@ class InfoViewController: UIViewController {
 //        self.view.addSubview(paginatedScrollView!) // add to the subview
 //        
         self.view.layoutIfNeeded()
-        println(self.paginatedScrollView?.frame)
         self.paginatedScrollView?.images = restaurantPhotos
         
         //self.addSubview(mainScrollView)
@@ -153,8 +171,6 @@ class InfoViewController: UIViewController {
     }
     
     func detailsReceived(restaurantDetails: NSDictionary) {
-        
-        
         
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             
@@ -193,6 +209,9 @@ class InfoViewController: UIViewController {
                 restaurantPhotos.append(UIImage(data: data)!)
             }
         }
+        
+        activityIndicator.stopAnimating()
+        activityIndicator.hidden = true
     }
     
     // adds restaurant name to Realm
@@ -231,7 +250,7 @@ class InfoViewController: UIViewController {
         
         self.view.addSubview(finishedSavingView)
         
-        // 3 seconds
+        // 1 seconds
         let dispatchTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,
             Int64(1 * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue()) { () -> Void in

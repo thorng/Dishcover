@@ -351,10 +351,13 @@ class RestaurantOverviewViewController: UIViewController {
             
             self.countrySelectedTitle.title = self.randomCountryKey
 
+            // apply gradient on each image
+            var gradientMaskLayer:CAGradientLayer = CAGradientLayer()
+            
             // setting the opacity of each image
-            self.firstRestaurantImage.alpha = 0.6
-            self.secondRestaurantImage.alpha = 0.6
-            self.thirdRestaurantImage.alpha = 0.6
+//            self.firstRestaurantImage.alpha = 0.6
+//            self.secondRestaurantImage.alpha = 0.6
+//            self.thirdRestaurantImage.alpha = 0.6
 
             // hide views as needed
             if self.detailsReceivedCount == 1 {
@@ -368,11 +371,32 @@ class RestaurantOverviewViewController: UIViewController {
             
             for x in 0...self.detailsReceivedCount - 1 {
                 
-                restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
+                // Show no rating if rating = 0
+                if self.restaurantArray[x].rating == 0 {
+                    restaurantRatingArray[x].text = "No rating"
+                } else {
+                    restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
+                }
+                
                 restaurantNameArray[x].text = self.restaurantArray[x].name
                 
                 let restaurantChosen = self.restaurantArray[x]
+                
+                if restaurantChosen.photoReferenceID.count == 0 {
+                    println("\n NO IMAGES \n")
+                    restaurantImageArray[x] == UIImage(named: "world_map")
+                }
+                
                 if restaurantChosen.photoReferenceID.count > 0 {
+                    
+                    restaurantImageArray[x].alpha = 0.6
+                    
+                    // apply alpha gradient
+//                    gradientMaskLayer.frame = restaurantImageArray[x].bounds
+//                    gradientMaskLayer.colors = [UIColor.clearColor().CGColor!, UIColor.blackColor().CGColor!]
+//                    gradientMaskLayer.locations = [0.5, 0.0]
+//                    restaurantImageArray[x].layer.mask = gradientMaskLayer
+                    
                     self.downloadAndDisplayImage(restaurantChosen.photoReferenceID.first!.photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)
                 }
                 
@@ -396,6 +420,7 @@ class RestaurantOverviewViewController: UIViewController {
             } else {
                 self.displayFinishedLoading()
             }
+            
         }
     }
     
