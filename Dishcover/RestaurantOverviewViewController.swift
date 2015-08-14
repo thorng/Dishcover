@@ -349,6 +349,7 @@ class RestaurantOverviewViewController: UIViewController {
     // function that looks at the restaurant array and updates buttons/info based on this info.
     func displayRestaurantInformation(restaurant: Restaurant) {
         
+        var viewArray: [UIView] = [self.firstView, self.secondView, self.thirdView]
         var restaurantImageArray: [UIImageView] = [self.firstRestaurantImage, self.secondRestaurantImage, self.thirdRestaurantImage]
         var restaurantNameArray: [UILabel] = [self.firstRestaurantNameLabel, self.secondRestaurantNameLabel, self.thirdRestaurantNameLabel]
         var restaurantButtonArray: [UIButton] = [self.firstRestaurantButton, self.secondRestaurantButton, self.thirdRestaurantButton]
@@ -386,9 +387,10 @@ class RestaurantOverviewViewController: UIViewController {
                     
                     // adding a heart behind the rating
                     let myImage = UIImage(named: "heart")
-                    let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+                    let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
                     myImageView.image = myImage
                     restaurantRatingArray[x].addSubview(myImageView)
+                    restaurantRatingArray[x].sendSubviewToBack(myImageView)
                 }
                 
                 restaurantNameArray[x].text = self.restaurantArray[x].name

@@ -45,6 +45,7 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var eatenButton: UIButton!
+    @IBOutlet weak var openOnGoogleButton: UIButton!
     
     @IBOutlet weak var countryTitle: UINavigationItem!
     
@@ -78,6 +79,8 @@ class InfoViewController: UIViewController {
         
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
+        
+        openOnGoogleButton.hidden = true
 
     }
     
@@ -138,6 +141,10 @@ class InfoViewController: UIViewController {
         
         addressLabel.text = restaurant.address
         countryLabel.text = restaurant.countrySelectedKey
+        
+        openOnGoogleButton.hidden = false
+        openOnGoogleButton.layer.cornerRadius = 5
+        openOnGoogleButton.clipsToBounds = true
         
     }
     
@@ -225,6 +232,13 @@ class InfoViewController: UIViewController {
             realm.add(realmRestaurant)
         }
     }
+    
+    @IBAction func openOnGoogleTapped(sender: UIButton) {
+        if let url = NSURL(string: restaurant.googleURL) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     
     @IBAction func startRouting(sender: AnyObject) {
         

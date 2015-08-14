@@ -825,7 +825,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Address" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3t-pP-K8n" userLabel="Address">
-                                                        <rect key="frame" x="450" y="71" width="142" height="76.5"/>
+                                                        <rect key="frame" x="400" y="71" width="185" height="76.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -841,9 +841,9 @@
                                                     <constraint firstItem="08w-BN-6S5" firstAttribute="top" secondItem="toQ-4m-UvW" secondAttribute="top" constant="20" id="Wmz-Hy-zx0"/>
                                                     <constraint firstAttribute="trailing" secondItem="08w-BN-6S5" secondAttribute="trailing" constant="15" id="Zzk-yw-SlO"/>
                                                     <constraint firstItem="h3t-pP-K8n" firstAttribute="leading" secondItem="nTe-Ht-4RK" secondAttribute="trailing" constant="350" id="a5a-QX-M0S"/>
-                                                    <constraint firstItem="h3t-pP-K8n" firstAttribute="leading" secondItem="toQ-4m-UvW" secondAttribute="leading" constant="450" id="c7S-9C-chw"/>
+                                                    <constraint firstItem="h3t-pP-K8n" firstAttribute="leading" secondItem="toQ-4m-UvW" secondAttribute="leading" constant="400" id="c7S-9C-chw"/>
                                                     <constraint firstAttribute="trailing" secondItem="3XV-pR-Ymt" secondAttribute="trailing" constant="100" id="e9x-Ov-2Uz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="h3t-pP-K8n" secondAttribute="trailing" constant="8" id="fLg-0g-IOi"/>
+                                                    <constraint firstAttribute="trailing" secondItem="h3t-pP-K8n" secondAttribute="trailing" constant="15" id="fLg-0g-IOi"/>
                                                     <constraint firstItem="3XV-pR-Ymt" firstAttribute="leading" secondItem="toQ-4m-UvW" secondAttribute="leading" constant="8" id="fgl-Pm-8tl"/>
                                                 </constraints>
                                                 <variation key="default">
@@ -873,10 +873,10 @@
                                         </variation>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-cI-vd3">
-                                        <rect key="frame" x="10" y="221" width="580" height="663.5"/>
+                                        <rect key="frame" x="10" y="221" width="580" height="649"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="A4K-V4-w6X">
-                                                <rect key="frame" x="280" y="322.5" width="20" height="20"/>
+                                                <rect key="frame" x="280" y="315" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <constraints>
@@ -884,6 +884,20 @@
                                             <constraint firstAttribute="centerX" secondItem="A4K-V4-w6X" secondAttribute="centerX" id="whp-Rr-Y6L"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80Y-hA-Udw">
+                                        <rect key="frame" x="0.0" y="870" width="600" height="65"/>
+                                        <color key="backgroundColor" red="0.25490196078431371" green="0.32549019607843138" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="fZo-YF-05F"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="39"/>
+                                        <state key="normal" title="OPEN ON GOOGLE">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openOnGoogleTapped:" destination="3zA-Xo-J73" eventType="touchUpInside" id="how-Bf-bWb"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZ6-8j-jb6">
                                         <rect key="frame" x="0.0" y="935" width="600" height="65"/>
                                         <color key="backgroundColor" red="0.12156862745098039" green="0.68627450980392157" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
@@ -911,8 +925,11 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="JWR-6b-Q7A" firstAttribute="trailing" secondItem="Zg6-cI-vd3" secondAttribute="trailing" constant="10" id="0Da-cZ-WvC"/>
+                                    <constraint firstItem="80Y-hA-Udw" firstAttribute="top" secondItem="Zg6-cI-vd3" secondAttribute="bottom" id="0vs-4E-Pks"/>
                                     <constraint firstItem="KZ6-8j-jb6" firstAttribute="top" secondItem="Zg6-cI-vd3" secondAttribute="bottom" constant="50" id="2T8-FR-Tp2"/>
                                     <constraint firstItem="JWR-6b-Q7A" firstAttribute="top" secondItem="IZD-AM-1lN" secondAttribute="top" id="4YD-bI-OZI"/>
+                                    <constraint firstItem="KZ6-8j-jb6" firstAttribute="top" secondItem="80Y-hA-Udw" secondAttribute="bottom" id="4if-Fw-ElQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="80Y-hA-Udw" secondAttribute="trailing" id="7vo-QD-FTu"/>
                                     <constraint firstItem="KZ6-8j-jb6" firstAttribute="leading" secondItem="IZD-AM-1lN" secondAttribute="leading" id="9mZ-Z3-GAK"/>
                                     <constraint firstItem="JWR-6b-Q7A" firstAttribute="trailing" secondItem="KZ6-8j-jb6" secondAttribute="trailing" constant="-10" id="Crm-Xh-qYu"/>
                                     <constraint firstAttribute="trailing" secondItem="KZ6-8j-jb6" secondAttribute="trailing" id="JST-G9-2fA"/>
@@ -924,6 +941,7 @@
                                     <constraint firstAttribute="bottom" secondItem="KZ6-8j-jb6" secondAttribute="bottom" constant="129" id="jd7-Ei-Poy"/>
                                     <constraint firstItem="JWR-6b-Q7A" firstAttribute="bottom" secondItem="Zg6-cI-vd3" secondAttribute="bottom" id="kau-L9-z3S"/>
                                     <constraint firstItem="KZ6-8j-jb6" firstAttribute="top" secondItem="Zg6-cI-vd3" secondAttribute="bottom" constant="16" id="nAY-nZ-LRZ"/>
+                                    <constraint firstItem="80Y-hA-Udw" firstAttribute="leading" secondItem="IZD-AM-1lN" secondAttribute="leading" id="q29-ad-95g"/>
                                     <constraint firstItem="KZ6-8j-jb6" firstAttribute="top" secondItem="JWR-6b-Q7A" secondAttribute="bottom" id="z6d-oO-lta"/>
                                 </constraints>
                                 <variation key="default">
@@ -931,6 +949,7 @@
                                         <exclude reference="4YD-bI-OZI"/>
                                         <exclude reference="Crm-Xh-qYu"/>
                                         <exclude reference="kau-L9-z3S"/>
+                                        <exclude reference="2T8-FR-Tp2"/>
                                         <exclude reference="XxA-Ir-2wm"/>
                                         <exclude reference="jd7-Ei-Poy"/>
                                         <exclude reference="nAY-nZ-LRZ"/>
@@ -968,7 +987,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="q4T-nt-PlK">
                         <barButtonItem key="rightBarButtonItem" title="Directions" id="2pa-qU-f20">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.1120290092284978" green="0.79222092243636366" blue="0.33280679446364297" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="startRouting:" destination="3zA-Xo-J73" id="5eL-o8-hrJ"/>
                             </connections>
@@ -986,6 +1005,7 @@
                         <outlet property="eatenButton" destination="KZ6-8j-jb6" id="hGU-y9-4Rq"/>
                         <outlet property="imagesContainerView" destination="Zg6-cI-vd3" id="Isp-3o-s6I"/>
                         <outlet property="mainScrollView" destination="JWR-6b-Q7A" id="UlM-jx-gwq"/>
+                        <outlet property="openOnGoogleButton" destination="80Y-hA-Udw" id="Mi7-Mj-M2I"/>
                         <outlet property="ratingLabel" destination="08w-BN-6S5" id="Kte-0f-uD2"/>
                         <outlet property="restaurantLabel" destination="3XV-pR-Ymt" id="BR1-KK-LdJ"/>
                         <segue destination="zsl-ak-J6x" kind="unwind" identifier="exitFromInfoController" unwindAction="unwindToMainViewController:sender:" id="0FO-Ou-Pgb"/>
