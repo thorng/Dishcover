@@ -59,6 +59,10 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var secondRestaurantRatingLabel: UILabel!
     @IBOutlet weak var thirdRestaurantRatingLabel: UILabel!
     
+    @IBOutlet weak var firstHeartImage: UIImageView!
+    @IBOutlet weak var secondHeartImage: UIImageView!
+    @IBOutlet weak var thirdHeartImage: UIImageView!
+    
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var thirdView: UIView!
@@ -173,7 +177,7 @@ class RestaurantOverviewViewController: UIViewController {
         // update loading screen text
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             println("flyingToLabel text called")
-            self.flyingToLabel.text = "You're flying to \(self.randomCountryKey!) today."
+            self.flyingToLabel.text = "Finding restaurants at \(self.randomCountryKey!)..."
         }
         
         println(randomCountryKey)
@@ -220,6 +224,8 @@ class RestaurantOverviewViewController: UIViewController {
                 }
                 
                 NSOperationQueue.mainQueue().addOperationWithBlock() {
+                    self.flyingToLabel.text = "You're flying to \(self.randomCountryKey!) today."
+                    
                     if self.maxResults + 1 == 1 {
                         self.foundXRestaurantsLabel.text = "I found a restaurant near you"
                     } else {
@@ -354,6 +360,7 @@ class RestaurantOverviewViewController: UIViewController {
         var restaurantNameArray: [UILabel] = [self.firstRestaurantNameLabel, self.secondRestaurantNameLabel, self.thirdRestaurantNameLabel]
         var restaurantButtonArray: [UIButton] = [self.firstRestaurantButton, self.secondRestaurantButton, self.thirdRestaurantButton]
         var restaurantRatingArray: [UILabel] = [self.firstRestaurantRatingLabel, self.secondRestaurantRatingLabel, self.thirdRestaurantRatingLabel]
+        var heartImageArray: [UIImageView] = [self.firstHeartImage, self.secondHeartImage, self.thirdHeartImage]
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             
@@ -381,16 +388,18 @@ class RestaurantOverviewViewController: UIViewController {
                 
                 // Show no rating if rating = 0
                 if self.restaurantArray[x].rating == 0 {
-                    restaurantRatingArray[x].text = "No rating"
+                    restaurantRatingArray[x].text = ""
+                    restaurantRatingArray[x].hidden = true
+                    heartImageArray[x].hidden = true
                 } else {
                     restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
                     
                     // adding a heart behind the rating
                     let myImage = UIImage(named: "heart")
-                    let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-                    myImageView.image = myImage
-                    restaurantRatingArray[x].addSubview(myImageView)
-                    restaurantRatingArray[x].sendSubviewToBack(myImageView)
+//                    let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//                    myImageView.image = myImage
+//                    restaurantRatingArray[x].addSubview(myImageView)
+//                    restaurantRatingArray[x].sendSubviewToBack(myImageView)
                 }
                 
                 restaurantNameArray[x].text = self.restaurantArray[x].name

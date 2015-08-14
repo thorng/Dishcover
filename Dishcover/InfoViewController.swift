@@ -47,6 +47,8 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var eatenButton: UIButton!
     @IBOutlet weak var openOnGoogleButton: UIButton!
     
+    @IBOutlet weak var heartImageView: UIImageView!
+    
     @IBOutlet weak var countryTitle: UINavigationItem!
     
     @IBOutlet weak var directionsButton: UIBarButtonItem!
@@ -81,6 +83,8 @@ class InfoViewController: UIViewController {
         activityIndicator.startAnimating()
         
         openOnGoogleButton.hidden = true
+        
+        heartImageView.hidden = true
 
     }
     
@@ -145,6 +149,8 @@ class InfoViewController: UIViewController {
         openOnGoogleButton.hidden = false
         openOnGoogleButton.layer.cornerRadius = 5
         openOnGoogleButton.clipsToBounds = true
+        
+        heartImageView.hidden = false
         
     }
     
