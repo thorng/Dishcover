@@ -21,6 +21,7 @@ class InfoViewController: UIViewController {
     //@IBOutlet weak var paginatedScrollView: PaginatedScrollView!
     
     var placeDetailsURL: String = ""
+    var googleURL: String = ""
     
     var address: String = ""
     var rating: Double = 0.0

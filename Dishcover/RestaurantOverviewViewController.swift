@@ -220,8 +220,11 @@ class RestaurantOverviewViewController: UIViewController {
                 }
                 
                 NSOperationQueue.mainQueue().addOperationWithBlock() {
-                    println("foundXRestaurantsLabel text called")
-                    self.foundXRestaurantsLabel.text = "I found \(self.maxResults+1) restaurants near you"
+                    if self.maxResults + 1 == 1 {
+                        self.foundXRestaurantsLabel.text = "I found a restaurant near you"
+                    } else {
+                        self.foundXRestaurantsLabel.text = "I found \(self.maxResults+1) restaurants near you"
+                    }
                 }
 
                 for x in 0...maxResults {
@@ -288,6 +291,10 @@ class RestaurantOverviewViewController: UIViewController {
         
         if let phoneNumber = restaurantDetails["formatted_phone_number"] as? String {
             restaurant.phoneNumber = phoneNumber
+        }
+        
+        if let googleURL = restaurantDetails["url"] as? String {
+            restaurant.googleURL = googleURL
         }
         
         // grab latitude and longitude
@@ -376,6 +383,12 @@ class RestaurantOverviewViewController: UIViewController {
                     restaurantRatingArray[x].text = "No rating"
                 } else {
                     restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
+                    
+                    // adding a heart behind the rating
+                    let myImage = UIImage(named: "heart")
+                    let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+                    myImageView.image = myImage
+                    restaurantRatingArray[x].addSubview(myImageView)
                 }
                 
                 restaurantNameArray[x].text = self.restaurantArray[x].name
@@ -384,7 +397,8 @@ class RestaurantOverviewViewController: UIViewController {
                 
                 if restaurantChosen.photoReferenceID.count == 0 {
                     println("\n NO IMAGES \n")
-                    restaurantImageArray[x] == UIImage(named: "world_map")
+                    restaurantImageArray[x].image = UIImage(named: "world_map")
+                    restaurantImageArray[x].contentMode = .ScaleAspectFill
                 }
                 
                 if restaurantChosen.photoReferenceID.count > 0 {
@@ -394,7 +408,7 @@ class RestaurantOverviewViewController: UIViewController {
                     // apply alpha gradient
 //                    gradientMaskLayer.frame = restaurantImageArray[x].bounds
 //                    gradientMaskLayer.colors = [UIColor.clearColor().CGColor!, UIColor.blackColor().CGColor!]
-//                    gradientMaskLayer.locations = [0.5, 0.0]
+//                    gradientMaskLayer.locations = [0.05, 0.0]
 //                    restaurantImageArray[x].layer.mask = gradientMaskLayer
                     
                     self.downloadAndDisplayImage(restaurantChosen.photoReferenceID.first!.photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)

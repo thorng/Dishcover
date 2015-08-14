@@ -78,6 +78,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    @IBOutlet weak var historyButton: UIBarButtonItem!
+    
     let locManager = CLLocationManager() // Location Variable
     
     override func viewDidLoad() {
@@ -133,7 +135,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func unwindToMainViewController(segue: UIStoryboardSegue, sender: AnyObject!) {
-
+        historyButton.enabled = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -148,6 +150,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             takeOffButton.backgroundColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.0)
             takeOffButton.enabled = false
         }
+        
+//        if locValue == nil {
+//            takeOffButton.titleLabel?.adjustsFontSizeToFitWidth = true
+//            takeOffButton.titleLabel?.text = "NO LOCATION"
+//        }
         
         // fetching how many countires user has been to
         let realm = Realm()
@@ -280,7 +287,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func goButton(sender: UIButton) {
-        
+        //historyButton.enabled = false
     }
     
     // This delegate is called, getting the location

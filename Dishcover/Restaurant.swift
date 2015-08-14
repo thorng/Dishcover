@@ -11,6 +11,7 @@ import RealmSwift
 class Restaurant: Object {
     
     dynamic var placeDetailsURL: String = ""
+    dynamic var googleURL: String = ""
 
     dynamic var countrySelected: String = ""
     dynamic var countrySelectedKey: String = ""
