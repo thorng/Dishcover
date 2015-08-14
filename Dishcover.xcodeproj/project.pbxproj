@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F14712F1B7D451F002B5E25 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F14712E1B7D451F002B5E25 /* Default-568h@2x.png */; };
+		3F5561D21B7D4891000E037E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561B01B7D4891000E037E /* AppDelegate.swift */; };
+		3F5561D31B7D4891000E037E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561B11B7D4891000E037E /* LaunchScreen.xib */; };
+		3F5561D41B7D4891000E037E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561B31B7D4891000E037E /* Main.storyboard */; };
+		3F5561D51B7D4891000E037E /* bicycle-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561B51B7D4891000E037E /* bicycle-black.png */; };
+		3F5561D61B7D4891000E037E /* bicycle-black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561B61B7D4891000E037E /* bicycle-black@3x.png */; };
+		3F5561D71B7D4891000E037E /* bicycle-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561B71B7D4891000E037E /* bicycle-white.png */; };
+		3F5561D81B7D4891000E037E /* bicycle-white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561B81B7D4891000E037E /* bicycle-white@3x.png */; };
+		3F5561D91B7D4891000E037E /* car-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561B91B7D4891000E037E /* car-black.png */; };
+		3F5561DA1B7D4891000E037E /* car-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561BA1B7D4891000E037E /* car-black@2x.png */; };
+		3F5561DB1B7D4891000E037E /* car-black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561BB1B7D4891000E037E /* car-black@3x.png */; };
+		3F5561DC1B7D4891000E037E /* countries_of_the_world.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561BC1B7D4891000E037E /* countries_of_the_world.txt */; };
+		3F5561DD1B7D4891000E037E /* Dishcovery-mockup.sketch in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561BD1B7D4891000E037E /* Dishcovery-mockup.sketch */; };
+		3F5561DE1B7D4891000E037E /* FinishedSavingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561BE1B7D4891000E037E /* FinishedSavingView.xib */; };
+		3F5561DF1B7D4891000E037E /* bg-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561C01B7D4891000E037E /* bg-1.jpg */; };
+		3F5561E01B7D4891000E037E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561C11B7D4891000E037E /* Images.xcassets */; };
+		3F5561E11B7D4891000E037E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561C21B7D4891000E037E /* Info.plist */; };
+		3F5561E21B7D4891000E037E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561C31B7D4891000E037E /* InfoViewController.swift */; };
+		3F5561E31B7D4891000E037E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561C41B7D4891000E037E /* MainViewController.swift */; };
+		3F5561E41B7D4891000E037E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561C51B7D4891000E037E /* Network.swift */; };
+		3F5561E51B7D4891000E037E /* PaginatedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561C61B7D4891000E037E /* PaginatedScrollView.swift */; };
+		3F5561E61B7D4891000E037E /* PhotoID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561C71B7D4891000E037E /* PhotoID.swift */; };
+		3F5561E71B7D4891000E037E /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561C81B7D4891000E037E /* Restaurant.swift */; };
+		3F5561E81B7D4891000E037E /* RestaurantHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561C91B7D4891000E037E /* RestaurantHistoryViewController.swift */; };
+		3F5561E91B7D4891000E037E /* RestaurantOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561CA1B7D4891000E037E /* RestaurantOverviewViewController.swift */; };
+		3F5561EA1B7D4891000E037E /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561CB1B7D4891000E037E /* RestaurantTableViewCell.swift */; };
+		3F5561EB1B7D4891000E037E /* slice.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561CC1B7D4891000E037E /* slice.py */; };
+		3F5561EC1B7D4891000E037E /* walking2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561CD1B7D4891000E037E /* walking2.png */; };
+		3F5561ED1B7D4891000E037E /* walking2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561CE1B7D4891000E037E /* walking2@2x.png */; };
+		3F5561EF1B7D4891000E037E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F5561D11B7D4891000E037E /* Info.plist */; };
+		3F5561F01B7D49AB000E037E /* Im_HorngryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5561D01B7D4891000E037E /* Im_HorngryTests.swift */; };
+		3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */; };
+		3F92B66B1B7BD90D00697000 /* IMG_0674.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F92B66A1B7BD90D00697000 /* IMG_0674.png */; };
+		942021B8E399C9C6762ADD8C /* Pods_Dishcover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F48B4E3549EBE2E99245AFC /* Pods_Dishcover.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F8427981B55B9770075884B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F84277A1B55B9770075884B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F8427811B55B9770075884B;
+			remoteInfo = "Im-Horngry";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F48B4E3549EBE2E99245AFC /* Pods_Dishcover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dishcover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Im-Horngry.release.xcconfig"; path = "Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry.release.xcconfig"; sourceTree = "<group>"; };
+		3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Im-Horngry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Im-Horngry/Pods-Im-Horngry.debug.xcconfig"; sourceTree = "<group>"; };
+		3F14712E1B7D451F002B5E25 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3F5561B01B7D4891000E037E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3F5561B21B7D4891000E037E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3F5561B41B7D4891000E037E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F5561B51B7D4891000E037E /* bicycle-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bicycle-black.png"; sourceTree = "<group>"; };
+		3F5561B61B7D4891000E037E /* bicycle-black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bicycle-black@3x.png"; sourceTree = "<group>"; };
+		3F5561B71B7D4891000E037E /* bicycle-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bicycle-white.png"; sourceTree = "<group>"; };
+		3F5561B81B7D4891000E037E /* bicycle-white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bicycle-white@3x.png"; sourceTree = "<group>"; };
+		3F5561B91B7D4891000E037E /* car-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-black.png"; sourceTree = "<group>"; };
+		3F5561BA1B7D4891000E037E /* car-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-black@2x.png"; sourceTree = "<group>"; };
+		3F5561BB1B7D4891000E037E /* car-black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-black@3x.png"; sourceTree = "<group>"; };
+		3F5561BC1B7D4891000E037E /* countries_of_the_world.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countries_of_the_world.txt; sourceTree = "<group>"; };
+		3F5561BD1B7D4891000E037E /* Dishcovery-mockup.sketch */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dishcovery-mockup.sketch"; sourceTree = "<group>"; };
+		3F5561BE1B7D4891000E037E /* FinishedSavingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedSavingView.xib; sourceTree = "<group>"; };
+		3F5561C01B7D4891000E037E /* bg-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg-1.jpg"; sourceTree = "<group>"; };
+		3F5561C11B7D4891000E037E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3F5561C21B7D4891000E037E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F5561C31B7D4891000E037E /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		3F5561C41B7D4891000E037E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3F5561C51B7D4891000E037E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		3F5561C61B7D4891000E037E /* PaginatedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedScrollView.swift; sourceTree = "<group>"; };
+		3F5561C71B7D4891000E037E /* PhotoID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoID.swift; sourceTree = "<group>"; };
+		3F5561C81B7D4891000E037E /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		3F5561C91B7D4891000E037E /* RestaurantHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantHistoryViewController.swift; sourceTree = "<group>"; };
+		3F5561CA1B7D4891000E037E /* RestaurantOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantOverviewViewController.swift; sourceTree = "<group>"; };
+		3F5561CB1B7D4891000E037E /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		3F5561CC1B7D4891000E037E /* slice.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = slice.py; sourceTree = "<group>"; };
+		3F5561CD1B7D4891000E037E /* walking2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking2.png; sourceTree = "<group>"; };
+		3F5561CE1B7D4891000E037E /* walking2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "walking2@2x.png"; sourceTree = "<group>"; };
+		3F5561D01B7D4891000E037E /* Im_HorngryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Im_HorngryTests.swift; sourceTree = "<group>"; };
+		3F5561D11B7D4891000E037E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3F8427821B55B9770075884B /* Dishcover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dishcover.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F8427971B55B9770075884B /* DishcoverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DishcoverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F92B66A1B7BD90D00697000 /* IMG_0674.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0674.png; sourceTree = "<group>"; };
+		6B69A7051AF3BA330733A154 /* Pods-Dishcover.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dishcover.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover.release.xcconfig"; sourceTree = "<group>"; };
+		91010A69E745A43B90F87085 /* Pods-Dishcover.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dishcover.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover.debug.xcconfig"; sourceTree = "<group>"; };
+		D27DBA3A0055F570B406AF31 /* Pods_Im_Horngry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Im_Horngry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F84277F1B55B9770075884B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F6BC9E31B5D8BA200C986F1 /* CoreLocation.framework in Frameworks */,
+				942021B8E399C9C6762ADD8C /* Pods_Dishcover.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8427941B55B9770075884B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		045D6E0D4050C77F7F8CE243 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F6BC9E21B5D8BA200C986F1 /* CoreLocation.framework */,
+				D27DBA3A0055F570B406AF31 /* Pods_Im_Horngry.framework */,
+				1F48B4E3549EBE2E99245AFC /* Pods_Dishcover.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0850A8E24062F548A7FBF158 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3545AE645127940BBE100A75 /* Pods-Im-Horngry.debug.xcconfig */,
+				34AF56A87D04C749F7D577E9 /* Pods-Im-Horngry.release.xcconfig */,
+				91010A69E745A43B90F87085 /* Pods-Dishcover.debug.xcconfig */,
+				6B69A7051AF3BA330733A154 /* Pods-Dishcover.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3F5561AF1B7D4891000E037E /* Dishcover */ = {
+			isa = PBXGroup;
+			children = (
+				3F5561B01B7D4891000E037E /* AppDelegate.swift */,
+				3F5561B11B7D4891000E037E /* LaunchScreen.xib */,
+				3F5561B31B7D4891000E037E /* Main.storyboard */,
+				3F5561B51B7D4891000E037E /* bicycle-black.png */,
+				3F5561B61B7D4891000E037E /* bicycle-black@3x.png */,
+				3F5561B71B7D4891000E037E /* bicycle-white.png */,
+				3F5561B81B7D4891000E037E /* bicycle-white@3x.png */,
+				3F5561B91B7D4891000E037E /* car-black.png */,
+				3F5561BA1B7D4891000E037E /* car-black@2x.png */,
+				3F5561BB1B7D4891000E037E /* car-black@3x.png */,
+				3F5561BC1B7D4891000E037E /* countries_of_the_world.txt */,
+				3F5561BD1B7D4891000E037E /* Dishcovery-mockup.sketch */,
+				3F5561BE1B7D4891000E037E /* FinishedSavingView.xib */,
+				3F5561BF1B7D4891000E037E /* Image Resources */,
+				3F5561C11B7D4891000E037E /* Images.xcassets */,
+				3F5561C21B7D4891000E037E /* Info.plist */,
+				3F5561C31B7D4891000E037E /* InfoViewController.swift */,
+				3F5561C41B7D4891000E037E /* MainViewController.swift */,
+				3F5561C51B7D4891000E037E /* Network.swift */,
+				3F5561C61B7D4891000E037E /* PaginatedScrollView.swift */,
+				3F5561C71B7D4891000E037E /* PhotoID.swift */,
+				3F5561C81B7D4891000E037E /* Restaurant.swift */,
+				3F5561C91B7D4891000E037E /* RestaurantHistoryViewController.swift */,
+				3F5561CA1B7D4891000E037E /* RestaurantOverviewViewController.swift */,
+				3F5561CB1B7D4891000E037E /* RestaurantTableViewCell.swift */,
+				3F5561CC1B7D4891000E037E /* slice.py */,
+				3F5561CD1B7D4891000E037E /* walking2.png */,
+				3F5561CE1B7D4891000E037E /* walking2@2x.png */,
+			);
+			path = Dishcover;
+			sourceTree = "<group>";
+		};
+		3F5561BF1B7D4891000E037E /* Image Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3F5561C01B7D4891000E037E /* bg-1.jpg */,
+			);
+			path = "Image Resources";
+			sourceTree = "<group>";
+		};
+		3F5561CF1B7D4891000E037E /* DishcoverTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F5561D01B7D4891000E037E /* Im_HorngryTests.swift */,
+				3F5561D11B7D4891000E037E /* Info.plist */,
+			);
+			path = DishcoverTests;
+			sourceTree = "<group>";
+		};
+		3F8427791B55B9770075884B = {
+			isa = PBXGroup;
+			children = (
+				3F14712E1B7D451F002B5E25 /* Default-568h@2x.png */,
+				3F5561AF1B7D4891000E037E /* Dishcover */,
+				3F5561CF1B7D4891000E037E /* DishcoverTests */,
+				3F92B66C1B7BD91900697000 /* Images */,
+				3F8427831B55B9770075884B /* Products */,
+				0850A8E24062F548A7FBF158 /* Pods */,
+				045D6E0D4050C77F7F8CE243 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3F8427831B55B9770075884B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F8427821B55B9770075884B /* Dishcover.app */,
+				3F8427971B55B9770075884B /* DishcoverTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F92B66C1B7BD91900697000 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3F92B66A1B7BD90D00697000 /* IMG_0674.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F8427811B55B9770075884B /* Dishcover */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F8427A11B55B9770075884B /* Build configuration list for PBXNativeTarget "Dishcover" */;
+			buildPhases = (
+				D9C30CBA57564B61D4BC7179 /* Check Pods Manifest.lock */,
+				3F84277E1B55B9770075884B /* Sources */,
+				3F84277F1B55B9770075884B /* Frameworks */,
+				3F8427801B55B9770075884B /* Resources */,
+				8D11F71AC126C3EA5803719D /* Copy Pods Resources */,
+				379F370E39F5F2567B8FBC6B /* Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dishcover;
+			productName = "Im-Horngry";
+			productReference = 3F8427821B55B9770075884B /* Dishcover.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F8427961B55B9770075884B /* DishcoverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F8427A41B55B9770075884B /* Build configuration list for PBXNativeTarget "DishcoverTests" */;
+			buildPhases = (
+				3F8427931B55B9770075884B /* Sources */,
+				3F8427941B55B9770075884B /* Frameworks */,
+				3F8427951B55B9770075884B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F8427991B55B9770075884B /* PBXTargetDependency */,
+			);
+			name = DishcoverTests;
+			productName = "Im-HorngryTests";
+			productReference = 3F8427971B55B9770075884B /* DishcoverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F84277A1B55B9770075884B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Timothy Horng";
+				TargetAttributes = {
+					3F8427811B55B9770075884B = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = GHPL4SN6Q2;
+					};
+					3F8427961B55B9770075884B = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 3F8427811B55B9770075884B;
+					};
+				};
+			};
+			buildConfigurationList = 3F84277D1B55B9770075884B /* Build configuration list for PBXProject "Dishcover" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F8427791B55B9770075884B;
+			productRefGroup = 3F8427831B55B9770075884B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F8427811B55B9770075884B /* Dishcover */,
+				3F8427961B55B9770075884B /* DishcoverTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F8427801B55B9770075884B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5561DB1B7D4891000E037E /* car-black@3x.png in Resources */,
+				3F5561E01B7D4891000E037E /* Images.xcassets in Resources */,
+				3F5561DF1B7D4891000E037E /* bg-1.jpg in Resources */,
+				3F92B66B1B7BD90D00697000 /* IMG_0674.png in Resources */,
+				3F5561D31B7D4891000E037E /* LaunchScreen.xib in Resources */,
+				3F5561EB1B7D4891000E037E /* slice.py in Resources */,
+				3F14712F1B7D451F002B5E25 /* Default-568h@2x.png in Resources */,
+				3F5561ED1B7D4891000E037E /* walking2@2x.png in Resources */,
+				3F5561EC1B7D4891000E037E /* walking2.png in Resources */,
+				3F5561DA1B7D4891000E037E /* car-black@2x.png in Resources */,
+				3F5561DD1B7D4891000E037E /* Dishcovery-mockup.sketch in Resources */,
+				3F5561D81B7D4891000E037E /* bicycle-white@3x.png in Resources */,
+				3F5561D51B7D4891000E037E /* bicycle-black.png in Resources */,
+				3F5561E11B7D4891000E037E /* Info.plist in Resources */,
+				3F5561DC1B7D4891000E037E /* countries_of_the_world.txt in Resources */,
+				3F5561D41B7D4891000E037E /* Main.storyboard in Resources */,
+				3F5561DE1B7D4891000E037E /* FinishedSavingView.xib in Resources */,
+				3F5561D61B7D4891000E037E /* bicycle-black@3x.png in Resources */,
+				3F5561D91B7D4891000E037E /* car-black.png in Resources */,
+				3F5561D71B7D4891000E037E /* bicycle-white.png in Resources */,
+				3F5561EF1B7D4891000E037E /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8427951B55B9770075884B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		379F370E39F5F2567B8FBC6B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D11F71AC126C3EA5803719D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dishcover/Pods-Dishcover-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9C30CBA57564B61D4BC7179 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F84277E1B55B9770075884B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5561EA1B7D4891000E037E /* RestaurantTableViewCell.swift in Sources */,
+				3F5561E91B7D4891000E037E /* RestaurantOverviewViewController.swift in Sources */,
+				3F5561E31B7D4891000E037E /* MainViewController.swift in Sources */,
+				3F5561E51B7D4891000E037E /* PaginatedScrollView.swift in Sources */,
+				3F5561E81B7D4891000E037E /* RestaurantHistoryViewController.swift in Sources */,
+				3F5561E21B7D4891000E037E /* InfoViewController.swift in Sources */,
+				3F5561E71B7D4891000E037E /* Restaurant.swift in Sources */,
+				3F5561E61B7D4891000E037E /* PhotoID.swift in Sources */,
+				3F5561E41B7D4891000E037E /* Network.swift in Sources */,
+				3F5561D21B7D4891000E037E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F8427931B55B9770075884B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5561F01B7D49AB000E037E /* Im_HorngryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F8427991B55B9770075884B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F8427811B55B9770075884B /* Dishcover */;
+			targetProxy = 3F8427981B55B9770075884B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3F5561B11B7D4891000E037E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F5561B21B7D4891000E037E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		3F5561B31B7D4891000E037E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F5561B41B7D4891000E037E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F84279F1B55B9770075884B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F8427A01B55B9770075884B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F8427A21B55B9770075884B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91010A69E745A43B90F87085 /* Pods-Dishcover.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Dishcover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = Dishcover;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		3F8427A31B55B9770075884B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B69A7051AF3BA330733A154 /* Pods-Dishcover.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Dishcover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = Dishcover;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		3F8427A51B55B9770075884B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Dishcover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = DishcoverTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dishcover.app/Dishcover";
+			};
+			name = Debug;
+		};
+		3F8427A61B55B9770075884B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Dishcover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = DishcoverTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dishcover.app/Dishcover";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F84277D1B55B9770075884B /* Build configuration list for PBXProject "Dishcover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F84279F1B55B9770075884B /* Debug */,
+				3F8427A01B55B9770075884B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F8427A11B55B9770075884B /* Build configuration list for PBXNativeTarget "Dishcover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F8427A21B55B9770075884B /* Debug */,
+				3F8427A31B55B9770075884B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F8427A41B55B9770075884B /* Build configuration list for PBXNativeTarget "DishcoverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F8427A51B55B9770075884B /* Debug */,
+				3F8427A61B55B9770075884B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F84277A1B55B9770075884B /* Project object */;
+}
