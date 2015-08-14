@@ -75,10 +75,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var countryStatisticsLabel: UILabel!
     @IBOutlet weak var percentageStatisticsLabel: UILabel!
+    @IBOutlet weak var ofTheWorldLabel: UILabel!
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
     @IBOutlet weak var historyButton: UIBarButtonItem!
+    
+    @IBOutlet weak var topView: UIView!
     
     let locManager = CLLocationManager() // Location Variable
     
@@ -108,6 +111,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         walkButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
         bikeButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
         carButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
+        
+        // adjusting aspect ratio of text
+        percentageStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
+        countryStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
+        ofTheWorldLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -140,7 +148,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         // array of all buttons
         let buttonChoicesArray: [UIButton] = [firstPrice, secondPrice, thirdPrice, walkButton, bikeButton, carButton]
         
@@ -180,6 +188,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // adjusting aspect ratio of text
+//        percentageStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/200.0))
+//        countryStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/250.0))
+//        ofTheWorldLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/250.0))
         
         // array of all buttons
         let buttonChoicesArray: [UIButton] = [firstPrice, secondPrice, thirdPrice, walkButton, bikeButton, carButton]
@@ -325,5 +338,37 @@ extension UIButton {
     func displayTakeOffDisabled() {
         backgroundColor = disabledTakeOffBGColor
         setTitleColor(disabledTakeOffTextColor, forState: .Normal)
+    }
+}
+
+extension UILabel {
+    func adjustFont(min:CGFloat?, max:CGFloat?, ratio:CGFloat){
+        var newPointSize:CGFloat = font.pointSize * ratio
+        
+        if let min = min where newPointSize < min {
+            newPointSize = min
+        }
+        
+        if let max = max where newPointSize > max {
+            newPointSize = max
+        }
+        
+        let adjustedFont = UIFont(name: font.fontName, size: newPointSize)
+        font = adjustedFont
+    }
+    
+    func adjustFont(min:CGFloat?, max:CGFloat?, ratio:CGFloat, base:CGFloat){
+        var newPointSize:CGFloat = base * ratio
+        
+        if let min = min where newPointSize < min {
+            newPointSize = min
+        }
+        
+        if let max = max where newPointSize > max {
+            newPointSize = max
+        }
+        
+        let adjustedFont = UIFont(name: font.fontName, size: newPointSize)
+        font = adjustedFont
     }
 }

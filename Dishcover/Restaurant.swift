@@ -25,6 +25,8 @@ class Restaurant: Object {
     dynamic var destLatitude: Double = 0
     dynamic var destLongitude: Double = 0
     
+    dynamic var dateEaten: String = ""
+    
     let photoReferenceID = List<PhotoID>()
     
     override class func primaryKey() -> String {

@@ -41,19 +41,27 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="471"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-ro-UxH" userLabel="County stats">
-                                        <rect key="frame" x="8" y="28" width="584" height="30"/>
+                                        <rect key="frame" x="8" y="18" width="584" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="jya-FL-WvM" userLabel="Percentage">
                                         <rect key="frame" x="300" y="235" width="0.0" height="0.0"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4nu-Z7-lND"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="80"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4nu-Z7-lND"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="of the world." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfJ-b8-Aza" userLabel="of the world.">
-                                        <rect key="frame" x="236" y="243" width="129" height="30"/>
+                                        <rect key="frame" x="236" y="245" width="129" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -61,19 +69,23 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailingMargin" secondItem="L1E-ro-UxH" secondAttribute="trailing" id="0fl-j8-WbF"/>
+                                    <constraint firstItem="KfJ-b8-Aza" firstAttribute="top" secondItem="jya-FL-WvM" secondAttribute="bottom" constant="10" id="BHG-Oz-iVT"/>
                                     <constraint firstAttribute="centerX" secondItem="KfJ-b8-Aza" secondAttribute="centerX" id="Dwn-du-0Sa"/>
                                     <constraint firstItem="jya-FL-WvM" firstAttribute="top" secondItem="L1E-ro-UxH" secondAttribute="bottom" constant="40" id="KD1-o8-5Cv"/>
-                                    <constraint firstItem="L1E-ro-UxH" firstAttribute="top" secondItem="hJQ-nj-LQG" secondAttribute="topMargin" constant="20" id="bRZ-xj-ppx"/>
+                                    <constraint firstItem="L1E-ro-UxH" firstAttribute="top" secondItem="hJQ-nj-LQG" secondAttribute="topMargin" constant="10" id="bRZ-xj-ppx"/>
                                     <constraint firstItem="KfJ-b8-Aza" firstAttribute="top" secondItem="jya-FL-WvM" secondAttribute="bottom" constant="8" id="hqj-kB-5cg"/>
                                     <constraint firstItem="L1E-ro-UxH" firstAttribute="leading" secondItem="hJQ-nj-LQG" secondAttribute="leadingMargin" id="itU-ru-Q3v"/>
                                     <constraint firstAttribute="centerY" secondItem="jya-FL-WvM" secondAttribute="centerY" id="kiO-30-KLc"/>
                                     <constraint firstItem="KfJ-b8-Aza" firstAttribute="top" secondItem="jya-FL-WvM" secondAttribute="bottom" constant="15" id="q7p-oN-CEl"/>
+                                    <constraint firstAttribute="bottom" secondItem="KfJ-b8-Aza" secondAttribute="bottom" constant="20" id="qZi-5C-hqJ"/>
                                     <constraint firstAttribute="centerX" secondItem="jya-FL-WvM" secondAttribute="centerX" id="ytf-hX-QDS"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="q7p-oN-CEl"/>
                                         <exclude reference="KD1-o8-5Cv"/>
+                                        <exclude reference="hqj-kB-5cg"/>
+                                        <exclude reference="q7p-oN-CEl"/>
+                                        <exclude reference="qZi-5C-hqJ"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -321,10 +333,12 @@
                         <outlet property="countryStatisticsLabel" destination="L1E-ro-UxH" id="0Jm-x1-Enb"/>
                         <outlet property="firstPrice" destination="oCD-wC-dDb" id="RnC-yN-Pby"/>
                         <outlet property="historyButton" destination="WCF-HU-hl9" id="HW5-WX-jP0"/>
+                        <outlet property="ofTheWorldLabel" destination="KfJ-b8-Aza" id="lgz-Gd-zfK"/>
                         <outlet property="percentageStatisticsLabel" destination="jya-FL-WvM" id="6Zx-4o-BWb"/>
                         <outlet property="secondPrice" destination="RiF-gV-4mN" id="nMf-u1-cGC"/>
                         <outlet property="takeOffButton" destination="OrE-02-RLG" id="Mxi-lr-SEc"/>
                         <outlet property="thirdPrice" destination="8c0-qn-ybF" id="eoT-Vm-1rT"/>
+                        <outlet property="topView" destination="hJQ-nj-LQG" id="QYN-KD-CRP"/>
                         <outlet property="walkButton" destination="88o-fa-xOU" id="YiS-zx-lap"/>
                     </connections>
                 </viewController>
@@ -733,11 +747,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="104" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fsT-wB-93T">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="104" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fsT-wB-93T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -749,16 +762,22 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="euV-jr-15z" userLabel="Restaurant Label">
                                                     <rect key="frame" x="16" y="12" width="568" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P19-Vz-tQS" userLabel="Country">
-                                                    <rect key="frame" x="16" y="56" width="42" height="21"/>
+                                                    <rect key="frame" x="16" y="56" width="43.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="diH-Hl-cEO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" red="0.1120290092" green="0.79222092239999997" blue="0.3328067945" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-DA-eEE" userLabel="Date">
+                                                    <rect key="frame" x="542" y="56" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -767,7 +786,9 @@
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="euV-jr-15z" firstAttribute="leading" secondItem="gqv-hF-c5b" secondAttribute="leadingMargin" constant="8" id="AdZ-98-pMk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ubm-DA-eEE" secondAttribute="trailing" constant="8" id="OxY-ip-vLA"/>
                                                 <constraint firstItem="P19-Vz-tQS" firstAttribute="leading" secondItem="euV-jr-15z" secondAttribute="leading" id="VWd-6C-4JZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ubm-DA-eEE" secondAttribute="bottom" constant="18.5" id="aW9-Io-5f7"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="P19-Vz-tQS" secondAttribute="bottom" constant="18.5" id="geK-67-eFH"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="euV-jr-15z" secondAttribute="trailing" id="oTz-lE-vtH"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="euV-jr-15z" secondAttribute="trailing" constant="8" id="paG-vP-fu1"/>
@@ -784,6 +805,7 @@
                                         </tableViewCellContentView>
                                         <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="dateLabel" destination="ubm-DA-eEE" id="BuA-wN-zrz"/>
                                             <outlet property="eatenCountryLabel" destination="P19-Vz-tQS" id="QNf-Cu-UR9"/>
                                             <outlet property="eatenRestaurantLabel" destination="euV-jr-15z" id="nsf-C3-tTA"/>
                                             <segue destination="3zA-Xo-J73" kind="show" identifier="fromHistorytoInfo" id="5g2-vr-XSJ"/>
@@ -853,11 +875,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="3XV-pR-Ymt" userLabel="Restaurant">
-                                                        <rect key="frame" x="8" y="15" width="342" height="36"/>
+                                                        <rect key="frame" x="240" y="153" width="119" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="KVd-uB-oWn"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
@@ -888,10 +910,12 @@
                                                     <constraint firstItem="h3t-pP-K8n" firstAttribute="leading" secondItem="toQ-4m-UvW" secondAttribute="leading" constant="8" id="1Nz-ga-5zD"/>
                                                     <constraint firstItem="08w-BN-6S5" firstAttribute="leading" secondItem="toQ-4m-UvW" secondAttribute="leading" constant="8" id="2Z8-P5-bbT"/>
                                                     <constraint firstAttribute="height" constant="900" id="4JW-Ti-X5f"/>
+                                                    <constraint firstItem="h3t-pP-K8n" firstAttribute="top" secondItem="3XV-pR-Ymt" secondAttribute="bottom" constant="8" id="Al5-Fc-wBz"/>
                                                     <constraint firstItem="nTe-Ht-4RK" firstAttribute="leading" secondItem="3XV-pR-Ymt" secondAttribute="trailing" constant="135" id="BwA-s3-JAR"/>
                                                     <constraint firstAttribute="trailing" secondItem="08w-BN-6S5" secondAttribute="trailing" constant="24" id="EHY-Qz-i6e"/>
                                                     <constraint firstItem="08w-BN-6S5" firstAttribute="leading" secondItem="3XV-pR-Ymt" secondAttribute="trailing" constant="16" id="EaF-ml-xHz"/>
                                                     <constraint firstItem="nTe-Ht-4RK" firstAttribute="leading" secondItem="3XV-pR-Ymt" secondAttribute="trailing" constant="135" id="H5t-Ph-FNg"/>
+                                                    <constraint firstAttribute="centerX" secondItem="3XV-pR-Ymt" secondAttribute="centerX" id="LeE-bb-9yP"/>
                                                     <constraint firstAttribute="trailing" secondItem="h3t-pP-K8n" secondAttribute="trailing" constant="8" id="N4N-VD-nUi"/>
                                                     <constraint firstItem="08w-BN-6S5" firstAttribute="centerY" secondItem="HXj-NN-Yac" secondAttribute="centerY" constant="-3" id="R5b-Ma-Q1L"/>
                                                     <constraint firstItem="08w-BN-6S5" firstAttribute="top" secondItem="toQ-4m-UvW" secondAttribute="top" constant="20" id="Wmz-Hy-zx0"/>
@@ -907,13 +931,15 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="subviews">
-                                                        <exclude reference="3XV-pR-Ymt"/>
                                                         <exclude reference="Ema-cN-yQm"/>
                                                     </mask>
                                                     <mask key="constraints">
-                                                        <exclude reference="0cr-t3-uuc"/>
+                                                        <exclude reference="BwA-s3-JAR"/>
                                                         <exclude reference="H5t-Ph-FNg"/>
                                                         <exclude reference="x3P-C4-fR6"/>
+                                                        <exclude reference="0cr-t3-uuc"/>
+                                                        <exclude reference="e9x-Ov-2Uz"/>
+                                                        <exclude reference="fgl-Pm-8tl"/>
                                                         <exclude reference="a5a-QX-M0S"/>
                                                         <exclude reference="2Z8-P5-bbT"/>
                                                         <exclude reference="EaF-ml-xHz"/>
@@ -1045,6 +1071,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Oi4-zx-ydS"/>
+                                <exclude reference="TOf-gO-oly"/>
                                 <exclude reference="9sd-jW-I5d"/>
                                 <exclude reference="Fw6-jx-lox"/>
                                 <exclude reference="HXm-q5-7lE"/>
@@ -1123,7 +1150,7 @@
         <image name="world_map" width="375" height="518"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xSY-9w-5Ym"/>
+        <segue reference="5g2-vr-XSJ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.27058823529999998" green="0.40000000000000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
