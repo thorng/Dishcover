@@ -5,6 +5,7 @@ use_frameworks!
 target 'Dishcover' do
 	pod 'GoogleMaps'
 	pod 'RealmSwift'
+	pod 'Mixpanel'
 end
 
 target 'DishcoverTests' do

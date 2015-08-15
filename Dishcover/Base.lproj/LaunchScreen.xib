@@ -12,30 +12,70 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Timothy Horng. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="439" width="441" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="20" y="458" width="441" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dishcover" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="140" width="441" height="43"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="20" y="97" width="441" height="43"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dishcover_crusted" translatesAutoresizingMaskIntoConstraints="NO" id="rgi-La-Ekk">
+                    <rect key="frame" x="150" y="150" width="180" height="180"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="ExX-n8-D8q"/>
+                        <constraint firstAttribute="height" constant="100" id="dpj-6J-Zrj"/>
+                        <constraint firstAttribute="width" constant="100" id="fOa-ZR-ldy"/>
+                        <constraint firstAttribute="width" constant="180" id="ifj-jU-QCF"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dpj-6J-Zrj"/>
+                            <exclude reference="fOa-ZR-ldy"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Go on, have a slice of the world." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyS-gC-hKa">
+                    <rect key="frame" x="125.5" y="338" width="229.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.27058823529999998" green="0.40000000000000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="1/3" constant="1" id="5cJ-9S-tgC"/>
+                <constraint firstItem="vyS-gC-hKa" firstAttribute="top" secondItem="rgi-La-Ekk" secondAttribute="bottom" constant="8" id="2zO-d3-OJA"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="1/3" constant="-50" id="5cJ-9S-tgC"/>
                 <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="Koa-jz-hwk"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="8" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
+                <constraint firstItem="rgi-La-Ekk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="150" id="Zlf-id-NsS"/>
+                <constraint firstAttribute="centerY" secondItem="rgi-La-Ekk" secondAttribute="centerY" id="a3K-lY-1cf"/>
+                <constraint firstAttribute="centerX" secondItem="vyS-gC-hKa" secondAttribute="centerX" id="dqv-wz-s3g"/>
+                <constraint firstItem="rgi-La-Ekk" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="10" id="eL3-yh-Jhj"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="vyS-gC-hKa" secondAttribute="bottom" constant="99" id="m1H-Ov-fP5"/>
+                <constraint firstAttribute="trailing" secondItem="rgi-La-Ekk" secondAttribute="trailing" constant="150" id="sER-pU-s0a"/>
+                <constraint firstAttribute="centerX" secondItem="rgi-La-Ekk" secondAttribute="centerX" id="yGC-GL-YGP"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="5cJ-9S-tgC"/>
+                    <exclude reference="Zlf-id-NsS"/>
+                    <exclude reference="sER-pU-s0a"/>
+                    <exclude reference="m1H-Ov-fP5"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="dishcover_crusted" width="1024" height="1024"/>
+    </resources>
 </document>

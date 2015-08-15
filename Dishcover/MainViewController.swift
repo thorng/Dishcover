@@ -113,9 +113,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         carButton.layer.borderColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0).CGColor
         
         // adjusting aspect ratio of text
-        percentageStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
-        countryStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
-        ofTheWorldLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
+//        percentageStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
+//        countryStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
+//        ofTheWorldLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/180.0 - 2))
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
