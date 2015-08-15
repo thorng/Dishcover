@@ -59,6 +59,10 @@ class RestaurantOverviewViewController: UIViewController {
     @IBOutlet weak var secondRestaurantRatingLabel: UILabel!
     @IBOutlet weak var thirdRestaurantRatingLabel: UILabel!
     
+    @IBOutlet weak var firstHeartImage: UIImageView!
+    @IBOutlet weak var secondHeartImage: UIImageView!
+    @IBOutlet weak var thirdHeartImage: UIImageView!
+    
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var thirdView: UIView!
@@ -173,7 +177,7 @@ class RestaurantOverviewViewController: UIViewController {
         // update loading screen text
         NSOperationQueue.mainQueue().addOperationWithBlock() {
             println("flyingToLabel text called")
-            self.flyingToLabel.text = "You're flying to \(self.randomCountryKey!) today."
+            self.flyingToLabel.text = "Finding restaurants at \(self.randomCountryKey!)..."
         }
         
         println(randomCountryKey)
@@ -220,8 +224,13 @@ class RestaurantOverviewViewController: UIViewController {
                 }
                 
                 NSOperationQueue.mainQueue().addOperationWithBlock() {
-                    println("foundXRestaurantsLabel text called")
-                    self.foundXRestaurantsLabel.text = "I found \(self.maxResults+1) restaurants near you"
+                    self.flyingToLabel.text = "You're flying to \(self.randomCountryKey!) today."
+                    
+                    if self.maxResults + 1 == 1 {
+                        self.foundXRestaurantsLabel.text = "I found a restaurant near you"
+                    } else {
+                        self.foundXRestaurantsLabel.text = "I found \(self.maxResults+1) restaurants near you"
+                    }
                 }
 
                 for x in 0...maxResults {
@@ -290,6 +299,10 @@ class RestaurantOverviewViewController: UIViewController {
             restaurant.phoneNumber = phoneNumber
         }
         
+        if let googleURL = restaurantDetails["url"] as? String {
+            restaurant.googleURL = googleURL
+        }
+        
         // grab latitude and longitude
         if let geometry = restaurantDetails["geometry"] as? NSDictionary {
             if let location = geometry["location"] as? NSDictionary {
@@ -342,10 +355,12 @@ class RestaurantOverviewViewController: UIViewController {
     // function that looks at the restaurant array and updates buttons/info based on this info.
     func displayRestaurantInformation(restaurant: Restaurant) {
         
+        var viewArray: [UIView] = [self.firstView, self.secondView, self.thirdView]
         var restaurantImageArray: [UIImageView] = [self.firstRestaurantImage, self.secondRestaurantImage, self.thirdRestaurantImage]
         var restaurantNameArray: [UILabel] = [self.firstRestaurantNameLabel, self.secondRestaurantNameLabel, self.thirdRestaurantNameLabel]
         var restaurantButtonArray: [UIButton] = [self.firstRestaurantButton, self.secondRestaurantButton, self.thirdRestaurantButton]
         var restaurantRatingArray: [UILabel] = [self.firstRestaurantRatingLabel, self.secondRestaurantRatingLabel, self.thirdRestaurantRatingLabel]
+        var heartImageArray: [UIImageView] = [self.firstHeartImage, self.secondHeartImage, self.thirdHeartImage]
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             
@@ -373,9 +388,18 @@ class RestaurantOverviewViewController: UIViewController {
                 
                 // Show no rating if rating = 0
                 if self.restaurantArray[x].rating == 0 {
-                    restaurantRatingArray[x].text = "No rating"
+                    restaurantRatingArray[x].text = ""
+                    restaurantRatingArray[x].hidden = true
+                    heartImageArray[x].hidden = true
                 } else {
                     restaurantRatingArray[x].text = "\(self.restaurantArray[x].rating)"
+                    
+                    // adding a heart behind the rating
+                    let myImage = UIImage(named: "heart")
+//                    let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//                    myImageView.image = myImage
+//                    restaurantRatingArray[x].addSubview(myImageView)
+//                    restaurantRatingArray[x].sendSubviewToBack(myImageView)
                 }
                 
                 restaurantNameArray[x].text = self.restaurantArray[x].name
@@ -384,7 +408,8 @@ class RestaurantOverviewViewController: UIViewController {
                 
                 if restaurantChosen.photoReferenceID.count == 0 {
                     println("\n NO IMAGES \n")
-                    restaurantImageArray[x] == UIImage(named: "world_map")
+                    restaurantImageArray[x].image = UIImage(named: "world_map")
+                    restaurantImageArray[x].contentMode = .ScaleAspectFill
                 }
                 
                 if restaurantChosen.photoReferenceID.count > 0 {
@@ -394,7 +419,7 @@ class RestaurantOverviewViewController: UIViewController {
                     // apply alpha gradient
 //                    gradientMaskLayer.frame = restaurantImageArray[x].bounds
 //                    gradientMaskLayer.colors = [UIColor.clearColor().CGColor!, UIColor.blackColor().CGColor!]
-//                    gradientMaskLayer.locations = [0.5, 0.0]
+//                    gradientMaskLayer.locations = [0.05, 0.0]
 //                    restaurantImageArray[x].layer.mask = gradientMaskLayer
                     
                     self.downloadAndDisplayImage(restaurantChosen.photoReferenceID.first!.photoReferenceID, restaurantImageArray: restaurantImageArray, index: x)

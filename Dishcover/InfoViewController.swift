@@ -21,11 +21,14 @@ class InfoViewController: UIViewController {
     //@IBOutlet weak var paginatedScrollView: PaginatedScrollView!
     
     var placeDetailsURL: String = ""
+    var googleURL: String = ""
     
     var address: String = ""
     var rating: Double = 0.0
     var country: String = ""
     var restaurantName: String = ""
+    
+    var formattedDate: String = ""
     
     var photoReferenceID: [String] = []
     var restaurantPhotos: [UIImage] = []
@@ -44,6 +47,9 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var restaurantLabel: UILabel!
     @IBOutlet weak var eatenButton: UIButton!
+    @IBOutlet weak var openOnGoogleButton: UIButton!
+    
+    @IBOutlet weak var heartImageView: UIImageView!
     
     @IBOutlet weak var countryTitle: UINavigationItem!
     
@@ -77,6 +83,12 @@ class InfoViewController: UIViewController {
         
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
+        
+        openOnGoogleButton.hidden = true
+        
+        heartImageView.hidden = true
+        
+        openOnGoogleButton.adjustFont(nil, max: nil, ratio: openOnGoogleButton.frame.width/800)
 
     }
     
@@ -131,12 +143,20 @@ class InfoViewController: UIViewController {
         
         if restaurant.rating == 0 {
             ratingLabel.text = "No rating"
+            heartImageView.hidden = true
         } else {
             ratingLabel.text = "\(restaurant.rating)"
+            heartImageView.hidden = false
         }
         
         addressLabel.text = restaurant.address
         countryLabel.text = restaurant.countrySelectedKey
+        
+        restaurantLabel.text = restaurant.name
+        
+        openOnGoogleButton.hidden = false
+        openOnGoogleButton.layer.cornerRadius = 5
+        openOnGoogleButton.clipsToBounds = true
         
     }
     
@@ -218,12 +238,19 @@ class InfoViewController: UIViewController {
     func addObjectToRealm() {
         let realm = Realm()
 
-        let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelected, "countrySelectedKey": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber, "rating": self.restaurant.rating])
+        let realmRestaurant = Restaurant(value: ["placeDetailsURL": self.restaurant.placeDetailsURL, "name": self.restaurant.name, "countrySelected": self.restaurant.countrySelected, "countrySelectedKey": self.restaurant.countrySelectedKey, "address": self.restaurant.address, "phoneNumber": self.restaurant.phoneNumber, "rating": self.restaurant.rating, "dateEaten": formattedDate])
         
         realm.write {
             realm.add(realmRestaurant)
         }
     }
+    
+    @IBAction func openOnGoogleTapped(sender: UIButton) {
+        if let url = NSURL(string: restaurant.googleURL) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     
     @IBAction func startRouting(sender: AnyObject) {
         
@@ -243,6 +270,15 @@ class InfoViewController: UIViewController {
     
     // "Saved" screen that pops up after pressing Eaten
     @IBAction func eatenPressed(sender: UIButton) {
+        
+        // grabbing the date
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formattedDate = formatter.stringFromDate(date)
+        
+        println("data var: \(formattedDate)")
+        
         let finishedSavingViewNib = UINib(nibName: "FinishedSavingView", bundle: nil)
         let finishedSavingView:UIView = finishedSavingViewNib.instantiateWithOwner(nil, options: nil).last as! UIView
         
@@ -274,4 +310,21 @@ class InfoViewController: UIViewController {
         
     }
 
+}
+
+extension UIButton {
+    func adjustFont(min:CGFloat?, max:CGFloat?, ratio:CGFloat){
+        var newPointSize:CGFloat = titleLabel!.font.pointSize * ratio
+        
+        if let min = min where newPointSize < min {
+            newPointSize = min
+        }
+        
+        if let max = max where newPointSize > max {
+            newPointSize = max
+        }
+        
+        let adjustedFont = UIFont(name: titleLabel!.font.fontName, size: newPointSize)
+        titleLabel!.font = adjustedFont
+    }
 }

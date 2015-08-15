@@ -18,8 +18,22 @@ class RestaurantHistoryViewController: UIViewController {
     
     var restaurants: Results<Restaurant>! {
         didSet {
+            restaurants = restaurants.sorted("dateEaten", ascending: false)
             mainTableView?.reloadData()
         }
+    }
+    
+    func sortRestaurants(restaurants: Results<Restaurant>) {
+        
+//        var sortedRestaurants: Results<Restaurant> = restaurants
+//        for i in 0...restaurants.count-1 {
+//            for x in restaurants.count-1...0 {
+//                sortedRestaurants[x] = restaurants[i]
+//            }
+//        }
+        
+        //let sortedRestaurants = restaurants.object(Restaurant).sorted()
+        
     }
     
     override func viewDidLoad() {
