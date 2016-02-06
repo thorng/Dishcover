@@ -167,22 +167,13 @@ class InfoViewController: UIViewController {
         paginatedScrollView = PaginatedScrollView(frame: newFrame)
         paginatedScrollView!.canCancelContentTouches = false
         mainScrollView!.delaysContentTouches = true
-//        
-//        self.view.addSubview(paginatedScrollView!) // add to the subview
-//        
+
         self.view.layoutIfNeeded()
         self.paginatedScrollView?.images = restaurantPhotos
-        
-        //self.addSubview(mainScrollView)
-        
-//        paginatedScrollView!.frame = CGRectMake(0, 0, mainScrollView.contentSize.width, mainScrollView.contentSize.height)
-      
-//      mainScrollView.addSubview(paginatedScrollView!)
-       // paginatedScrollView!.addSubview(mainScrollView)
+
 
         
         imagesContainerView.addSubview(paginatedScrollView!)
-//        self.view.addSubview(buttonOne)
     }
     
     override func viewDidLayoutSubviews() {

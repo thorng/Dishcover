@@ -189,6 +189,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        // hello
         // adjusting aspect ratio of text
 //        percentageStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/200.0))
 //        countryStatisticsLabel.adjustFont(nil, max: nil, ratio: (topView.frame.height/250.0))

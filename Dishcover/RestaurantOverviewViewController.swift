@@ -253,6 +253,7 @@ class RestaurantOverviewViewController: UIViewController {
     func detailsRequest(referenceIdentifier: String, index: Int) {
         
         let placeDetailsURL = Network.buildDetailsURL(referenceIdentifier)
+        
         println("=============")
         println(placeDetailsURL)
         println("=============")
